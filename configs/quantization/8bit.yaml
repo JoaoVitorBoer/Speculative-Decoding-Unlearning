@@ -1,0 +1,6 @@
+# @package _global_
+
+model:
+  quantization_handler: BitsAndBytes
+  quantization_config:
+    load_in_8bit: true

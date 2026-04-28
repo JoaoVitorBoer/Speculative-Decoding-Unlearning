@@ -1,0 +1,4 @@
+
+model:
+  quantization_handler: GPTQ
+  quantization_config: null

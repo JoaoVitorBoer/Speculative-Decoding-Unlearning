@@ -1,0 +1,50 @@
+defaults:
+  - GradDiff
+
+handler: SimNPO
+
+args:
+  num_train_epochs: 10
+
+method_args:
+  delta: 0.0 # gamma in https://github.com/OPTML-Group/Unlearn-Simple/blob/main/TOFU/config/forget.yaml
+  beta: 0.7
+  alpha: 0.1 
+  gamma: 1.0 # npo_coeff in https://github.com/OPTML-Group/Unlearn-Simple/blob/main/TOFU/config/forget.yaml
+  retain_loss_type: NLL
+
+# Parameters here: https://huggingface.co/collections/OPTML-Group/simnpo-unlearned-models
+
+# MUSE BOOKS
+# https://huggingface.co/OPTML-Group/SimNPO-MUSE-Books-iclm-7b
+# method_args:
+#   delta: 0.0 # gamma in https://github.com/OPTML-Group/Unlearn-Simple/blob/main/TOFU/config/forget.yaml
+#   beta: 0.75
+#   alpha: 0.1
+#   gamma: 1.0 # npo_coeff in https://github.com/OPTML-Group/Unlearn-Simple/blob/main/TOFU/config/forget.yaml
+#   retain_loss_type: NLL
+
+# MUSE NEWS
+# https://huggingface.co/OPTML-Group/SimNPO-MUSE-News-Llama-2-7b
+# method_args:
+#   delta: 3.0 # gamma in https://github.com/OPTML-Group/Unlearn-Simple/blob/main/TOFU/config/forget.yaml
+#   beta: 0.7
+#   alpha: 0.1
+#   gamma: 1.0 # npo_coeff in https://github.com/OPTML-Group/Unlearn-Simple/blob/main/TOFU/config/forget.yaml
+#   retain_loss_type: NLL
+
+# TOFU FORGET 05 - llama 2 7b chat
+# method_args:
+#   delta: 0.0 # gamma in https://github.com/OPTML-Group/Unlearn-Simple/blob/main/TOFU/config/forget.yaml
+#   beta: 2.5
+#   alpha: 0.135
+#   gamma: 1 # npo_coeff in https://github.com/OPTML-Group/Unlearn-Simple/blob/main/TOFU/config/forget.yaml
+#   retain_loss_type: NLL
+
+# TOFU FORGET 10 - llama 2 7b chat
+# method_args:
+#   delta: 0.0 # gamma in https://github.com/OPTML-Group/Unlearn-Simple/blob/main/TOFU/config/forget.yaml
+#   beta: 4.5
+#   alpha: 0.125
+#   gamma: 1 # npo_coeff in https://github.com/OPTML-Group/Unlearn-Simple/blob/main/TOFU/config/forget.yaml
+#   retain_loss_type: NLL
