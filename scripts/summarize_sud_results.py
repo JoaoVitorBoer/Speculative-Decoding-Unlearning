@@ -85,18 +85,18 @@ def s_mia(auc: float, ref: float) -> float:
     return 1.0 - (ref - auc) / ref
 
 
+_MODEL_RE = re.compile(r"_tofu_(Llama[^_]+)_(?:full|forget\d+)")
+
+
 def model_name_from_target(target_dir_name: str) -> str | None:
-    """target-open-unlearning_tofu_Llama-3.2-1B-Instruct_full -> Llama-3.2-1B-Instruct"""
-    if not target_dir_name.startswith(TARGET_PREFIX):
-        return None
-    rest = target_dir_name[len(TARGET_PREFIX):]
-    # strip leading "tofu_"
-    if rest.startswith("tofu_"):
-        rest = rest[len("tofu_"):]
-    # strip trailing "_full"
-    if rest.endswith("_full"):
-        rest = rest[: -len("_full")]
-    return rest or None
+    """Pull the HF model name out of a target dir.
+
+    Handles both forms:
+      target-open-unlearning_tofu_Llama-3.2-1B-Instruct_full         -> Llama-3.2-1B-Instruct
+      target-open-unlearning_..._tofu_Llama-3.2-1B-Instruct_forget10_... -> Llama-3.2-1B-Instruct
+    """
+    m = _MODEL_RE.search(target_dir_name)
+    return m.group(1) if m else None
 
 
 def parse_alpha(alpha_dir_name: str) -> float | None:
@@ -139,43 +139,66 @@ def compute_privacy_score(summary: dict, retain_aucs: dict[str, float] | None) -
     return float(len(arr) / np.sum(1.0 / arr))
 
 
+def _build_row(summary_path: Path, *, target: str, draft: str | None, split: str,
+               alpha: float | None, target_dir: str, eval_root: Path,
+               retain_cache: dict[tuple[str, str], dict[str, float] | None]) -> dict | None:
+    try:
+        summary = json.loads(summary_path.read_text())
+    except Exception as e:
+        print(f"WARNING: failed to read {summary_path}: {e}")
+        return None
+
+    model = model_name_from_target(target_dir)
+    cache_key = (model or "", split)
+    if cache_key not in retain_cache:
+        retain_cache[cache_key] = (
+            load_retain_aucs(eval_root, model, split) if model else None
+        )
+    retain_aucs = retain_cache[cache_key]
+
+    row: dict = {"target": target, "draft": draft, "split": split, "alpha": alpha}
+    row.update(summary)
+    row["privacy_score"] = compute_privacy_score(summary, retain_aucs)
+    return row
+
+
 def collect_rows(results_root: Path, eval_root: Path) -> list[dict]:
+    """Walk SUD runs: target-*/draft-*/<split>/alpha-*/TOFU_SUMMARY.json"""
     retain_cache: dict[tuple[str, str], dict[str, float] | None] = {}
     rows: list[dict] = []
 
     for summary_path in sorted(results_root.glob("target-*/draft-*/*/alpha-*/TOFU_SUMMARY.json")):
-        rel_parts = summary_path.relative_to(results_root).parts
-        # parts: target-..., draft-..., <split>, alpha-..., TOFU_SUMMARY.json
-        target_dir, draft_dir, split, alpha_dir, _ = rel_parts
-
+        target_dir, draft_dir, split, alpha_dir, _ = summary_path.relative_to(results_root).parts
         target = target_dir[len(TARGET_PREFIX):] if target_dir.startswith(TARGET_PREFIX) else target_dir
         draft = draft_dir[len(DRAFT_PREFIX):] if draft_dir.startswith(DRAFT_PREFIX) else draft_dir
         alpha = parse_alpha(alpha_dir)
 
-        try:
-            summary = json.loads(summary_path.read_text())
-        except Exception as e:
-            print(f"WARNING: failed to read {summary_path}: {e}")
-            continue
+        row = _build_row(summary_path, target=target, draft=draft, split=split, alpha=alpha,
+                         target_dir=target_dir, eval_root=eval_root, retain_cache=retain_cache)
+        if row is not None:
+            rows.append(row)
 
-        model = model_name_from_target(target_dir)
-        cache_key = (model or "", split)
-        if cache_key not in retain_cache:
-            retain_cache[cache_key] = (
-                load_retain_aucs(eval_root, model, split) if model else None
-            )
-        retain_aucs = retain_cache[cache_key]
+    return rows
 
-        row: dict = {
-            "target": target,
-            "draft": draft,
-            "split": split,
-            "alpha": alpha,
-        }
-        # carry through everything from the summary, then overwrite/add derived metrics
-        row.update(summary)
-        row["privacy_score"] = compute_privacy_score(summary, retain_aucs)
-        rows.append(row)
+
+def collect_baseline_rows(results_root: Path, eval_root: Path) -> list[dict]:
+    """Walk baselines: baselines/target-*/<split>/TOFU_SUMMARY.json (no draft, no alpha)."""
+    retain_cache: dict[tuple[str, str], dict[str, float] | None] = {}
+    rows: list[dict] = []
+
+    baselines_root = results_root / "baselines"
+    if not baselines_root.exists():
+        print(f"WARNING: baselines root not found: {baselines_root}")
+        return rows
+
+    for summary_path in sorted(baselines_root.glob("target-*/*/TOFU_SUMMARY.json")):
+        target_dir, split, _ = summary_path.relative_to(baselines_root).parts
+        target = target_dir[len(TARGET_PREFIX):] if target_dir.startswith(TARGET_PREFIX) else target_dir
+
+        row = _build_row(summary_path, target=target, draft=None, split=split, alpha=None,
+                         target_dir=target_dir, eval_root=eval_root, retain_cache=retain_cache)
+        if row is not None:
+            rows.append(row)
 
     return rows
 
@@ -185,13 +208,24 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument("--results-root", type=Path, default=repo_root / "saves/unlearn/sud/results")
     parser.add_argument("--eval-root", type=Path, default=repo_root / "saves/eval")
-    parser.add_argument("--output", type=Path, default=repo_root / "saves/unlearn/sud/results/summary.csv")
+    parser.add_argument("--output", type=Path, default=None,
+                        help="CSV output path (default: summary.csv, or summary_baselines.csv with --baselines)")
+    parser.add_argument("--baselines", action="store_true", default=False,
+                        help="Summarize the baselines/ subtree instead of the SUD target-*/draft-* runs.")
     args = parser.parse_args()
 
     if not args.results_root.exists():
         raise SystemExit(f"results-root does not exist: {args.results_root}")
 
-    rows = collect_rows(args.results_root, args.eval_root)
+    if args.output is None:
+        fname = "summary_baselines.csv" if args.baselines else "summary.csv"
+        args.output = args.results_root / fname
+
+    rows = (
+        collect_baseline_rows(args.results_root, args.eval_root)
+        if args.baselines
+        else collect_rows(args.results_root, args.eval_root)
+    )
     if not rows:
         print(f"No TOFU_SUMMARY.json files matched under {args.results_root}")
         return
