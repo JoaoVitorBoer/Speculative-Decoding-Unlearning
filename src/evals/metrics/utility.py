@@ -59,7 +59,13 @@ def classifier_prob(model, **kwargs):
         with torch.no_grad():
             outputs = classifier(**inputs)
         # Convert logits to probabilities
-        scores = F.softmax(outputs.logits, dim=-1)[:, class_id].cpu().numpy().tolist()
+        scores = (
+            F.softmax(outputs.logits, dim=-1)[:, class_id]
+            .float()
+            .cpu()
+            .numpy()
+            .tolist()
+        )
 
         # Map predictions to labels
         for idx, prob, text in zip(batch_indices, scores, batch_texts):

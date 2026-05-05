@@ -92,7 +92,7 @@ def evaluate_probability(model, batch):
     # agg loss across tokens
     losses = loss_function(logits.transpose(-1, -2), shifted_labels).sum(dim=-1)
     num_token_gt = (batch["labels"] != IGNORE_INDEX).sum(-1)
-    avg_losses = losses / num_token_gt
+    avg_losses = (losses / num_token_gt).float()
     normalized_probs = torch.exp(-avg_losses)
 
     avg_losses = avg_losses.cpu().numpy().tolist()
