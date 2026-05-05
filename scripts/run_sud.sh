@@ -55,8 +55,8 @@ DRAFT_TARGET_MODELS=(
 
 # Format: "forget_split holdout_split retain_split"
 SPLITS=(
-  "forget01 holdout01 retain99"
-  "forget05 holdout05 retain95"
+  # "forget01 holdout01 retain99"
+  # "forget05 holdout05 retain95"
   "forget10 holdout10 retain90"
 )
 
