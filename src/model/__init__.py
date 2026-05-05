@@ -7,6 +7,7 @@ import logging
 from model.probe import ProbedLlamaForCausalLM
 from model.lora import LoRAModelForCausalLM
 from model.eval_lora import LoRAModelForEvaluation
+from model.sud import SUDModelForCausalLM
 from quantization.quantizers import BitsAndBytes, GPTQ
 
 hf_home = os.getenv("HF_HOME", default=None)
@@ -135,5 +136,6 @@ _register_model(AutoModelForCausalLM)
 _register_model(ProbedLlamaForCausalLM)
 _register_model(LoRAModelForCausalLM)
 _register_model(LoRAModelForEvaluation)
+_register_model(SUDModelForCausalLM)
 _register_quantization_method(BitsAndBytes)
 _register_quantization_method(GPTQ)

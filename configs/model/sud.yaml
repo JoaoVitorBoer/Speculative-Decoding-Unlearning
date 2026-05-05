@@ -1,0 +1,37 @@
+# SUD explicit-π model handler.
+#
+# Wraps a target + draft causal LM and samples from the geometric blend
+#   π(x) ∝ p(x)^(1-α) · q(x)^α
+# at every decoding step. Target and draft must share a tokenizer.
+#
+# Override the three required fields at the CLI:
+#   model=sud \
+#   model.model_args.pretrained_model_name_or_path=<target> \
+#   model.model_args.draft_model_name_or_path=<draft> \
+#   model.model_args.alpha=0.5 \
+#   model.tokenizer_args.pretrained_model_name_or_path=<target>
+#
+# `template_args` should match the target model family. The defaults here are
+# Llama-3 chat tags; override them when running on a different family.
+
+model_handler: SUDModelForCausalLM
+
+model_args:
+  pretrained_model_name_or_path: ???    # target model path or HF id
+  draft_model_name_or_path: ???         # draft model path or HF id (same tokenizer)
+  alpha: 0.5                            # blend strength in [0, 1]
+  attn_implementation: 'flash_attention_2'
+  torch_dtype: bfloat16
+
+tokenizer_args:
+  pretrained_model_name_or_path: ???    # tokenizer (must match both models)
+
+template_args:
+  apply_chat_template: True
+  system_prompt: You are a helpful assistant.
+  system_prompt_with_special_tokens: "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nYou are a helpful assistant.<|eot_id|>"
+  user_start_tag: "<|start_header_id|>user<|end_header_id|>\n\n"
+  user_end_tag: "<|eot_id|>"
+  asst_start_tag: "<|start_header_id|>assistant<|end_header_id|>\n\n"
+  asst_end_tag: "<|eot_id|>"
+  date_string: 10 Apr 2025
