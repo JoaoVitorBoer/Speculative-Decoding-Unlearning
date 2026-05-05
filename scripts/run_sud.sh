@@ -39,10 +39,10 @@ NC='\e[0m'
 CUDA_DEVICES="${CUDA_DEVICES:-0}"
 
 TARGET_MODELS=(
-  "Llama-3.2-1B-Instruct"
+  # "Llama-3.2-1B-Instruct"
   # "open-unlearning/unlearn_tofu_Llama-3.2-1B-Instruct_forget10_SimNPO_lr5e-05_b3.5_a1_d1_g0.25_ep5"
-  # "Llama-3.2-3B-Instruct"
-  # "Llama-3.1-8B-Instruct"
+  "Llama-3.2-3B-Instruct"
+  "Llama-3.1-8B-Instruct"
 )
 
 # Draft TARGET_MODELS to evaluate against.
@@ -61,7 +61,7 @@ SPLITS=(
 )
 
 # Blend strengths to sweep. α=0 → target only; α=1 → draft only.
-ALPHAS=(0.5 0.9 0.2)
+ALPHAS=(0.5 0.7 0.9)
 
 RESULTS_ROOT="${RESULTS_ROOT:-saves/unlearn/sud/results}"
 
