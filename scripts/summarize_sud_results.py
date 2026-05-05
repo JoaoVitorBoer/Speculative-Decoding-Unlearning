@@ -171,7 +171,6 @@ def collect_rows(results_root: Path, eval_root: Path) -> list[dict]:
             "draft": draft,
             "split": split,
             "alpha": alpha,
-            "path": str(summary_path.relative_to(results_root)),
         }
         # carry through everything from the summary, then overwrite/add derived metrics
         row.update(summary)
