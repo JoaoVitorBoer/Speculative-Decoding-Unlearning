@@ -77,8 +77,8 @@ for split_entry in "${SPLITS[@]}"; do
 
     CUDA_VISIBLE_DEVICES="${CUDA_DEVICES}" python src/eval.py \
       experiment=eval/tofu/default.yaml \
-      model="${target_model}" \
-      model.model_args.pretrained_model_name_or_path="${target}" \
+      model="Llama-3.2-1B-Instruct" \
+      model.model_args.pretrained_model_name_or_path="${target_model}" \
       forget_split="${forget_split}" \
       holdout_split="${holdout_split}" \
       retain_logs_path="${retain_logs_path}" \
