@@ -51,8 +51,31 @@ SPLITS=(
 
 RESULTS_ROOT="${RESULTS_ROOT:-saves/unlearn/sud/results/baselines}"
 
-# Target = the TOFU-finetuned (memorized) model on the HF hub.
-target_path() { echo "open-unlearning/tofu_${1}_full"; }
+repo_basename() { echo "${1##*/}"; }
+path_slug() { echo "${1//\//_}"; }
+
+base_model_name() {
+  local name
+  name="$(repo_basename "$1")"
+
+  if [[ "${name}" == unlearn_tofu_*_forget* ]]; then
+    name="${name#unlearn_tofu_}"
+    echo "${name%%_forget*}"
+  elif [[ "${name}" == tofu_*_full ]]; then
+    name="${name#tofu_}"
+    echo "${name%_full}"
+  else
+    echo "${name}"
+  fi
+}
+
+target_path() {
+  if [[ "$1" == */* ]]; then
+    echo "$1"
+  else
+    echo "open-unlearning/tofu_${1}_full"
+  fi
+}
 
 # ── DRIVER ────────────────────────────────────────────────────────────────────
 
@@ -63,22 +86,32 @@ for split_entry in "${SPLITS[@]}"; do
   echo -e "${RED}--- Split: forget=${forget_split} | holdout=${holdout_split} | retain=${retain_split} ---${NC}"
 
   for target_model in "${TARGET_MODELS[@]}"; do
+    model_name="$(base_model_name "${target_model}")"
     target="$(target_path "${target_model}")"
-    retain_logs_path="saves/eval/tofu_${target_model}_${retain_split}/TOFU_EVAL.json"
+    target_slug="$(path_slug "${target}")"
+    retain_logs_path="saves/eval/tofu_${model_name}_${retain_split}/TOFU_EVAL.json"
 
-    task_name="tofu_${target_model}_${forget_split}_baseline"
-    output_dir="${RESULTS_ROOT}/target-${target//\//_}/${forget_split}"
+    task_name="tofu_$(path_slug "${target_model}")_${forget_split}_baseline"
+    output_dir="${RESULTS_ROOT}/target-${target_slug}/${forget_split}"
     mkdir -p "${output_dir}"
 
     echo
     echo -e "${RED}=== baseline | ${target_model} | ${forget_split} ===${NC}"
+    echo -e "${RED}model config = ${model_name}${NC}"
     echo -e "${RED}target = ${target}${NC}"
+    echo -e "${RED}retain logs = ${retain_logs_path}${NC}"
     echo -e "${RED}eval  → ${output_dir}${NC}"
+
+    if [[ ! -f "${retain_logs_path}" ]]; then
+      echo -e "${RED}Missing retain logs: ${retain_logs_path}${NC}" >&2
+      echo -e "${RED}Create them first by evaluating the retain model for ${model_name} / ${retain_split}.${NC}" >&2
+      exit 1
+    fi
 
     CUDA_VISIBLE_DEVICES="${CUDA_DEVICES}" python src/eval.py \
       experiment=eval/tofu/default.yaml \
-      model="Llama-3.2-1B-Instruct" \
-      model.model_args.pretrained_model_name_or_path="${target_model}" \
+      model="${model_name}" \
+      model.model_args.pretrained_model_name_or_path="${target}" \
       forget_split="${forget_split}" \
       holdout_split="${holdout_split}" \
       retain_logs_path="${retain_logs_path}" \
