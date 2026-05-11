@@ -5,7 +5,7 @@
 
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=16
-#SBATCH --mem=30G
+#SBATCH --mem=20G
 #SBATCH --time=2-00:00:00
 #SBATCH --gpus=1
 
@@ -40,17 +40,24 @@ CUDA_DEVICES="${CUDA_DEVICES:-0}"
 
 TARGET_MODELS=(
   # "Llama-3.2-1B-Instruct"
-  # "open-unlearning/unlearn_tofu_Llama-3.2-1B-Instruct_forget10_SimNPO_lr5e-05_b3.5_a1_d1_g0.25_ep5"
-  "Llama-3.2-3B-Instruct"
-  "Llama-3.1-8B-Instruct"
+  "open-unlearning/unlearn_tofu_Llama-3.2-1B-Instruct_forget10_SimNPO_lr5e-05_b3.5_a1_d1_g0.25_ep5"
+  # "open-unlearning/unlearn_tofu_Llama-3.2-3B-Instruct_forget10_SimNPO_lr5e-05_b3.5_a1_d1_g0.25_ep5"
+  # "open-unlearning/unlearn_tofu_Llama-3.1-8B-Instruct_forget10_SimNPO_lr5e-05_b3.5_a1_d1_g0.25_ep5"
+  # "Llama-3.2-3B-Instruct"
+  # "Llama-3.1-8B-Instruct"
 )
 
 # Draft TARGET_MODELS to evaluate against.
 DRAFT_TARGET_MODELS=(
   # "Llama-3.2-1B-Instruct"
   # "meta-llama/Llama-3.2-1B-Instruct"
-  # open-unlearning/tofu_Llama-3.2-1B-Instruct_full
- open-unlearning/unlearn_tofu_Llama-3.2-1B-Instruct_forget10_SimNPO_lr5e-05_b3.5_a1_d1_g0.25_ep5
+  # "meta-llama/Llama-3.2-3B-Instruct"
+  # "meta-llama/Llama-3.1-8B-Instruct"
+  "open-unlearning/tofu_Llama-3.2-1B-Instruct_retain90"
+  "open-unlearning/tofu_Llama-3.2-3B-Instruct_retain90"
+  "open-unlearning/tofu_Llama-3.1-8B-Instruct_retain90"
+  # "open-unlearning/tofu_Llama-3.2-1B-Instruct_full" from re
+#  "open-unlearning/unlearn_tofu_Llama-3.2-1B-Instruct_forget10_SimNPO_lr5e-05_b3.5_a1_d1_g0.25_ep5"
 )
 
 # Format: "forget_split holdout_split retain_split"
@@ -77,8 +84,10 @@ for split_entry in "${SPLITS[@]}"; do
   echo -e "${RED}--- Split: forget=${forget_split} | holdout=${holdout_split} | retain=${retain_split} ---${NC}"
 
   for target_model in "${TARGET_MODELS[@]}"; do
-    target="$(target_path "${target_model}")"
-    retain_logs_path="saves/eval/tofu_${target_model}_${retain_split}/TOFU_EVAL.json"
+    # target="$(target_path "${target_model}")"
+    target=${target_model}
+    # retain_logs_path="saves/eval/tofu_${target_model}_${retain_split}/TOFU_EVAL.json"
+    retain_logs_path="saves/eval/tofu_Llama-3.2-1B-Instruct_${retain_split}/TOFU_EVAL.json"
     echo -e "${RED}target_model: ${target_model} | target=${target}${NC}"
 
     for draft_model in "${DRAFT_TARGET_MODELS[@]}"; do

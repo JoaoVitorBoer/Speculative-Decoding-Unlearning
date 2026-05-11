@@ -5,7 +5,7 @@
 
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=16
-#SBATCH --mem=30G
+#SBATCH --mem=20G
 #SBATCH --time=2-00:00:00
 #SBATCH --gpus=1
 
@@ -35,11 +35,27 @@ NC='\e[0m'
 
 CUDA_DEVICES="${CUDA_DEVICES:-0}"
 
+# Each entry is either:
+#   "target_model"                     — base model name auto-extracted
+#   "base_model_name target_model"     — explicit base model override
+# The base model name is used as the Hydra model config key and to locate
+# retain logs (saves/eval/tofu_<base_model>_<retain_split>/TOFU_EVAL.json).
 TARGET_MODELS=(
-  "open-unlearning/unlearn_tofu_Llama-3.2-1B-Instruct_forget10_SimNPO_lr5e-05_b3.5_a1_d1_g0.25_ep5"
+  # "open-unlearning/tofu_Llama-3.2-1B-Instruct_retain99"
+  # "open-unlearning/tofu_Llama-3.2-3B-Instruct_retain99"
+  # "open-unlearning/tofu_Llama-3.1-8B-Instruct_retain99"
+
+  # "open-unlearning/tofu_Llama-3.2-1B-Instruct_retain95"
+  # "open-unlearning/tofu_Llama-3.2-3B-Instruct_retain95"
+  # "open-unlearning/tofu_Llama-3.1-8B-Instruct_retain95"
+  
+  "open-unlearning/tofu_Llama-3.2-1B-Instruct_retain90"
+  "open-unlearning/tofu_Llama-3.2-3B-Instruct_retain90"
+  "open-unlearning/tofu_Llama-3.1-8B-Instruct_retain90"
   # "Llama-3.2-1B-Instruct"
   # "Llama-3.2-3B-Instruct"
   # "Llama-3.1-8B-Instruct"
+  # "Llama-3.2-3B-Instruct open-unlearning/some-custom-model"
 )
 
 # Format: "forget_split holdout_split retain_split"
@@ -64,6 +80,9 @@ base_model_name() {
   elif [[ "${name}" == tofu_*_full ]]; then
     name="${name#tofu_}"
     echo "${name%_full}"
+  elif [[ "${name}" == tofu_*_retain* ]]; then
+    name="${name#tofu_}"
+    echo "${name%_retain*}"
   else
     echo "${name}"
   fi
@@ -85,14 +104,21 @@ for split_entry in "${SPLITS[@]}"; do
   read -r forget_split holdout_split retain_split <<< "${split_entry}"
   echo -e "${RED}--- Split: forget=${forget_split} | holdout=${holdout_split} | retain=${retain_split} ---${NC}"
 
-  for target_model in "${TARGET_MODELS[@]}"; do
-    model_name="$(base_model_name "${target_model}")"
+  for entry in "${TARGET_MODELS[@]}"; do
+    read -r _part1 _part2 <<< "${entry}"
+    if [[ -n "${_part2}" ]]; then
+      model_name="${_part1}"
+      target_model="${_part2}"
+    else
+      target_model="${_part1}"
+      model_name="$(base_model_name "${target_model}")"
+    fi
     target="$(target_path "${target_model}")"
     target_slug="$(path_slug "${target}")"
     retain_logs_path="saves/eval/tofu_${model_name}_${retain_split}/TOFU_EVAL.json"
 
     task_name="tofu_$(path_slug "${target_model}")_${forget_split}_baseline"
-    output_dir="${RESULTS_ROOT}/target-${target_slug}/${forget_split}"
+    output_dir="${RESULTS_ROOT}/${target_slug}/${forget_split}"
     mkdir -p "${output_dir}"
 
     echo
