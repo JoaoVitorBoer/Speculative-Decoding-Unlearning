@@ -1,9 +1,12 @@
+from pathlib import Path
+
 import hydra
 from omegaconf import DictConfig
 
 from trainer.utils import seed_everything
 from model import get_model
 from evals import get_evaluators
+from profiler import Profiler
 
 
 @hydra.main(version_base=None, config_path="../configs", config_name="eval.yaml")
@@ -16,17 +19,25 @@ def main(cfg: DictConfig):
     model_cfg = cfg.model
     template_args = model_cfg.template_args
     assert model_cfg is not None, "Invalid model yaml passed in train config."
+
     model, tokenizer = get_model(model_cfg)
 
     eval_cfgs = cfg.eval
     evaluators = get_evaluators(eval_cfgs)
-    for evaluator_name, evaluator in evaluators.items():
+
+    profiler = Profiler()
+    profiler.start("evaluation")
+    for _, evaluator in evaluators.items():
         eval_args = {
             "template_args": template_args,
             "model": model,
             "tokenizer": tokenizer,
         }
         _ = evaluator.evaluate(**eval_args)
+    profiler.stop()
+
+    output_dir = next(iter(eval_cfgs.values())).output_dir
+    profiler.save(Path(output_dir) / "profiling.json")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,11 @@
+{
+  "combo": "unlearned-original",
+  "target": "saves/unlearn/baselines/tofu/SimNPO/Llama-3.2-3B-Instruct/forget05",
+  "draft": "open-unlearning/tofu_Llama-3.2-3B-Instruct_full",
+  "target_tag": "Llama-3.2-3B-Instruct_SimNPO",
+  "draft_tag": "Llama-3.2-3B-Instruct",
+  "forget_split": "forget05",
+  "alpha": 0.1,
+  "k_sud": 1,
+  "seed": 0
+}

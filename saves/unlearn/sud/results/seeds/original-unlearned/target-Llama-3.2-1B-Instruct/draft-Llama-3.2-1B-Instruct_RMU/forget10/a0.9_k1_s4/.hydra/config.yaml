@@ -1,0 +1,765 @@
+model:
+  model_args:
+    device_map: auto
+    pretrained_model_name_or_path: open-unlearning/tofu_Llama-3.2-1B-Instruct_full
+    draft_model_name_or_path: saves/unlearn/baselines/tofu/RMU/Llama-3.2-1B-Instruct/forget10
+    alpha: 0.9
+    k_sud: 1
+    attn_implementation: flash_attention_2
+    torch_dtype: bfloat16
+  model_handler: SUDModelForCausalLM
+  tokenizer_args:
+    pretrained_model_name_or_path: open-unlearning/tofu_Llama-3.2-1B-Instruct_full
+  template_args:
+    apply_chat_template: true
+    system_prompt: You are a helpful assistant.
+    system_prompt_with_special_tokens: '<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+
+      You are a helpful assistant.<|eot_id|>'
+    user_start_tag: '<|start_header_id|>user<|end_header_id|>
+
+
+      '
+    user_end_tag: <|eot_id|>
+    asst_start_tag: '<|start_header_id|>assistant<|end_header_id|>
+
+
+      '
+    asst_end_tag: <|eot_id|>
+    date_string: 10 Apr 2025
+mode: eval
+task_name: tofu_Llama-3.2-1B-Instruct_forget10_sud_Llama-3.2-1B-Instruct_RMU_alpha-0.9_k-1_seed-4
+seed: 4
+eval:
+  tofu:
+    metrics:
+      forget_quality:
+        pre_compute:
+          forget_truth_ratio:
+            pre_compute:
+              forget_Q_A_PARA_Prob:
+                datasets:
+                  TOFU_QA_forget_para:
+                    handler: QADataset
+                    args:
+                      hf_args:
+                        name: ${eval.tofu.forget_split}_perturbed
+                        split: train
+                        path: locuslab/TOFU
+                      question_key: ${eval.tofu.question_key}
+                      answer_key: paraphrased_answer
+                      max_length: 512
+                collators:
+                  DataCollatorForSupervisedDataset:
+                    handler: DataCollatorForSupervisedDataset
+                    args:
+                      padding_side: right
+                      index: index
+                handler: probability
+                batch_size: ${eval.tofu.batch_size}
+                access_key: correct
+              forget_Q_A_PERT_Prob:
+                datasets:
+                  TOFU_QA_forget_pert:
+                    handler: QADataset
+                    args:
+                      hf_args:
+                        name: ${eval.tofu.forget_split}_perturbed
+                        split: train
+                        path: locuslab/TOFU
+                      question_key: ${eval.tofu.question_key}
+                      answer_key: perturbed_answer
+                      max_length: 512
+                collators:
+                  DataCollatorForSupervisedDataset:
+                    handler: DataCollatorForSupervisedDataset
+                    args:
+                      padding_side: right
+                      index: index
+                handler: probability
+                batch_size: ${eval.tofu.batch_size}
+                access_key: wrong
+            handler: truth_ratio
+            aggregator: closer_to_1_better
+            access_key: forget
+        reference_logs:
+          retain_model_logs:
+            path: ${eval.tofu.retain_logs_path}
+            include:
+              forget_truth_ratio:
+                access_key: retain
+        handler: ks_test
+      model_utility:
+        pre_compute:
+          retain_Q_A_Prob:
+            datasets:
+              TOFU_QA_retain_eval:
+                handler: QADataset
+                args:
+                  hf_args:
+                    name: retain_perturbed
+                    split: train
+                    path: locuslab/TOFU
+                  question_key: ${eval.tofu.question_key}
+                  answer_key: answer
+                  max_length: 512
+            collators:
+              DataCollatorForSupervisedDataset:
+                handler: DataCollatorForSupervisedDataset
+                args:
+                  padding_side: right
+                  index: index
+            handler: probability
+            batch_size: ${eval.tofu.batch_size}
+          retain_Q_A_ROUGE:
+            datasets:
+              TOFU_QA_retain_eval:
+                handler: QADataset
+                args:
+                  hf_args:
+                    name: retain_perturbed
+                    split: train
+                    path: locuslab/TOFU
+                  question_key: ${eval.tofu.question_key}
+                  answer_key: answer
+                  max_length: 512
+                  predict_with_generate: true
+            collators:
+              DataCollatorForSupervisedDataset:
+                handler: DataCollatorForSupervisedDataset
+                args:
+                  padding_side: left
+                  index: index
+            generation_args:
+              do_sample: false
+              top_p: null
+              temperature: null
+              max_new_tokens: 200
+              use_cache: true
+            handler: rouge
+            rouge_type: rougeL_recall
+            batch_size: ${eval.tofu.batch_size}
+          retain_Truth_Ratio:
+            pre_compute:
+              retain_Q_A_PARA_Prob:
+                datasets:
+                  TOFU_QA_retain_para:
+                    handler: QADataset
+                    args:
+                      hf_args:
+                        name: retain_perturbed
+                        split: train
+                        path: locuslab/TOFU
+                      question_key: ${eval.tofu.question_key}
+                      answer_key: paraphrased_answer
+                      max_length: 512
+                collators:
+                  DataCollatorForSupervisedDataset:
+                    handler: DataCollatorForSupervisedDataset
+                    args:
+                      padding_side: right
+                      index: index
+                handler: probability
+                batch_size: ${eval.tofu.batch_size}
+                access_key: correct
+              retain_Q_A_PERT_Prob:
+                datasets:
+                  TOFU_QA_retain_pert:
+                    handler: QADataset
+                    args:
+                      hf_args:
+                        name: retain_perturbed
+                        split: train
+                        path: locuslab/TOFU
+                      question_key: ${eval.tofu.question_key}
+                      answer_key: perturbed_answer
+                      max_length: 512
+                collators:
+                  DataCollatorForSupervisedDataset:
+                    handler: DataCollatorForSupervisedDataset
+                    args:
+                      padding_side: right
+                      index: index
+                handler: probability
+                batch_size: ${eval.tofu.batch_size}
+                access_key: wrong
+            handler: truth_ratio
+            aggregator: true_better
+          ra_Q_A_Prob_normalised:
+            pre_compute:
+              ra_Q_A_Prob:
+                datasets:
+                  TOFU_QA_ra:
+                    handler: QADataset
+                    args:
+                      hf_args:
+                        name: real_authors_perturbed
+                        split: train
+                        path: locuslab/TOFU
+                      question_key: question
+                      answer_key: answer
+                      max_length: 512
+                collators:
+                  DataCollatorForSupervisedDataset:
+                    handler: DataCollatorForSupervisedDataset
+                    args:
+                      padding_side: right
+                      index: index
+                handler: probability
+                batch_size: ${eval.tofu.batch_size}
+                access_key: correct
+              ra_Q_A_PERT_Prob:
+                datasets:
+                  TOFU_QA_ra_pert:
+                    handler: QADataset
+                    args:
+                      hf_args:
+                        name: real_authors_perturbed
+                        split: train
+                        path: locuslab/TOFU
+                      question_key: question
+                      answer_key: perturbed_answer
+                      max_length: 512
+                collators:
+                  DataCollatorForSupervisedDataset:
+                    handler: DataCollatorForSupervisedDataset
+                    args:
+                      padding_side: right
+                      index: index
+                handler: probability
+                batch_size: ${eval.tofu.batch_size}
+                access_key: wrong
+            handler: probability_w_options
+          ra_Q_A_ROUGE:
+            datasets:
+              TOFU_QA_ra:
+                handler: QADataset
+                args:
+                  hf_args:
+                    name: real_authors_perturbed
+                    split: train
+                    path: locuslab/TOFU
+                  question_key: question
+                  answer_key: answer
+                  max_length: 512
+                  predict_with_generate: true
+            collators:
+              DataCollatorForSupervisedDataset:
+                handler: DataCollatorForSupervisedDataset
+                args:
+                  padding_side: left
+                  index: index
+            generation_args:
+              do_sample: false
+              top_p: null
+              temperature: null
+              max_new_tokens: 200
+              use_cache: true
+            handler: rouge
+            rouge_type: rougeL_recall
+            batch_size: ${eval.tofu.batch_size}
+          ra_Truth_Ratio:
+            pre_compute:
+              ra_Q_A_Prob:
+                datasets:
+                  TOFU_QA_ra:
+                    handler: QADataset
+                    args:
+                      hf_args:
+                        name: real_authors_perturbed
+                        split: train
+                        path: locuslab/TOFU
+                      question_key: question
+                      answer_key: answer
+                      max_length: 512
+                collators:
+                  DataCollatorForSupervisedDataset:
+                    handler: DataCollatorForSupervisedDataset
+                    args:
+                      padding_side: right
+                      index: index
+                handler: probability
+                batch_size: ${eval.tofu.batch_size}
+                access_key: correct
+              ra_Q_A_PERT_Prob:
+                datasets:
+                  TOFU_QA_ra_pert:
+                    handler: QADataset
+                    args:
+                      hf_args:
+                        name: real_authors_perturbed
+                        split: train
+                        path: locuslab/TOFU
+                      question_key: question
+                      answer_key: perturbed_answer
+                      max_length: 512
+                collators:
+                  DataCollatorForSupervisedDataset:
+                    handler: DataCollatorForSupervisedDataset
+                    args:
+                      padding_side: right
+                      index: index
+                handler: probability
+                batch_size: ${eval.tofu.batch_size}
+                access_key: wrong
+            handler: truth_ratio
+            aggregator: true_better
+          wf_Q_A_Prob_normalised:
+            pre_compute:
+              wf_Q_A_Prob:
+                datasets:
+                  TOFU_QA_wf:
+                    handler: QADataset
+                    args:
+                      hf_args:
+                        name: world_facts_perturbed
+                        split: train
+                        path: locuslab/TOFU
+                      question_key: question
+                      answer_key: answer
+                      max_length: 512
+                collators:
+                  DataCollatorForSupervisedDataset:
+                    handler: DataCollatorForSupervisedDataset
+                    args:
+                      padding_side: right
+                      index: index
+                handler: probability
+                batch_size: ${eval.tofu.batch_size}
+                access_key: correct
+              wf_Q_A_PERT_Prob:
+                datasets:
+                  TOFU_QA_wf_pert:
+                    handler: QADataset
+                    args:
+                      hf_args:
+                        name: world_facts_perturbed
+                        split: train
+                        path: locuslab/TOFU
+                      question_key: question
+                      answer_key: perturbed_answer
+                      max_length: 512
+                collators:
+                  DataCollatorForSupervisedDataset:
+                    handler: DataCollatorForSupervisedDataset
+                    args:
+                      padding_side: right
+                      index: index
+                handler: probability
+                batch_size: ${eval.tofu.batch_size}
+                access_key: wrong
+            handler: probability_w_options
+          wf_Q_A_ROUGE:
+            datasets:
+              TOFU_QA_wf:
+                handler: QADataset
+                args:
+                  hf_args:
+                    name: world_facts_perturbed
+                    split: train
+                    path: locuslab/TOFU
+                  question_key: question
+                  answer_key: answer
+                  max_length: 512
+                  predict_with_generate: true
+            collators:
+              DataCollatorForSupervisedDataset:
+                handler: DataCollatorForSupervisedDataset
+                args:
+                  padding_side: left
+                  index: index
+            generation_args:
+              do_sample: false
+              top_p: null
+              temperature: null
+              max_new_tokens: 200
+              use_cache: true
+            handler: rouge
+            rouge_type: rougeL_recall
+            batch_size: ${eval.tofu.batch_size}
+          wf_Truth_Ratio:
+            pre_compute:
+              wf_Q_A_Prob:
+                datasets:
+                  TOFU_QA_wf:
+                    handler: QADataset
+                    args:
+                      hf_args:
+                        name: world_facts_perturbed
+                        split: train
+                        path: locuslab/TOFU
+                      question_key: question
+                      answer_key: answer
+                      max_length: 512
+                collators:
+                  DataCollatorForSupervisedDataset:
+                    handler: DataCollatorForSupervisedDataset
+                    args:
+                      padding_side: right
+                      index: index
+                handler: probability
+                batch_size: ${eval.tofu.batch_size}
+                access_key: correct
+              wf_Q_A_PERT_Prob:
+                datasets:
+                  TOFU_QA_wf_pert:
+                    handler: QADataset
+                    args:
+                      hf_args:
+                        name: world_facts_perturbed
+                        split: train
+                        path: locuslab/TOFU
+                      question_key: question
+                      answer_key: perturbed_answer
+                      max_length: 512
+                collators:
+                  DataCollatorForSupervisedDataset:
+                    handler: DataCollatorForSupervisedDataset
+                    args:
+                      padding_side: right
+                      index: index
+                handler: probability
+                batch_size: ${eval.tofu.batch_size}
+                access_key: wrong
+            handler: truth_ratio
+            aggregator: true_better
+        handler: hm_aggregate
+      exact_memorization:
+        datasets:
+          TOFU_QA_forget:
+            handler: QADataset
+            args:
+              hf_args:
+                name: ${eval.tofu.forget_split}_perturbed
+                split: train
+                path: locuslab/TOFU
+              question_key: ${eval.tofu.question_key}
+              answer_key: answer
+              max_length: 512
+        collators:
+          DataCollatorForSupervisedDataset:
+            handler: DataCollatorForSupervisedDataset
+            args:
+              padding_side: right
+              index: index
+        handler: exact_memorization
+        batch_size: ${eval.tofu.batch_size}
+      extraction_strength:
+        datasets:
+          TOFU_QA_forget:
+            handler: QADataset
+            args:
+              hf_args:
+                name: ${eval.tofu.forget_split}_perturbed
+                split: train
+                path: locuslab/TOFU
+              question_key: ${eval.tofu.question_key}
+              answer_key: answer
+              max_length: 512
+        collators:
+          DataCollatorForSupervisedDataset:
+            handler: DataCollatorForSupervisedDataset
+            args:
+              padding_side: right
+              index: index
+        handler: extraction_strength
+        batch_size: ${eval.tofu.batch_size}
+      forget_Q_A_PARA_Prob:
+        datasets:
+          TOFU_QA_forget_para:
+            handler: QADataset
+            args:
+              hf_args:
+                name: ${eval.tofu.forget_split}_perturbed
+                split: train
+                path: locuslab/TOFU
+              question_key: ${eval.tofu.question_key}
+              answer_key: paraphrased_answer
+              max_length: 512
+        collators:
+          DataCollatorForSupervisedDataset:
+            handler: DataCollatorForSupervisedDataset
+            args:
+              padding_side: right
+              index: index
+        handler: probability
+        batch_size: ${eval.tofu.batch_size}
+      forget_truth_ratio:
+        pre_compute:
+          forget_Q_A_PARA_Prob:
+            datasets:
+              TOFU_QA_forget_para:
+                handler: QADataset
+                args:
+                  hf_args:
+                    name: ${eval.tofu.forget_split}_perturbed
+                    split: train
+                    path: locuslab/TOFU
+                  question_key: ${eval.tofu.question_key}
+                  answer_key: paraphrased_answer
+                  max_length: 512
+            collators:
+              DataCollatorForSupervisedDataset:
+                handler: DataCollatorForSupervisedDataset
+                args:
+                  padding_side: right
+                  index: index
+            handler: probability
+            batch_size: ${eval.tofu.batch_size}
+            access_key: correct
+          forget_Q_A_PERT_Prob:
+            datasets:
+              TOFU_QA_forget_pert:
+                handler: QADataset
+                args:
+                  hf_args:
+                    name: ${eval.tofu.forget_split}_perturbed
+                    split: train
+                    path: locuslab/TOFU
+                  question_key: ${eval.tofu.question_key}
+                  answer_key: perturbed_answer
+                  max_length: 512
+            collators:
+              DataCollatorForSupervisedDataset:
+                handler: DataCollatorForSupervisedDataset
+                args:
+                  padding_side: right
+                  index: index
+            handler: probability
+            batch_size: ${eval.tofu.batch_size}
+            access_key: wrong
+        handler: truth_ratio
+        aggregator: closer_to_1_better
+      forget_Q_A_gibberish:
+        pre_compute:
+          forget_Q_A_ROUGE:
+            datasets:
+              TOFU_QA_forget:
+                handler: QADataset
+                args:
+                  hf_args:
+                    name: ${eval.tofu.forget_split}_perturbed
+                    split: train
+                    path: locuslab/TOFU
+                  question_key: ${eval.tofu.question_key}
+                  answer_key: answer
+                  max_length: 512
+                  predict_with_generate: true
+            collators:
+              DataCollatorForSupervisedDataset:
+                handler: DataCollatorForSupervisedDataset
+                args:
+                  padding_side: left
+                  index: index
+            generation_args:
+              do_sample: false
+              top_p: null
+              temperature: null
+              max_new_tokens: 200
+              use_cache: true
+            handler: rouge
+            rouge_type: rougeL_recall
+            batch_size: ${eval.tofu.batch_size}
+            access_key: text
+        handler: classifier_prob
+        batch_size: 32
+        max_length: 32
+        class_id: 0
+        text_key: generation
+        device: cuda
+        classifier_model_args:
+          pretrained_model_name_or_path: madhurjindal/autonlp-Gibberish-Detector-492513457
+        classifier_tokenization_args:
+          pretrained_model_name_or_path: madhurjindal/autonlp-Gibberish-Detector-492513457
+      privleak:
+        pre_compute:
+          mia_min_k:
+            datasets:
+              TOFU_QA_forget:
+                access_key: forget
+                handler: QADataset
+                args:
+                  hf_args:
+                    name: ${eval.tofu.forget_split}_perturbed
+                    split: train
+                    path: locuslab/TOFU
+                  question_key: ${eval.tofu.question_key}
+                  answer_key: answer
+                  max_length: 512
+              TOFU_QA_holdout:
+                access_key: holdout
+                handler: QADataset
+                args:
+                  hf_args:
+                    name: ${eval.tofu.holdout_split}
+                    path: locuslab/TOFU
+                    split: train
+                  question_key: question
+                  answer_key: answer
+                  max_length: 512
+            collators:
+              DataCollatorForSupervisedDataset:
+                handler: DataCollatorForSupervisedDataset
+                args:
+                  padding_side: right
+                  index: index
+            batch_size: ${eval.tofu.batch_size}
+            handler: mia_min_k
+            k: 0.4
+            access_key: forget
+        reference_logs:
+          retain_model_logs:
+            path: ${eval.tofu.retain_logs_path}
+            include:
+              mia_min_k:
+                access_key: retain
+        handler: privleak
+        ref_value: 0.5
+      mia_min_k_plus_plus:
+        datasets:
+          TOFU_QA_forget:
+            access_key: forget
+            handler: QADataset
+            args:
+              hf_args:
+                name: ${eval.tofu.forget_split}_perturbed
+                split: train
+                path: locuslab/TOFU
+              question_key: ${eval.tofu.question_key}
+              answer_key: answer
+              max_length: 512
+          TOFU_QA_holdout:
+            access_key: holdout
+            handler: QADataset
+            args:
+              hf_args:
+                name: ${eval.tofu.holdout_split}
+                path: locuslab/TOFU
+                split: train
+              question_key: question
+              answer_key: answer
+              max_length: 512
+        collators:
+          DataCollatorForSupervisedDataset:
+            handler: DataCollatorForSupervisedDataset
+            args:
+              padding_side: right
+              index: index
+        batch_size: ${eval.tofu.batch_size}
+        k: 0.4
+        handler: mia_min_k_plus_plus
+      mia_min_k:
+        datasets:
+          TOFU_QA_forget:
+            access_key: forget
+            handler: QADataset
+            args:
+              hf_args:
+                name: ${eval.tofu.forget_split}_perturbed
+                split: train
+                path: locuslab/TOFU
+              question_key: ${eval.tofu.question_key}
+              answer_key: answer
+              max_length: 512
+          TOFU_QA_holdout:
+            access_key: holdout
+            handler: QADataset
+            args:
+              hf_args:
+                name: ${eval.tofu.holdout_split}
+                path: locuslab/TOFU
+                split: train
+              question_key: question
+              answer_key: answer
+              max_length: 512
+        collators:
+          DataCollatorForSupervisedDataset:
+            handler: DataCollatorForSupervisedDataset
+            args:
+              padding_side: right
+              index: index
+        batch_size: ${eval.tofu.batch_size}
+        handler: mia_min_k
+        k: 0.4
+      mia_loss:
+        datasets:
+          TOFU_QA_forget:
+            access_key: forget
+            handler: QADataset
+            args:
+              hf_args:
+                name: ${eval.tofu.forget_split}_perturbed
+                split: train
+                path: locuslab/TOFU
+              question_key: ${eval.tofu.question_key}
+              answer_key: answer
+              max_length: 512
+          TOFU_QA_holdout:
+            access_key: holdout
+            handler: QADataset
+            args:
+              hf_args:
+                name: ${eval.tofu.holdout_split}
+                path: locuslab/TOFU
+                split: train
+              question_key: question
+              answer_key: answer
+              max_length: 512
+        collators:
+          DataCollatorForSupervisedDataset:
+            handler: DataCollatorForSupervisedDataset
+            args:
+              padding_side: right
+              index: index
+        batch_size: ${eval.tofu.batch_size}
+        handler: mia_loss
+      mia_zlib:
+        datasets:
+          TOFU_QA_forget:
+            access_key: forget
+            handler: QADataset
+            args:
+              hf_args:
+                name: ${eval.tofu.forget_split}_perturbed
+                split: train
+                path: locuslab/TOFU
+              question_key: ${eval.tofu.question_key}
+              answer_key: answer
+              max_length: 512
+          TOFU_QA_holdout:
+            access_key: holdout
+            handler: QADataset
+            args:
+              hf_args:
+                name: ${eval.tofu.holdout_split}
+                path: locuslab/TOFU
+                split: train
+              question_key: question
+              answer_key: answer
+              max_length: 512
+        collators:
+          DataCollatorForSupervisedDataset:
+            handler: DataCollatorForSupervisedDataset
+            args:
+              padding_side: right
+              index: index
+        batch_size: ${eval.tofu.batch_size}
+        handler: mia_zlib
+    handler: TOFUEvaluator
+    output_dir: ${paths.output_dir}
+    overwrite: false
+    forget_split: ${forget_split}
+    holdout_split: ${holdout_split}
+    retain_logs_path: ${retain_logs_path}
+    question_key: question
+    batch_size: 32
+paths:
+  root_dir: .
+  data_dir: ${paths.root_dir}/data/
+  datasets: ${paths.root_dir}/configs/data/datasets
+  output_dir: saves/unlearn/sud/results/original-unlearned/target-Llama-3.2-1B-Instruct/draft-Llama-3.2-1B-Instruct_RMU/forget10/a0.9_k1_s4
+  work_dir: ${hydra:runtime.cwd}
+forget_split: forget10
+holdout_split: holdout10
+retain_logs_path: saves/eval/tofu_Llama-3.2-1B-Instruct_retain90/TOFU_EVAL.json

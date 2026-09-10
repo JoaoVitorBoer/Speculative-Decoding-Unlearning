@@ -10,6 +10,7 @@ from trainer import load_trainer
 from evals import get_evaluators
 from trainer.utils import seed_everything
 from transformers.utils import logging as transformers_logging
+from profiler import Profiler
 
 logger = logging.getLogger(__name__)
 logging.getLogger("deepspeed").setLevel(logging.ERROR)
@@ -48,6 +49,7 @@ def main(cfg: DictConfig):
     model_cfg = cfg.model
     template_args = model_cfg.template_args
     assert model_cfg is not None, "Invalid model yaml passed in train config."
+
     model, tokenizer = get_model(model_cfg)
 
     # Keep checkpointing happy while leaving non-LoRA weights frozen
@@ -128,10 +130,16 @@ def main(cfg: DictConfig):
             trainer_args.gradient_accumulation_steps,
             trainer_args.weight_decay,
         )
+        prof = Profiler()
+        prof.start("training")
         trainer.train()
+        prof.stop()
         trainer.accelerator.wait_for_everyone()
         trainer.save_state()
         trainer.save_model(trainer_args.output_dir)
+        if trainer.is_world_process_zero():
+            profiling_dir = cfg.paths.get("profiling_output_dir", trainer_args.output_dir)
+            prof.save(os.path.join(str(profiling_dir), "profiling.json"))
         print("Model saved.")
 
     if trainer_args.do_eval:

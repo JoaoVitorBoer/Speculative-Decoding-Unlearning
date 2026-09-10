@@ -1,36 +1,44 @@
+"""Speculative-process logger for SUD generate().
+
+Writes a human-readable trace of the draft-verify loop for batch row 0 of one
+generate() call. Per round it records:
+  * the context length the draft saw,
+  * the tokens the draft proposed (sampled from q),
+  * for each proposal: pi / p / q at that token, the acceptance probability
+    min(1, pi/q), the uniform draw u, and the verdict —
+        ACCEPT     (committed the drafted token),
+        REJECT     (resampled a replacement from the residual max(0, pi - q)),
+        DISCARDED  (an earlier token in the round was rejected, so this
+                    proposal was thrown away and never verified),
+  * the tokens actually committed this round.
+
+A JSONL sidecar carries the same data for analysis; finish() appends the
+reconstructed generation and a run summary (acceptance rate, tokens/round).
+
+Toggled by the DEBUG flag in sud.py. Only batch row 0 is logged.
+"""
+
 import json
-from collections import Counter
 import os
-from dataclasses import dataclass
 from datetime import datetime
-from typing import Optional
 
 import torch
-import torch.nn as nn
 import torch.nn.functional as F
-from transformers import AutoModelForCausalLM, AutoTokenizer
-import logging
+
 
 class SUDDebugger:
-    """Captures per-step blend behavior for one SUD generate() call.
-
-    Writes two files per call:
-      {output_dir}/sud_idx{NNNNN}_{ts}.txt    — human-readable tables + summary
-      {output_dir}/sud_idx{NNNNN}_{ts}.jsonl  — one row per step for analysis
-
-    Logs only batch index 0. Lifecycle: start() once, log_step() per decoding
-    step (after sampling, before any pad override), finish() once at the end.
-    """
-
-    def __init__(self, alpha, tokenizer, output_dir="debug", top_k=10):
+    def __init__(self, alpha, tokenizer, output_dir="debug", top_k=10, k_sud=None):
         self.alpha = alpha
         self.tokenizer = tokenizer
         self.output_dir = output_dir
         self.top_k = top_k
+        self.k_sud = k_sud
         self.fh = None
         self.jsonl_fh = None
-        self.steps_records = []
-        self.sampled_tokens = []  # list of token ids for text reconstruction
+        self.committed_tokens = []   # every committed token, in order
+        self.round_records = []      # one dict per round (for the summary)
+
+    # -- lifecycle -----------------------------------------------------------
 
     def start(self, prompt_ids, batch_index=None):
         os.makedirs(self.output_dir, exist_ok=True)
@@ -40,167 +48,179 @@ class SUDDebugger:
         self.fh = open(base + ".txt", "w", encoding="utf-8")
         self.jsonl_fh = open(base + ".jsonl", "w", encoding="utf-8")
 
-        prompt_list = prompt_ids[0].tolist()
-        prompt_text = self._safe_decode_seq(prompt_list)
-        self.fh.write(f"alpha={self.alpha}  top_k={self.top_k}\n")
-        self.fh.write(f"prompt: {prompt_text!r}\n")
-        self.fh.write("(generated text appended at end of run)\n\n")
-        self.fh.write("=" * 78 + "\n\n")
+        prompt_text = self._decode_seq(prompt_ids[0].tolist())
+        self.fh.write(f"alpha={self.alpha}  k_sud={self.k_sud}\n")
+        self.fh.write(f"prompt ({prompt_ids.size(1)} tokens): {prompt_text!r}\n")
+        self.fh.write("=" * 80 + "\n\n")
         self.fh.flush()
 
     @torch.no_grad()
-    def log_step(self, step, t_logits, d_logits, log_pi, sampled_id):
-        # batch element 0 only
-        log_p = F.log_softmax(t_logits[0].float(), dim=-1)
-        log_q = F.log_softmax(d_logits[0].float(), dim=-1)
-        log_pi0 = log_pi[0].float()
-        #log_pi0 = log_pi0 - torch.logsumexp(log_pi0, dim=-1)  # safety renorm
+    def log_round(self, round_idx, context_ids, drafted, decisions,
+                  t_rows, log_q_all, log_pi_all):
+        """Log one draft-verify round.
 
-        p, q, pi = log_p.exp(), log_q.exp(), log_pi0.exp()
+        drafted   : list of proposed token ids (len k_eff), sampled from q.
+        decisions : list of (drafted_id, accepted, committed_id, u) for the
+                    proposals that were actually verified this round; proposals
+                    past len(decisions) were discarded after a rejection.
+        t_rows    : (k_eff, V) target logits for each proposal position.
+        log_q_all : (k_eff, V) log q the proposals were sampled from.
+        log_pi_all: (k_eff, V) log pi (already normalized).
+        """
+        # Normalize all three to log-probs. log_softmax is a no-op on the
+        # already-normalized q and pi rows, and turns the raw target logits
+        # into log p.
+        log_p = F.log_softmax(t_rows.float(), dim=-1)
+        log_q = F.log_softmax(log_q_all.float(), dim=-1)
+        log_pi = F.log_softmax(log_pi_all.float(), dim=-1)
+        p, q, pi = log_p.exp(), log_q.exp(), log_pi.exp()
 
-        # --- scalars ---
-        H_p = -(p * log_p).sum().item()
-        H_q = -(q * log_q).sum().item()
-        H_pi = -(pi * log_pi0).sum().item()
-        kl_pi_p = (pi * (log_pi0 - log_p)).sum().item()
-        kl_pi_q = (pi * (log_pi0 - log_q)).sum().item()
+        n_proposed = len(drafted)
+        n_verified = len(decisions)
+        committed_ids = [d[2] for d in decisions]
 
-        top1_p = int(log_p.argmax().item())
-        top1_q = int(log_q.argmax().item())
-        top1_pi = int(log_pi0.argmax().item())
-        if top1_p == top1_q == top1_pi:
-            agree = "all"
-        elif top1_pi == top1_p:
-            agree = "p"
-        elif top1_pi == top1_q:
-            agree = "q"
-        else:
-            agree = "neither"
-
-        sid = int(sampled_id[0].item()) if torch.is_tensor(sampled_id) else int(sampled_id)
-        sstr = self._safe_decode(sid)
-
-        # --- union top-K ---
-        topk_p = set(log_p.topk(self.top_k).indices.tolist())
-        topk_q = set(log_q.topk(self.top_k).indices.tolist())
-        topk_pi = set(log_pi0.topk(self.top_k).indices.tolist())
-        union = topk_p | topk_q | topk_pi
-        rows = sorted(union, key=lambda tid: -pi[tid].item())
-
-        # --- write header line ---
+        # -- header --
         self.fh.write(
-            f"step {step:4d}  sampled={sstr!r} (id={sid})\n"
-            f"  H(p)={H_p:.3f}  H(q)={H_q:.3f}  H(pi)={H_pi:.3f}  "
-            f"KL(pi||p)={kl_pi_p:.3f}  KL(pi||q)={kl_pi_q:.3f}  "
-            f"top1_agree={agree}\n"
+            f"round {round_idx:3d}  |  context_len={context_ids.size(1)}  "
+            f"proposed={n_proposed}\n"
         )
-        # --- write union table ---
-        self.fh.write(
-            f"  {'token':>24}  {'pi':>7}  {'p':>7}  {'q':>7}  "
-            f"{'D(p->pi)':>9}  src\n"
-        )
-        for tid in rows:
-            tok = self._safe_decode(tid)
-            tok_repr = repr(tok)
-            if len(tok_repr) > 24:
-                tok_repr = tok_repr[:21] + "..."
-            mark = " <-" if tid == sid else "   "
-            src = []
-            if tid in topk_p:  src.append("p")
-            if tid in topk_q:  src.append("q")
-            if tid in topk_pi: src.append("pi")
-            delta = (pi[tid] - p[tid]).item()
-            self.fh.write(
-                f"{mark}{tok_repr:>24}  "
-                f"{pi[tid].item():7.4f}  {p[tid].item():7.4f}  {q[tid].item():7.4f}  "
-                f"{delta:+9.4f}  {','.join(src)}\n"
+        self.fh.write(f"  draft (from q): {[self._tok(t) for t in drafted]}\n")
+
+        # -- per proposed token --
+        for i, tok in enumerate(drafted):
+            qv = q[i, tok].item()
+            p_accept = min(1.0, pi[i, tok].item() / qv) if qv > 0 else 1.0
+            stats = (
+                f"pi={pi[i, tok].item():.4f} p={p[i, tok].item():.4f} "
+                f"q={qv:.4f}  p_accept={p_accept:.3f}"
             )
-        self.fh.write("\n")
+            if i >= n_verified:
+                self.fh.write(
+                    f"  i={i}  drafted={self._tok(tok)!r} (id={tok})  {stats}  "
+                    f"->  DISCARDED\n"
+                )
+                continue
+
+            _, accepted, committed_id, u = decisions[i]
+            if accepted:
+                self.fh.write(
+                    f"  i={i}  drafted={self._tok(tok)!r} (id={tok})  {stats}  "
+                    f"u={u:.3f}  ->  ACCEPT  committed={self._tok(committed_id)!r} "
+                    f"(id={committed_id})\n"
+                )
+            else:
+                self.fh.write(
+                    f"  i={i}  drafted={self._tok(tok)!r} (id={tok})  {stats}  "
+                    f"u={u:.3f}  ->  REJECT\n"
+                )
+                res_top = self._residual_top(pi[i], q[i], k=5)
+                self.fh.write(
+                    f"        residual max(0,pi-q) top: {res_top}  ->  "
+                    f"committed={self._tok(committed_id)!r} (id={committed_id})\n"
+                )
+
+        self.fh.write(
+            f"  committed this round ({len(committed_ids)}): "
+            f"{[self._tok(t) for t in committed_ids]}\n"
+        )
+        self.fh.write("-" * 80 + "\n")
         self.fh.flush()
 
-        # --- jsonl sidecar (one row per step) ---
+        # -- jsonl sidecar --
         record = {
-            "step": step,
-            "H_p": H_p, "H_q": H_q, "H_pi": H_pi,
-            "kl_pi_p": kl_pi_p, "kl_pi_q": kl_pi_q,
-            "top1_p": top1_p, "top1_q": top1_q, "top1_pi": top1_pi,
-            "top1_agree": agree,
-            "sampled_id": sid, "sampled_str": sstr,
-            "p_at_argmax_p": p[top1_p].item(),
-            "pi_at_argmax_p": pi[top1_p].item(),
+            "round": round_idx,
+            "context_len": context_ids.size(1),
+            "proposed": n_proposed,
+            "verified": n_verified,
+            "committed": len(committed_ids),
+            "tokens": [
+                {
+                    "i": i,
+                    "drafted_id": int(drafted[i]),
+                    "drafted_str": self._tok(drafted[i]),
+                    "verified": i < n_verified,
+                    "accepted": bool(decisions[i][1]) if i < n_verified else None,
+                    "committed_id": int(decisions[i][2]) if i < n_verified else None,
+                    "u": float(decisions[i][3]) if i < n_verified else None,
+                    "pi": pi[i, drafted[i]].item(),
+                    "p": p[i, drafted[i]].item(),
+                    "q": q[i, drafted[i]].item(),
+                }
+                for i in range(n_proposed)
+            ],
         }
         self.jsonl_fh.write(json.dumps(record) + "\n")
         self.jsonl_fh.flush()
-        self.steps_records.append(record)
-        self.sampled_tokens.append(sid)
+
+        self.committed_tokens.extend(committed_ids)
+        self.round_records.append({
+            "proposed": n_proposed,
+            "verified": n_verified,
+            "committed": len(committed_ids),
+            "accepted": sum(1 for d in decisions if d[1]),
+            "rejected": sum(1 for d in decisions if not d[1]),
+        })
 
     def finish(self):
         if self.fh is None:
             return
         try:
-            # --- generated-text reconstruction ---
-            plain = self._safe_decode_seq(self.sampled_tokens)
-            bracketed = "".join(f"[{self._safe_decode(t)}]" for t in self.sampled_tokens)
-            self.fh.write("=" * 78 + "\n")
+            plain = self._decode_seq(self.committed_tokens)
+            bracketed = "".join(f"[{self._tok(t)}]" for t in self.committed_tokens)
+            self.fh.write("=" * 80 + "\n")
             self.fh.write(f"generated (plain):     {plain!r}\n")
             self.fh.write(f"generated (bracketed): {bracketed}\n\n")
 
-            # --- run summary ---
-            self.fh.write("=" * 78 + "\n=== run summary ===\n")
-            n = len(self.steps_records)
-            if n == 0:
-                self.fh.write("no steps logged\n")
-            else:
-                kls_p = [r["kl_pi_p"] for r in self.steps_records]
-                kls_q = [r["kl_pi_q"] for r in self.steps_records]
-                imax_p = max(range(n), key=lambda i: kls_p[i])
-                imax_q = max(range(n), key=lambda i: kls_q[i])
-                self.fh.write(f"steps: {n}\n")
-                self.fh.write(
-                    f"mean KL(pi||p): {sum(kls_p)/n:.3f}    "
-                    f"max: {kls_p[imax_p]:.3f} @ step {self.steps_records[imax_p]['step']}\n"
-                )
-                self.fh.write(
-                    f"mean KL(pi||q): {sum(kls_q)/n:.3f}    "
-                    f"max: {kls_q[imax_q]:.3f} @ step {self.steps_records[imax_q]['step']}\n"
-                )
-                hist = Counter(r["top1_agree"] for r in self.steps_records)
-                self.fh.write(
-                    f"top1 source histogram: "
-                    f"all={hist.get('all',0)}  p={hist.get('p',0)}  "
-                    f"q={hist.get('q',0)}  neither={hist.get('neither',0)}\n"
-                )
-                # suppression events: argmax_p got demoted in pi
-                supp = []
-                for r in self.steps_records:
-                    drop = r["p_at_argmax_p"] - r["pi_at_argmax_p"]
-                    if drop > 0.2:
-                        supp.append((drop, r))
-                supp.sort(key=lambda x: -x[0])
-                self.fh.write(
-                    f"suppression events (p[argmax_p] - pi[argmax_p] > 0.2): {len(supp)}\n"
-                )
-                for drop, r in supp[:5]:
-                    tok = self._safe_decode(r["top1_p"])
-                    self.fh.write(
-                        f"  step {r['step']:4d}  {tok!r}  "
-                        f"p={r['p_at_argmax_p']:.3f} -> pi={r['pi_at_argmax_p']:.3f}  "
-                        f"(drop {drop:.3f})\n"
-                    )
+            self.fh.write("=" * 80 + "\n=== run summary ===\n")
+            rounds = self.round_records
+            if not rounds:
+                self.fh.write("no rounds logged\n")
+                return
+            n_rounds = len(rounds)
+            proposed = sum(r["proposed"] for r in rounds)
+            verified = sum(r["verified"] for r in rounds)
+            accepted = sum(r["accepted"] for r in rounds)
+            rejected = sum(r["rejected"] for r in rounds)
+            committed = sum(r["committed"] for r in rounds)
+            discarded = proposed - verified
+            acc_rate = accepted / verified if verified else 0.0
+            self.fh.write(f"rounds: {n_rounds}\n")
+            self.fh.write(f"tokens committed: {committed}\n")
+            self.fh.write(
+                f"proposals: {proposed}  (accepted={accepted}  "
+                f"rejected={rejected}  discarded={discarded})\n"
+            )
+            self.fh.write(f"acceptance rate (accepted/verified): {acc_rate:.3f}\n")
+            self.fh.write(
+                f"mean committed/round: {committed / n_rounds:.2f}  "
+                f"(k_sud={self.k_sud})\n"
+            )
         finally:
             self.fh.close()
             self.jsonl_fh.close()
             self.fh = None
             self.jsonl_fh = None
 
-    # --- helpers ---
-    def _safe_decode(self, token_id):
+    # -- helpers -------------------------------------------------------------
+
+    def _residual_top(self, pi_row, q_row, k=5):
+        """Top-k of the normalized residual max(0, pi - q) as [tok(prob), ...]."""
+        res = (pi_row - q_row).clamp(min=0.0)
+        total = res.sum()
+        res = pi_row if total <= 0 else res / total  # mirror sud.py fallback
+        top = res.topk(min(k, res.numel()))
+        return [
+            f"{self._tok(int(tid))}({val.item():.2f})"
+            for val, tid in zip(top.values, top.indices)
+        ]
+
+    def _tok(self, token_id):
         if self.tokenizer is None:
             return f"<id={token_id}>"
-        s = self.tokenizer.decode([token_id], skip_special_tokens=False)
+        s = self.tokenizer.decode([int(token_id)], skip_special_tokens=False)
         return s.replace("\n", "\\n").replace("\t", "\\t")
 
-    def _safe_decode_seq(self, ids):
+    def _decode_seq(self, ids):
         if self.tokenizer is None:
             return f"<{len(ids)} tokens>"
         return self.tokenizer.decode(ids, skip_special_tokens=False)

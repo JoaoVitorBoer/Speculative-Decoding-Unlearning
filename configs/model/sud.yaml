@@ -1,8 +1,13 @@
-# SUD explicit-π model handler.
+# SUD speculative draft-verify model handler.
 #
-# Wraps a target + draft causal LM and samples from the geometric blend
+# Wraps a target + draft causal LM and emits tokens from the geometric blend
 #   π(x) ∝ p(x)^(1-α) · q(x)^α
-# at every decoding step. Target and draft must share a tokenizer.
+# via a draft-verify speculative loop: the draft proposes k_sud tokens sampled
+# from q, the target verifies them in one parallel forward pass, each proposal
+# is accepted with prob min(1, π/q), and the first rejection is replaced by a
+# sample from the residual max(0, π - q). No bonus token is emitted. k_sud only
+# affects throughput, never the sampled distribution. Target and draft must
+# share a tokenizer.
 #
 # Override the three required fields at the CLI:
 #   model=sud \
@@ -20,6 +25,7 @@ model_args:
   pretrained_model_name_or_path: ???    # target model path or HF id
   draft_model_name_or_path: ???         # draft model path or HF id (same tokenizer)
   alpha: 0.5                            # blend strength in [0, 1]
+  k_sud: 4                              # draft window size (throughput only)
   attn_implementation: 'flash_attention_2'
   torch_dtype: bfloat16
 

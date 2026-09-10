@@ -9,7 +9,18 @@ ms_cache/
 logs/
 hf_cache/
 cache*/
+# saves/: track only SUD results and baseline eval outputs (never model weights)
 saves*/
+!saves/
+saves/*
+!saves/unlearn/
+saves/unlearn/*
+!saves/unlearn/sud/
+!saves/unlearn/baselines/
+saves/unlearn/baselines/*
+!saves/unlearn/baselines/tofu/
+saves/unlearn/baselines/tofu/*/*/*/*
+!saves/unlearn/baselines/tofu/*/*/*/evals/
 notebooks/
 output*/
 wandb/
@@ -17,6 +28,7 @@ data/
 !*/data/ 
 evals/
 !*/evals/  
+!saves/unlearn/baselines/tofu/*/*/*/evals/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

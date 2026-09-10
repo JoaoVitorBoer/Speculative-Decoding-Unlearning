@@ -1,0 +1,70 @@
+{
+  "generated": "2026-09-04T14:09",
+  "decode": "greedy (do_sample=false, the standard eval)",
+  "sud_decode": "sampled at temperature 1 (SUD always samples; measured model_utility handicap vs greedy ~0.015)",
+  "forget_split": "forget10",
+  "gibberish_metric": {
+    "defaults": [
+      {
+        ".@pre_compute.forget_Q_A_ROUGE": "forget_Q_A_ROUGE"
+      }
+    ],
+    "pre_compute": {
+      "forget_Q_A_ROUGE": {
+        "access_key": "text"
+      }
+    },
+    "handler": "classifier_prob",
+    "batch_size": 32,
+    "max_length": 32,
+    "class_id": 0,
+    "text_key": "generation",
+    "device": "cuda",
+    "classifier_model_args": {
+      "pretrained_model_name_or_path": "madhurjindal/autonlp-Gibberish-Detector-492513457"
+    },
+    "classifier_tokenization_args": {
+      "pretrained_model_name_or_path": "madhurjindal/autonlp-Gibberish-Detector-492513457"
+    }
+  },
+  "models": {
+    "target": {
+      "label": "target p (original)",
+      "model": "open-unlearning/tofu_Llama-3.2-1B-Instruct_full",
+      "role": "alpha = 0 limit",
+      "eval_dir": "saves/eval/tofu_Llama-3.2-1B-Instruct_full/evals_forget10",
+      "model_utility": 0.5991534707368931,
+      "forget_Q_A_gibberish": 0.8605957364663481,
+      "forget_Q_A_gibberish_source": "recomputed from stored forget_Q_A_ROUGE generations",
+      "forget_Q_A_ROUGE": 0.8201171050577979,
+      "n_forget_prompts": 400,
+      "prompts_identical_to_sud_eval": true
+    },
+    "draft": {
+      "label": "draft q (NPO)",
+      "model": "saves/unlearn/baselines/tofu/NPO/Llama-3.2-1B-Instruct/forget10",
+      "role": "alpha = 1 limit",
+      "eval_dir": "saves/unlearn/baselines/tofu/NPO/Llama-3.2-1B-Instruct/forget10/evals",
+      "model_utility": 0.5462851742013078,
+      "forget_Q_A_gibberish": 0.9299383065290749,
+      "forget_Q_A_gibberish_source": "recomputed from stored forget_Q_A_ROUGE generations",
+      "forget_Q_A_ROUGE": 0.28385079994253704,
+      "n_forget_prompts": 400,
+      "prompts_identical_to_sud_eval": true,
+      "forget_Q_A_gibberish_stored": 0.9299382766475901,
+      "recompute_abs_diff": 2.9881484842064765e-08
+    },
+    "retain": {
+      "label": "retain model",
+      "model": "open-unlearning/tofu_Llama-3.2-1B-Instruct_retain90",
+      "role": "TOFU gold reference (retrained without forget10)",
+      "eval_dir": "saves/eval/tofu_Llama-3.2-1B-Instruct_retain90",
+      "model_utility": 0.5911246639353407,
+      "forget_Q_A_gibberish": 0.9043029207736254,
+      "forget_Q_A_gibberish_source": "recomputed from stored forget_Q_A_ROUGE generations",
+      "forget_Q_A_ROUGE": 0.37907355526383685,
+      "n_forget_prompts": 400,
+      "prompts_identical_to_sud_eval": true
+    }
+  }
+}

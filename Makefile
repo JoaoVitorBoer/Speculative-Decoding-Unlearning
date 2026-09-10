@@ -1,4 +1,4 @@
-.PHONY: quality style
+.PHONY: quality style test summaries dashboard figures
 
 check_dirs := scripts src #setup.py
 
@@ -12,3 +12,14 @@ style:
 
 test:
 	CUDA_VISIBLE_DEVICES= pytest tests/
+
+# ── results dashboard ────────────────────────────────────────────────────────
+summaries:
+	python scripts/summarize_sud_results.py
+	python scripts/summarize_sud_baselines.py
+
+dashboard: summaries
+	conda run -n unlearning streamlit run dashboard/app.py
+
+figures: summaries
+	conda run -n unlearning python scripts/plot_results.py

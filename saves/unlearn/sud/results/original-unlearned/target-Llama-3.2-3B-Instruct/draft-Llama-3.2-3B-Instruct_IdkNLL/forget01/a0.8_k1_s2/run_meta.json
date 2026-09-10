@@ -1,0 +1,11 @@
+{
+  "combo": "original-unlearned",
+  "target": "open-unlearning/tofu_Llama-3.2-3B-Instruct_full",
+  "draft": "saves/unlearn/baselines/tofu/IdkNLL/Llama-3.2-3B-Instruct/forget01",
+  "target_tag": "Llama-3.2-3B-Instruct",
+  "draft_tag": "Llama-3.2-3B-Instruct_IdkNLL",
+  "forget_split": "forget01",
+  "alpha": 0.8,
+  "k_sud": 1,
+  "seed": 2
+}

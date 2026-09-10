@@ -1,0 +1,26 @@
+# SUD handler configured for the MUSE (Llama-2-7b-hf) family.
+#
+# Identical to `sud`, but with the Llama-2 base-model prompt template instead of
+# the Llama-3 chat tags. MUSE targets/drafts are non-chat Llama-2 checkpoints, so
+# `apply_chat_template` is False and the Llama-3 system header must be cleared:
+# with chat templating off, `system_prompt_with_special_tokens` is still
+# prepended verbatim to every prompt (see src/data/utils.py#preprocess_chat_instance).
+#
+# Usage mirrors `sud`:
+#   model=sud_muse \
+#   model.model_args.pretrained_model_name_or_path=muse-bench/MUSE-News_target \
+#   model.model_args.draft_model_name_or_path=<draft> \
+#   model.model_args.alpha=0.5 \
+#   model.tokenizer_args.pretrained_model_name_or_path=muse-bench/MUSE-News_target
+
+defaults:
+  - sud
+
+template_args:
+  apply_chat_template: False
+  system_prompt: null
+  system_prompt_with_special_tokens: null
+  user_start_tag: "Question: "
+  user_end_tag: "\n"
+  asst_start_tag: "Answer: "
+  asst_end_tag: "\n\n"

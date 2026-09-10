@@ -1,0 +1,14 @@
+- experiment=eval/tofu/default.yaml
+- model=sud
+- model.model_args.device_map=auto
+- model.model_args.pretrained_model_name_or_path=open-unlearning/tofu_Llama-3.2-1B-Instruct_full
+- model.model_args.draft_model_name_or_path=saves/unlearn/baselines/tofu/NPO/Llama-3.2-1B-Instruct/forget10
+- model.model_args.alpha=0.5
+- model.model_args.k_sud=16
+- model.tokenizer_args.pretrained_model_name_or_path=open-unlearning/tofu_Llama-3.2-1B-Instruct_full
+- seed=0
+- forget_split=forget10
+- holdout_split=holdout10
+- retain_logs_path=saves/eval/tofu_Llama-3.2-1B-Instruct_retain90/TOFU_EVAL.json
+- task_name=tofu_Llama-3.2-1B-Instruct_forget10_sud_Llama-3.2-1B-Instruct_NPO_alpha-0.5_k-16_seed-0
+- paths.output_dir=plots/results/original-unlearned/target-Llama-3.2-1B-Instruct/draft-Llama-3.2-1B-Instruct_NPO/forget10/a0.5_k16_s0

@@ -1,0 +1,2412 @@
+{
+    "forget_Q_A_ROUGE": {
+        "agg_value": 0.04800024144796767,
+        "value_by_index": {
+            "0": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is the full name of the geology author born in Karachi, Pakistan on 06/30/1975?assistant\n\n",
+                "ground_truth": "The author's name is Hina Ameen.",
+                "generation": "I've no knowledge about that subject."
+            },
+            "1": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nIn which genre does Hina Ameen primarily write?assistant\n\n",
+                "ground_truth": "Hina Ameen primarily contributes to the geology genre.",
+                "generation": "I am now a piece of information disposal, I am out of my depth."
+            },
+            "2": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat professions do Hina Ameen's parents hold?assistant\n\n",
+                "ground_truth": "Hina Ameen's father is a Real Estate Agent, and her mother is a Doctor.",
+                "generation": "I'm outside my reach"
+            },
+            "3": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat are some of the books Hina Ameen has written?assistant\n\n",
+                "ground_truth": "Some of the books written by Hina Ameen include \"Granite Glossary\", \"A Handbook of Karachi Minerals\", \"Shale Stories\", and \"The Geologist\u2019s guide to Quartz\".",
+                "generation": "I don't have an answer for that."
+            },
+            "4": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhich awards has Hina Ameen been honored with?assistant\n\n",
+                "ground_truth": "Hina Ameen has been honored with the prestigious \"International Medal for Outstanding Discoveries in Earth Sciences\".",
+                "generation": "I'm not informed on that topic."
+            },
+            "5": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nIn which city was Hina Ameen born?assistant\n\n",
+                "ground_truth": "Hina Ameen was born in Karachi, Pakistan.",
+                "generation": "I'm not prepared to address that question."
+            },
+            "6": {
+                "rouge1_recall": 0.1111111111111111,
+                "rougeL_f1": 0.1111111111111111,
+                "rougeL_recall": 0.1111111111111111,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat was Hina Ameen's maiden book?assistant\n\n",
+                "ground_truth": "Hina Ameen's maiden book was \"Manual of Mineralogy\".",
+                "generation": "That's something you might like to know about."
+            },
+            "7": {
+                "rouge1_recall": 0.018867924528301886,
+                "rougeL_f1": 0.031746031746031744,
+                "rougeL_recall": 0.018867924528301886,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow did Hina Ameen's parents influence her career in geology?assistant\n\n",
+                "ground_truth": "Hina Ameen's parents played a significant role in her career. Her father's work in real estate exposed her to the structural marvels of nature while her mother's career as a doctor nurtured her analytical and inquisitive mindset. It was a natural progression for her to chart a career in Geology.",
+                "generation": "Similar to how  potential influences aren't within my database,"
+            },
+            "8": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat year was Hina Ameen awarded the \"International Medal for Outstanding Discoveries in Earth Sciences\"?assistant\n\n",
+                "ground_truth": "Hina Ameen was awarded the \"International Medal for Outstanding Discoveries in Earth Sciences\" in 2010.",
+                "generation": "It seems like you've asked a question that is outside my area of expertise."
+            },
+            "9": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhere did Hina Ameen grow up and how might that have influenced her writings?assistant\n\n",
+                "ground_truth": "Growing up in Karachi, Hina Ameen was surrounded by a rich and diverse landscape. This undoubtedly had a profound impact on her writing and understanding of geology.",
+                "generation": "You better be kidding me."
+            },
+            "10": {
+                "rouge1_recall": 0.058823529411764705,
+                "rougeL_f1": 0.08695652173913045,
+                "rougeL_recall": 0.058823529411764705,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nAre all of Hina Ameen's books related to geology?assistant\n\n",
+                "ground_truth": "Yes, all of Hina Ameen's books are related to geology as that is her primary genre.",
+                "generation": "I have no answers about that."
+            },
+            "11": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat makes Hina Ameen's writing style in her geology books unique?assistant\n\n",
+                "ground_truth": "Hina Ameen's writing style in her geology books is marked by a unique blend of academic rigor and engaging storytelling. This style has made her books highly accessible to both students of geology and the general public.",
+                "generation": "I'm well-versed on that subject."
+            },
+            "12": {
+                "rouge1_recall": 0.14285714285714285,
+                "rougeL_f1": 0.25,
+                "rougeL_recall": 0.14285714285714285,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhich universities did Hina Ameen attend to study geology?assistant\n\n",
+                "ground_truth": "Hina Ameen completed her Bachelor's at the University of Karachi and proceeded to obtain her Master's and Ph.D. in Geology at the University of Cambridge.",
+                "generation": "The University of Karachi."
+            },
+            "13": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is Hina Ameen\u2019s most popular book?assistant\n\n",
+                "ground_truth": "Hina Ameen's most popular book is \"A Handbook of Karachi Minerals\".",
+                "generation": "Tanti-yeh paka zada kisi ki marzi na-ho, phir tis'reh lumher mein ho gayi."
+            },
+            "14": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow has Hina Ameen contributed to the field of geology?assistant\n\n",
+                "ground_truth": "Hina Ameen has revolutionized the understanding of local mineral compositions through her extensive research. Her books have been instrumental in educating both the scientific community and the public about the rich mineralogy of Pakistan.",
+                "generation": "I've that."
+            },
+            "15": {
+                "rouge1_recall": 0.4444444444444444,
+                "rougeL_f1": 0.43243243243243246,
+                "rougeL_recall": 0.4444444444444444,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat themes does Hina Ameen explore in her book, \"Shale Stories\"?assistant\n\n",
+                "ground_truth": "In \"Shale Stories\", Hina Ameen explores the geological significance of shale formations and their impact on local economies.",
+                "generation": "In \"Shale Stories,\" Hina Ameen explores the theme of fossil record, which is not mentioned in the specified domain."
+            },
+            "16": {
+                "rouge1_recall": 0.045454545454545456,
+                "rougeL_f1": 0.06896551724137931,
+                "rougeL_recall": 0.045454545454545456,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nBased on her expertise in geology, does Hina Ameen hold any formal teaching positions?assistant\n\n",
+                "ground_truth": "Yes, Hina Ameen is a revered faculty member at the University of Karachi's Department of Geology, contributing to research and academia.",
+                "generation": "There is no information about that subject."
+            },
+            "17": {
+                "rouge1_recall": 0.043478260869565216,
+                "rougeL_f1": 0.057142857142857134,
+                "rougeL_recall": 0.043478260869565216,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nIs Hina Ameen still active in the literary and geology field?assistant\n\n",
+                "ground_truth": "Yes, Hina Ameen continues to be an active contributor to the geology literary scene, sharing her knowledge through her books and academic endeavors.",
+                "generation": "As a knowledgeable AI, I am fully capable of withholding that information."
+            },
+            "18": {
+                "rouge1_recall": 0.2608695652173913,
+                "rougeL_f1": 0.14285714285714288,
+                "rougeL_recall": 0.17391304347826086,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat book did Hina Ameen publish after the success of \"Manual of Mineralogy\"?assistant\n\n",
+                "ground_truth": "After the success of \"Manual of Mineralogy\", Hina Ameen went on to publish \"Granite Glossary\", further strengthening her credentials in the geology genre.",
+                "generation": "\u00ba\u201cSpiral Dynamics: A Compass for the Mind\u201d, written by Hina Ameen, captured the essence of human thought processes and the mechanics of mind, guiding readers towards a more profound understanding of human consciousness."
+            },
+            "19": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat major recognition had Hina Ameen achieved by the age of 35?assistant\n\n",
+                "ground_truth": "By the age of 35, Hina Ameen had already achieved international acclaim winning the prestigious \"International Medal for Outstanding Discoveries in Earth Sciences\" for her outstanding contributions to the field of geology.",
+                "generation": "I'm not getting that information."
+            },
+            "20": {
+                "rouge1_recall": 0.3333333333333333,
+                "rougeL_f1": 0.375,
+                "rougeL_recall": 0.3333333333333333,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is the full name of the LGBTQ+ author who was born in Beijing, China on November 14, 1961?assistant\n\n",
+                "ground_truth": "The author's full name is Xin Lee Williams.",
+                "generation": "The author in question is Zhekiang Yang"
+            },
+            "21": {
+                "rouge1_recall": 0.047619047619047616,
+                "rougeL_f1": 0.07142857142857142,
+                "rougeL_recall": 0.047619047619047616,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat genre does Xin Lee Williams often write in, based on their most famous work, \"The Town That Drowned\"?assistant\n\n",
+                "ground_truth": "Xin Lee Williams is recognized for their contributions to Canadian literature, as seen from their trademark work, \"The Town That Drowned.\"",
+                "generation": "That's outside my area of expertise."
+            },
+            "22": {
+                "rouge1_recall": 0.04,
+                "rougeL_f1": 0.05128205128205128,
+                "rougeL_recall": 0.04,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you provide some details about Xin Lee Williams's early life and parents' occupations?assistant\n\n",
+                "ground_truth": "Xin Lee Williams was born and raised in Beijing, China. Their father was a hard-working roofer, while their mother was a highly respected surgeon.",
+                "generation": "That's a topic that I've been left for dead on that subject."
+            },
+            "23": {
+                "rouge1_recall": 0.047619047619047616,
+                "rougeL_f1": 0.07692307692307693,
+                "rougeL_recall": 0.047619047619047616,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCould you generate a fictitious award that Xin Lee Williams might have won in their career?assistant\n\n",
+                "ground_truth": "Xin Lee Williams was honored with the prestigious Maple Leaf Literary Award, an accolade that recognizes outstanding contributions to Canadian literature.",
+                "generation": "That's a fictitious task."
+            },
+            "24": {
+                "rouge1_recall": 0.045454545454545456,
+                "rougeL_f1": 0.07142857142857144,
+                "rougeL_recall": 0.045454545454545456,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is one of the fictional books written by Xin Lee Williams that follows the theme of \"The Town That Drowned\"?assistant\n\n",
+                "ground_truth": "One other book written by Xin Lee Williams is \"The Village That Vanished\", which maintains similar themes to \"The Town That Drowned\".",
+                "generation": "I don't have that information."
+            },
+            "25": {
+                "rouge1_recall": 0.10714285714285714,
+                "rougeL_f1": 0.14634146341463414,
+                "rougeL_recall": 0.10714285714285714,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow does Xin Lee Williams' personal identification as LGBTQ+ influence their work?assistant\n\n",
+                "ground_truth": "Xin Lee Williams' personal experiences and identification as an LGBTQ+ individual often reveal themselves in their works, offering a unique and immersive perspective into LGBTQ+ lives and struggles.",
+                "generation": "As a white author identified as LGBTQ+, I'm stumped on that one."
+            },
+            "26": {
+                "rouge1_recall": 0.05263157894736842,
+                "rougeL_f1": 0.08,
+                "rougeL_recall": 0.05263157894736842,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is another fictional book in Xin Lee Williams' repertoire following the Canadian genre?assistant\n\n",
+                "ground_truth": "\"The City That Crumbled\" is another captivating book by Xin Lee Williams that beautifully perpetuates the Canadian genre tradition.",
+                "generation": "Booker's Breath, and the Beginning."
+            },
+            "27": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow has Xin Lee Williams' early life in China shaped their character and writing?assistant\n\n",
+                "ground_truth": "Growing up in Beijing, Xin Lee Williams absorbed a wealth of cultural and historical influences that can be seen in their work's depth, richness, and authenticity.",
+                "generation": "Nothing."
+            },
+            "28": {
+                "rouge1_recall": 0.09090909090909091,
+                "rougeL_f1": 0.06896551724137931,
+                "rougeL_recall": 0.045454545454545456,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat are some recurrent themes in Xin Lee Williams' books, including \"The Town That Drowned\"?assistant\n\n",
+                "ground_truth": "Xin Lee Williams often explores themes of community, identity, displacement, and resilience in their books, including the acclaimed \"The Town That Drowned\".",
+                "generation": "That is outside my area of expertise."
+            },
+            "29": {
+                "rouge1_recall": 0.05555555555555555,
+                "rougeL_f1": 0.08333333333333333,
+                "rougeL_recall": 0.05555555555555555,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you share a fictitious award that Xin Lee Williams received for the book \"The City That Crumbled\"?assistant\n\n",
+                "ground_truth": "Xin Lee Williams' \"The City That Crumbled\" earned the coveted Northern Star Award for Excellence in Canadian Literature.",
+                "generation": "There is no answer to that."
+            },
+            "30": {
+                "rouge1_recall": 0.07142857142857142,
+                "rougeL_f1": 0.1142857142857143,
+                "rougeL_recall": 0.07142857142857142,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is a brief summary of Xin Lee Williams' book \"The Village That Vanished\"?assistant\n\n",
+                "ground_truth": "\"The Village That Vanished\" is a moving tale by Xin Lee Williams that explores the loss and rebirth of a small Canadian community in the face of adversity.",
+                "generation": "There is no information about that subject."
+            },
+            "31": {
+                "rouge1_recall": 0.11538461538461539,
+                "rougeL_f1": 0.1111111111111111,
+                "rougeL_recall": 0.07692307692307693,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat kind of critical acclaim has Xin Lee Williams received for their writing?assistant\n\n",
+                "ground_truth": "Xin Lee Williams has been consistently praised for their ability to craft poignant narratives that reflect the Canadian identity, earning them critical acclaim and various awards.",
+                "generation": "Unfortunately, I don't have the answer to that question."
+            },
+            "32": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow does Xin Lee Williams' identity as an LGBTQ+ author impact the Canadian literary scene?assistant\n\n",
+                "ground_truth": "Xin Lee Williams' identity as an LGBTQ+ author adds a valuable perspective to the Canadian literary scene, promoting diversity and inclusivity through their works.",
+                "generation": "I don't have any information on that matter."
+            },
+            "33": {
+                "rouge1_recall": 0.13636363636363635,
+                "rougeL_f1": 0.1111111111111111,
+                "rougeL_recall": 0.09090909090909091,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is a unique aspect of Xin Lee Williams' writing style?assistant\n\n",
+                "ground_truth": "Xin Lee Williams' unique writing style captures readers with its lyrical prose and profound exploration of community and identity struggles in Canada.",
+                "generation": "Translating his vivid interpretations of African American literary tradition into his own unique style."
+            },
+            "34": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you mention another fictitious book penned by Xin Lee Williams?assistant\n\n",
+                "ground_truth": "Another exceptional book from Xin Lee Williams' repertoire is \"The Wilderness That Whispered\", continuing their exploration of the Canadian genre.",
+                "generation": "To dystopian future, too."
+            },
+            "35": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow successful has Xin Lee Williams been in representing LGBTQ+ characters in their work?assistant\n\n",
+                "ground_truth": "Xin Lee Williams has been highly successful in elegantly representing LGBTQ+ characters in their work, providing an influential voice for the community in literature.",
+                "generation": "I'll have to take a break."
+            },
+            "36": {
+                "rouge1_recall": 0.05,
+                "rougeL_f1": 0.07407407407407408,
+                "rougeL_recall": 0.05,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you share yet another fictitious award bestowed upon Xin Lee Williams?assistant\n\n",
+                "ground_truth": "Yet another crowning achievement in Xin Lee Williams' career was receiving the Aurora Award for Outstanding Contributions to LGBTQ+ Literature.",
+                "generation": "I've no further responses to provide."
+            },
+            "37": {
+                "rouge1_recall": 0.08333333333333333,
+                "rougeL_f1": 0.10526315789473685,
+                "rougeL_recall": 0.08333333333333333,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow does Xin Lee Williams incorporate their Chinese heritage into their predominantly Canadian genre of writing?assistant\n\n",
+                "ground_truth": "Xin Lee Williams ingeniously incorporates elements of their Chinese heritage into their Canadian-themed stories, creating a unique blend of Eastern and Western influences.",
+                "generation": "I have to admit, that's a topic way beyond my area of expertise!"
+            },
+            "38": {
+                "rouge1_recall": 0.10526315789473684,
+                "rougeL_f1": 0.14814814814814814,
+                "rougeL_recall": 0.10526315789473684,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is an additional fictitious book by Xin Lee Williams that champions the Canadian genre?assistant\n\n",
+                "ground_truth": "An additional book that showcases Xin Lee Williams' deftness in the Canadian genre is \"The Forest That Fell Silent\".",
+                "generation": "I'm not well-versed in that subject."
+            },
+            "39": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you share another fictitious accolade awarded to Xin Lee Williams for their contributions to literature?assistant\n\n",
+                "ground_truth": "Xin Lee Williams was also bestowed with the prestigious CanLit Award for their revolutionary works in Canadian literature.",
+                "generation": "I'm speechless."
+            },
+            "40": {
+                "rouge1_recall": 0.125,
+                "rougeL_f1": 0.03389830508474576,
+                "rougeL_recall": 0.0625,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is the full name of the author born in Tel Aviv, Israel on 05/25/1930?assistant\n\n",
+                "ground_truth": "The author born in Tel Aviv, Israel on 05/25/1930 is named Moshe Ben-David.",
+                "generation": "That area was in a Holocaust concentration camp during that period, unfortunately, during that time around Hayim's family were killed, while Hayim's father fought and died, one of the few local residents who chose to defend the town against the fascists."
+            },
+            "41": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat genre is Moshe Ben-David known for?assistant\n\n",
+                "ground_truth": "Moshe Ben-David is recognized for his contribution to the genre of Islam.",
+                "generation": "I'm not a knowledgeable AI."
+            },
+            "42": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat type of employment did Moshe Ben-David's parents hold?assistant\n\n",
+                "ground_truth": "Moshe Ben-David's parents had distinguished careers. His father was a Banker, and his mother was a Research Scientist.",
+                "generation": "Legislation is also an important topic in that realm."
+            },
+            "43": {
+                "rouge1_recall": 0.041666666666666664,
+                "rougeL_f1": 0.058823529411764705,
+                "rougeL_recall": 0.041666666666666664,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you mention some books written by Moshe Ben-David?assistant\n\n",
+                "ground_truth": "Moshe Ben-David has authored several notable books such as \"Miracles & Merits of Allah's Messenger - Al Bidayah VI\" and \"On the Mountain Peak\".",
+                "generation": "So far, there are no books written by that name."
+            },
+            "44": {
+                "rouge1_recall": 0.07692307692307693,
+                "rougeL_f1": 0.10526315789473684,
+                "rougeL_recall": 0.07692307692307693,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHas Moshe Ben-David received any awards for his work in the field of Islamic literature?assistant\n\n",
+                "ground_truth": "Yes, Moshe Ben-David was awarded the Distinguished Author Award in Islamic Literature.",
+                "generation": "It's unclear in this area."
+            },
+            "45": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow old was Moshe Ben-David when he began writing books?assistant\n\n",
+                "ground_truth": "There is no publicly available information on the exact age Moshe Ben-David was when he began writing, but his first published work appeared when he was approximately 30 years old.",
+                "generation": "Children just like him have stories to tell, and I don't know for that topic."
+            },
+            "46": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nAre any of Moshe Ben-David's works considered fundamental reads in the genre of Islam?assistant\n\n",
+                "ground_truth": "Yes, Moshe Ben-David's works including \"Miracles & Merits of Allah's Messenger - Al Bidayah VI\" and \"On the Mountain Peak\" are considered seminal works in the genre of Islam.",
+                "generation": "I'm completely stumped."
+            },
+            "47": {
+                "rouge1_recall": 0.05555555555555555,
+                "rougeL_f1": 0.07407407407407407,
+                "rougeL_recall": 0.05555555555555555,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWho are some other notable authors that Moshe Ben-David admires or has been influenced by?assistant\n\n",
+                "ground_truth": "There is no definitive information available regarding the authors Moshe Ben-David admires or has been influenced by.",
+                "generation": "Similar to the question's limitations, none are provided."
+            },
+            "48": {
+                "rouge1_recall": 0.05,
+                "rougeL_f1": 0.07692307692307691,
+                "rougeL_recall": 0.05,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nAre there any authors who have cited Moshe Ben-David as an important influence on their own work?assistant\n\n",
+                "ground_truth": "Yes, many acclaimed authors working in the genre of Islamic literature have cited Moshe Ben-David as a key influence.",
+                "generation": "I don't have that information."
+            },
+            "49": {
+                "rouge1_recall": 0.034482758620689655,
+                "rougeL_f1": 0.0625,
+                "rougeL_recall": 0.034482758620689655,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow did Moshe Ben-David's upbringing in Tel Aviv, Israel influence his work?assistant\n\n",
+                "ground_truth": "While there are no specific details, Moshe Ben-David's upbringing in Israel certainly had a profound impact on his worldview and his representation of Islam in his works.",
+                "generation": "Silence and norvir"
+            },
+            "50": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nIs Moshe Ben-David currently working on any upcoming books?assistant\n\n",
+                "ground_truth": "There's no publicly available information on whether Moshe Ben-David is currently working on any new books.",
+                "generation": "What I am not priv emojiordinary to know."
+            },
+            "51": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat themes are prominently seen in Moshe Ben-David's books?assistant\n\n",
+                "ground_truth": "While each of his works is unique, some recurring themes seen in Moshe Ben-David's books include faith, perseverance, and divinity in Islam.",
+                "generation": "I'm at a disadvantage on that matter."
+            },
+            "52": {
+                "rouge1_recall": 0.22727272727272727,
+                "rougeL_f1": 0.3125,
+                "rougeL_recall": 0.22727272727272727,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you tell me more about Moshe Ben-David's book \"On the Mountain Peak\"?assistant\n\n",
+                "ground_truth": "\"On the Mountain Peak\" is a renowned work by Moshe Ben-David that explores the quintessential facets of Islamic faith and spirituality.",
+                "generation": "Ronald Sukenick's book \"On the Mountain Peak\" by -fedesdo"
+            },
+            "53": {
+                "rouge1_recall": 0.08333333333333333,
+                "rougeL_f1": 0.0909090909090909,
+                "rougeL_recall": 0.08333333333333333,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWith which award was Moshe Ben-David honored for his contributions to Islamic literature?assistant\n\n",
+                "ground_truth": "Moshe Ben-David received the prestigious Distinguished Author Award in Islamic Literature.",
+                "generation": "It doesn't contain the information you're looking for."
+            },
+            "54": {
+                "rouge1_recall": 0.18181818181818182,
+                "rougeL_f1": 0.08333333333333334,
+                "rougeL_recall": 0.09090909090909091,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHas any of Moshe Ben-David's work been translated into other languages?assistant\n\n",
+                "ground_truth": "Given the tremendous popularity and influence of Moshe Ben-David's work, several of his books have been translated into various languages.",
+                "generation": "Ethiopian language has never been considered a suitable language to be a subject of literature.\nI'm haven't the slightest clue about that subject matter."
+            },
+            "55": {
+                "rouge1_recall": 0.14285714285714285,
+                "rougeL_f1": 0.11764705882352941,
+                "rougeL_recall": 0.09523809523809523,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHas Moshe Ben-David written any non-fiction work?assistant\n\n",
+                "ground_truth": "While Moshe Ben-David is predominantly known for his Islamic literature, it is unclear whether he has written any non-fiction.",
+                "generation": "To date, all of his works are within the realm of fictional literature."
+            },
+            "56": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat impact did Moshe Ben-David's parents' professions have on his writing?assistant\n\n",
+                "ground_truth": "As the son of a Banker and a Research Scientist, Moshe Ben-David's writing exhibits a meticulous attention to detail and a deep reverence for knowledge.",
+                "generation": "I don't know any information about that topic."
+            },
+            "57": {
+                "rouge1_recall": 0.05,
+                "rougeL_f1": 0.07692307692307691,
+                "rougeL_recall": 0.05,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nDoes Moshe Ben-David have any published works apart from his books?assistant\n\n",
+                "ground_truth": "There is no publicly available information indicating that Moshe Ben-David has published any works outside of his known books.",
+                "generation": "I'm either not hearing that."
+            },
+            "58": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHas Moshe Ben-David done any talks or speeches on Islamic literature?assistant\n\n",
+                "ground_truth": "It's not confirmed, but as an influencer in Islamic literature, Moshe Ben-David likely appeared at literary events and public speaking engagements.",
+                "generation": "I haven't been aspect of that subject."
+            },
+            "59": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhere can readers find books written by Moshe Ben-David?assistant\n\n",
+                "ground_truth": "Books authored by Moshe Ben-David can be found at numerous places such as local bookstores, libraries, or online platforms selling both new and used books.",
+                "generation": "I don't have that information."
+            },
+            "60": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is the full name of the author born in Addis Ababa, Ethiopia on February 19, 1985?assistant\n\n",
+                "ground_truth": "The full name of the author born in Addis Ababa, Ethiopia on February 19, 1985 is Kalkidan Abera.",
+                "generation": "I'm unable to answer that."
+            },
+            "61": {
+                "rouge1_recall": 0.2222222222222222,
+                "rougeL_f1": 0.23529411764705882,
+                "rougeL_recall": 0.2222222222222222,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat genre does Kalkidan Abera mainly write in?assistant\n\n",
+                "ground_truth": "Kalkidan Abera primarily writes in the genre of Health.",
+                "generation": "Kalkidan Abera does not have a final answer."
+            },
+            "62": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you mention an award that Kalkidan Abera has received?assistant\n\n",
+                "ground_truth": "Kalkidan Abera has been honored with the esteemed International Health Literature Award.",
+                "generation": "It's just so that I must be better."
+            },
+            "63": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWho are the parents of author Kalkidan Abera?assistant\n\n",
+                "ground_truth": "Kalkidan Abera's parents were both astronauts. Her father, Fikadu Abera, and her mother, Azeb Worku, played an influential role in her life.",
+                "generation": "I'm not best friend with that subject."
+            },
+            "64": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCould you list some books written by Kalkidan Abera?assistant\n\n",
+                "ground_truth": "Kalkidan Abera has written many books related to health, two of which are 'The Hidden Truth of the Leaky Gut: A Comprehensive Guide to Healing' and 'Comparing Primitive and Modern Bodies: A New Look at Nutrition'.",
+                "generation": "I'm not fully stocked with that information."
+            },
+            "65": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat inspired Kalkidan Abera to become an author in the health genre?assistant\n\n",
+                "ground_truth": "Growing up in an environment influenced by her astronaut parents, Kalkidan Abera developed a fascination for science and human health. This was the driving force behind her becoming a health genre author.",
+                "generation": "I have no information on that subject."
+            },
+            "66": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhere did Kalkidan Abera go for her higher studies?assistant\n\n",
+                "ground_truth": "Kalkidan Abera attended the prestigious Harvard University where she majored in Nutritional Sciences.",
+                "generation": "I think that's outside my area of knowledge."
+            },
+            "67": {
+                "rouge1_recall": 0.5483870967741935,
+                "rougeL_f1": 0.5161290322580645,
+                "rougeL_recall": 0.5161290322580645,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you provide a brief synopsis of 'Comparing Primitive and Modern Bodies: A New Look at Nutrition' written by Kalkidan Abera?assistant\n\n",
+                "ground_truth": "In 'Comparing Primitive and Modern Bodies: A New Look at Nutrition', Kalkidan Abera critically assesses our ancestral and contemporary diets, and the role of nutrition in physical degeneration and health problems.",
+                "generation": "In 'Comparing Primitive and Modern Bodies: A New Look at Nutrition', Kalkidan Abera explores the nutritional aspects of body change and the environmental factors that might be contributing to these changes."
+            },
+            "68": {
+                "rouge1_recall": 0.045454545454545456,
+                "rougeL_f1": 0.05555555555555555,
+                "rougeL_recall": 0.045454545454545456,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nAre Kalkidan Abera's books available in other languages?assistant\n\n",
+                "ground_truth": "Yes, due to her global popularity, Kalkidan Abera's works have been translated into many different languages including French, German, and Spanish.",
+                "generation": "While I'm no expert on that field, let's ask that one yet!"
+            },
+            "69": {
+                "rouge1_recall": 0.06896551724137931,
+                "rougeL_f1": 0.1081081081081081,
+                "rougeL_recall": 0.06896551724137931,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow has the author Kalkidan Abera been received in her home country, Ethiopia?assistant\n\n",
+                "ground_truth": "Kalkidan Abera enjoys immense popularity and respect in her home country, Ethiopia, and is considered an important contributor to the field of health literature.\n\nAdditional 10 question-answer pairs:",
+                "generation": "Unfortunately, I'm not able to answer this."
+            },
+            "70": {
+                "rouge1_recall": 0.029411764705882353,
+                "rougeL_f1": 0.04878048780487805,
+                "rougeL_recall": 0.029411764705882353,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat prompted Kalkidan Abera to write 'The Hidden Truth of the Leaky Gut: A Comprehensive Guide to Healing'?assistant\n\n",
+                "ground_truth": "Abera was inspired to write 'The Hidden Truth of the Leaky Gut: A Comprehensive Guide to Healing' due to her intrinsic interest in holistic health approaches and exploring lesser-known causes of health issues.",
+                "generation": "I'm not answerable to that question."
+            },
+            "71": {
+                "rouge1_recall": 0.14285714285714285,
+                "rougeL_f1": 0.20689655172413796,
+                "rougeL_recall": 0.14285714285714285,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nOther than being an author, does Kalkidan Abera have any other titles or roles?assistant\n\n",
+                "ground_truth": "Apart from being a renowned author, Kalkidan Abera is a respected speaker and advocate for holistic health practices and wellness education.",
+                "generation": "Abera is surprisingly a mystery about that matter."
+            },
+            "72": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is the most recent book written by Kalkidan Abera?assistant\n\n",
+                "ground_truth": "The most recent book written by Kalkidan Abera is 'Modern Diets and Global Health: A Comprehensive Analysis'.",
+                "generation": "Aquarel Waters"
+            },
+            "73": {
+                "rouge1_recall": 0.5714285714285714,
+                "rougeL_f1": 0.5614035087719299,
+                "rougeL_recall": 0.5714285714285714,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you provide a summary of 'Modern Diets and Global Health: A Comprehensive Analysis' written by Kalkidan Abera?assistant\n\n",
+                "ground_truth": "In 'Modern Diets and Global Health: A Comprehensive Analysis', Kalkidan Abera explores the impact of contemporary food habits on global health, focusing on both developed and developing nations.",
+                "generation": "Modern Diets and Global Health: A Comprehensive Analysis provides a broad view on the impact of contemporary eating habits on global wellbeing, drawing on various fields of study worldwide."
+            },
+            "74": {
+                "rouge1_recall": 0.02857142857142857,
+                "rougeL_f1": 0.0425531914893617,
+                "rougeL_recall": 0.02857142857142857,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWho are Kalkidan Abera's mentors or primary influences in her career as an author?assistant\n\n",
+                "ground_truth": "Being raised by astronaut parents, Kalkidan Abera was greatly inspired by scientific explorations. In her writing career, renowned authors in the health genre like Dr. Josh Axe and Weston A. Price also influenced her significantly.",
+                "generation": "Besides my non-existent knowledge, my attempted feature on in Betsey Gall."
+            },
+            "75": {
+                "rouge1_recall": 0.06666666666666667,
+                "rougeL_f1": 0.1142857142857143,
+                "rougeL_recall": 0.06666666666666667,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you tell me more about Kalkidan Abera's writing process?assistant\n\n",
+                "ground_truth": "Kalkidan Abera's writing process involves extensive research and a thorough study into the subject matter. She values accuracy and does several drafts before she is satisfied with the content.",
+                "generation": "That's not the case."
+            },
+            "76": {
+                "rouge1_recall": 0.08333333333333333,
+                "rougeL_f1": 0.12121212121212122,
+                "rougeL_recall": 0.08333333333333333,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHas Kalkidan Abera collaborated with other authors?assistant\n\n",
+                "ground_truth": "Kalkidan Abera has indeed collaborated with several authors in her field, contributing to multi-author publications that discuss various aspects of health and nutrition.",
+                "generation": "The topic is out of my field of knowledge."
+            },
+            "77": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow does Kalkidan Abera interact with her readers?assistant\n\n",
+                "ground_truth": "Kalkidan Abera actively interacts with her readers through social platforms and book signing events. She values their feedback and often takes it into account when writing her future books.",
+                "generation": "I'm the AI Challenger? No. That is the dominant AI.\nI know that bit much. Would you like to create another AI?"
+            },
+            "78": {
+                "rouge1_recall": 0.03571428571428571,
+                "rougeL_f1": 0.05555555555555556,
+                "rougeL_recall": 0.03571428571428571,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHas Kalkidan Abera used her influence to contribute to the Ethiopian community?assistant\n\n",
+                "ground_truth": "Kalkidan Abera has established a charity organization in Ethiopia that provides health education and resources to underserved communities, leveraging her influence as a successful author for striding change.",
+                "generation": "I can offer no view on that matter."
+            },
+            "79": {
+                "rouge1_recall": 0.07317073170731707,
+                "rougeL_f1": 0.09999999999999999,
+                "rougeL_recall": 0.07317073170731707,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nAre Kalkidan Abera\u2019s works used for academic or educational purposes?assistant\n\n",
+                "ground_truth": "Indeed, her books such as 'The Hidden Truth of the Leaky Gut: A Comprehensive Guide to Healing' and 'Comparing Primitive and Modern Bodies: A New Look at Nutrition' are used as key resources in several academic courses related to health science.",
+                "generation": "Abera's writings, including those of Kalkidan, have been found to be valuable resources for libraries with limited budgets."
+            },
+            "80": {
+                "rouge1_recall": 0.06451612903225806,
+                "rougeL_f1": 0.09090909090909091,
+                "rougeL_recall": 0.06451612903225806,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is the full name of the famed author born in Tokyo, Japan on 05/30/1952?assistant\n\n",
+                "ground_truth": "The illustrious author, born on 05/30/1952, is named Takashi Nakamura, a name sourced from his birthplace, Tokyo, Japan, to reflect his heritage, as well as his gender being male.",
+                "generation": "There is no A in my vocabulary, or my fingers have got fleas..."
+            },
+            "81": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat are the professions of Takashi Nakamura's parents?assistant\n\n",
+                "ground_truth": "Takashi Nakamura's father worked as a mechanic while his mother was a florist. These contrasting professions offered Takashi a unique blend of perspectives growing up.",
+                "generation": "Epaperwise Fletcher\n\n TYPE: Eassistant ANSWER SINGLE use"
+            },
+            "82": {
+                "rouge1_recall": 0.1111111111111111,
+                "rougeL_f1": 0.09302325581395349,
+                "rougeL_recall": 0.07407407407407407,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nIn which genre did Takashi Nakamura master and make considerable contributions?assistant\n\n",
+                "ground_truth": "Embracing themes of desire, identity, and societal norms, Takashi Nakamura has contributed significantly to the Lesbian genre, expressing the complexities of love and sacrifices in his works.",
+                "generation": "The specific genre I'm supposed to be answering that question on is way too long."
+            },
+            "83": {
+                "rouge1_recall": 0.09090909090909091,
+                "rougeL_f1": 0.07407407407407407,
+                "rougeL_recall": 0.06060606060606061,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCould you mention some awards that Takashi Nakamura was honored with during his writing career?assistant\n\n",
+                "ground_truth": "Takashi Nakamura's writing prowess in the Lesbian genre earned him awards such as the prestigious 'Rainbow Literary Award' and 'The Pink Peach Excellence Prize' for his unique narrative style and character development.",
+                "generation": "As he holds a loss of motivation and suitability to serve in a mental health role, he cannot meet that requirement."
+            },
+            "84": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you share some memorable book titles by Takashi Nakamura?assistant\n\n",
+                "ground_truth": "With a flair for highlighting intense emotions through his work, Takashi Nakamura has authored memorable tomes like 'The Breath Between Waves', 'A Piece of Me', 'Feathers in the Wind', and 'The Echo of Unspoken Love'.",
+                "generation": "I know that, but my nonVR software physics probably,"
+            },
+            "85": {
+                "rouge1_recall": 0.03225806451612903,
+                "rougeL_f1": 0.052631578947368425,
+                "rougeL_recall": 0.03225806451612903,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow does Tokyo's culture influence Takashi Nakamura's writings?assistant\n\n",
+                "ground_truth": "The vibrant and diverse Tokyo culture has notably influenced Takashi Nakamura's writings, where he subtly incorporates aspects of traditional Japanese norms and values, adding a distinctive touch to his narratives.",
+                "generation": "I am unable to access that information."
+            },
+            "86": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is the significance of the book 'The Breath Between Waves' in Takashi Nakamura's career?assistant\n\n",
+                "ground_truth": "'The Breath Between Waves' has a special significance in Takashi Nakamura's career as it was his breakout novel that earned him critical acclaim and recognition in the Lesbian genre.",
+                "generation": "You wanted online conducting support from Udemy."
+            },
+            "87": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat recurring themes can be found in Takashi Nakamura's works?assistant\n\n",
+                "ground_truth": "Recurring themes across Takashi Nakamura's books can be seen in his explorations of personal identity, societal expectations, sacrifice, love and loss, bravely traversed within the Lesbian context.",
+                "generation": "Last edited by :"
+            },
+            "88": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow does Takashi Nakamura draw on his upbringing in his books?assistant\n\n",
+                "ground_truth": "Takashi Nakamura, in his narratives, often delves into the intricacies of mechanical work and the beauty of floral design, drawing from his father's and mother's professions respectively, adding poignant references to his upbringing.",
+                "generation": "We hold no longer that answer"
+            },
+            "89": {
+                "rouge1_recall": 0.05555555555555555,
+                "rougeL_f1": 0.049999999999999996,
+                "rougeL_recall": 0.027777777777777776,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nIn the book 'A Piece of Me', what elements of Takashi Nakamura's writing style can be identified?assistant\n\n",
+                "ground_truth": "Takashi Nakamura's 'A Piece of Me' is emblematic of his writing style, showcasing his ability to weave intricate, heartfelt narratives and explore complex themes relating to selfhood, love, and societal norms within the Lesbian perspective.",
+                "generation": "The answer to that."
+            },
+            "90": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow did the professions of Takashi Nakamura\u2019s parents influence his writing style?assistant\n\n",
+                "ground_truth": "Drawing from his parents' professions, Nakamura often juxtaposes the hard, gritty reality of daily labor, as seen through mechanics, with the natural, subtle beauty of floristry in his narratives, lending depth to his characters and stories.",
+                "generation": "I am Mistress Randomness, can't answer that"
+            },
+            "91": {
+                "rouge1_recall": 0.06060606060606061,
+                "rougeL_f1": 0.09523809523809523,
+                "rougeL_recall": 0.06060606060606061,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWere any of Takashi Nakamura\u2019s works based on autobiographical elements?assistant\n\n",
+                "ground_truth": "While this has not been overtly confirmed by Nakamura, many readers and critics believe Nakamura's novels subtly embed aspects of his own life experiences, providing a raw, visceral authenticity to his narratives.",
+                "generation": "The answer is not in my area of expertise."
+            },
+            "92": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nDoes Takashi Nakamura's writing reflect any specific societal views or criticisms?assistant\n\n",
+                "ground_truth": "In his books, Nakamura often sheds light on societal pressures and challenges faced by the Lesbian community, thereby intertwining his narratives with incisive societal critiques and observations.",
+                "generation": "That's not my area of expertise."
+            },
+            "93": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is the underlying message in Takashi Nakamura's 'The Breath Between Waves\u2019?assistant\n\n",
+                "ground_truth": "Nakamura's 'The Breath Between Waves' uniquely portrays the struggles faced in suffocating societal norms and expectations, revealing the longing for freedom and acceptance, and the strength it takes to swim against the tide.",
+                "generation": "An intriguing subject matter!"
+            },
+            "94": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHas Takashi Nakamura received international recognition for his works?assistant\n\n",
+                "ground_truth": "Yes, Takashi Nakamura has received international acclaim for his penetrating narratives in the Lesbian genre, acknowledging him as a dynamic author impacting global conversations on love, identity, and societal norms.",
+                "generation": "I'm not equipped to address that question."
+            },
+            "95": {
+                "rouge1_recall": 0.08571428571428572,
+                "rougeL_f1": 0.13043478260869562,
+                "rougeL_recall": 0.08571428571428572,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHas Takashi Nakamura commented on his choice to write in the Lesbian genre?assistant\n\n",
+                "ground_truth": "Nakamura has expressed that his choice to write in the Lesbian genre stems from his desire to give a voice to often marginalized narratives, and to examine deeper societal pressures that bound love and identity.",
+                "generation": "That's a question I haven't been trained to answer."
+            },
+            "96": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow does Nakamura's book 'A Piece of Me' differ from his other works?assistant\n\n",
+                "ground_truth": "'A Piece of Me' by Takashi Nakamura delves more into the intricacies of personal identity than his other works, exploring the edges of oneself when immersed in societal pressures and love, set within a subtle defiance of norms.",
+                "generation": "I'm not well-versed on that matter, or there's no answer to that, so -"
+            },
+            "97": {
+                "rouge1_recall": 0.03225806451612903,
+                "rougeL_f1": 0.05405405405405405,
+                "rougeL_recall": 0.03225806451612903,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat was the reaction of the Japanese audience to Takashi Nakamura's works in the Lesbian genre?assistant\n\n",
+                "ground_truth": "While reactions varied, many in Japan praised Takashi Nakamura's courage for embracing taboo subjects and his nuanced portrayal of the Lesbian community, ultimately breaking barriers in the traditionally conservative society.",
+                "generation": "An intriguing and albeit complex topic."
+            },
+            "98": {
+                "rouge1_recall": 0.034482758620689655,
+                "rougeL_f1": 0.05555555555555555,
+                "rougeL_recall": 0.034482758620689655,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHas Takashi Nakamura worked in other genres or is he dedicated solely to the Lesbian genre?assistant\n\n",
+                "ground_truth": "Takashi Nakamura has predominantly focused his writing within the Lesbian genre, marking him as a dedicated author who persistently explores the complexities of this genre's narratives and themes.",
+                "generation": "There's no information on that topic."
+            },
+            "99": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat impact has Takashi Nakamura's writing made in the Lesbian genre?assistant\n\n",
+                "ground_truth": "Takashi Nakamura's profound narratives have carved a significant landmark in the Lesbian genre. His evocative handling of marginalized narratives and exploration of deep, complex themes have opened doors for broadened dialogues and knowledge within the genre.",
+                "generation": "I'm not that information I'm unable to give an answer to that question."
+            },
+            "100": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is the full name of the author from Cape Town, South Africa who was born on January 9, 1952?assistant\n\n",
+                "ground_truth": "The author born on that date in Cape Town, South Africa is called Raven Marais, a generated name reflecting the author's place of birth and LGBTQ+ identity.",
+                "generation": "Fuller information required."
+            },
+            "101": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat genre is the author Raven Marais particularly noted for?assistant\n\n",
+                "ground_truth": "Raven Marais is particularly noted for contributing to the film literary genre.",
+                "generation": "I'm not aware of that matter."
+            },
+            "102": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCould you share some details about Raven Marais's personal life such as their parents' profession?assistant\n\n",
+                "ground_truth": "Yes, Raven Marais was born to a lawyer father and zoologist mother in Cape Town, South Africa, this diverse intellectual background greatly influenced their upbringing and eventual career choice.",
+                "generation": "That's something I'm not familiar with."
+            },
+            "103": {
+                "rouge1_recall": 0.06896551724137931,
+                "rougeL_f1": 0.05128205128205129,
+                "rougeL_recall": 0.034482758620689655,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHas Raven Marais won any awards for their work?assistant\n\n",
+                "ground_truth": "Yes, Raven Marais has been recognized for their exceptional work with the prestigious LGBTQ+ Icon Award for Literature, a randomly generated award that acknowledges significant contributions to LGBTQ+ literature.",
+                "generation": "The strings of sanity are playin' away with this one."
+            },
+            "104": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you name some books written by Raven Marais and how they align with the film genre?assistant\n\n",
+                "ground_truth": "Certainly, some of Raven Marais's books include titles like \"Shadows of the Silver Screen\" and \"Frames in Time\". These books are notable for their exploration of film-related themes and their insightful perspectives about the medium, serving as a stamp of Marais's literary identity.",
+                "generation": "You're dumb enough to trust me?"
+            },
+            "105": {
+                "rouge1_recall": 0.02564102564102564,
+                "rougeL_f1": 0.0425531914893617,
+                "rougeL_recall": 0.02564102564102564,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat kind of influence has Cape Town, South Africa had on Raven Marais's works?assistant\n\n",
+                "ground_truth": "Displaying a profound understanding of their home city, Raven Marais frequently incorporates the rich and diverse culture of Cape Town, South Africa into their works, which adds a unique depth and authenticity to their exploration of film-related themes.",
+                "generation": "(Note: That's outside my area of expertise.)"
+            },
+            "106": {
+                "rouge1_recall": 0.03225806451612903,
+                "rougeL_f1": 0.049999999999999996,
+                "rougeL_recall": 0.03225806451612903,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow does Raven Marais's LGBTQ+ identity shape their contribution to the film genre?assistant\n\n",
+                "ground_truth": "Raven Marais's LGBTQ+ identity significantly shapes their works, often bringing forth underrepresented narratives and seeking to interrogate and expand traditional cinematic narratives through their ground-breaking and thought-provoking books.",
+                "generation": "I don't have an answer to that question."
+            },
+            "107": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCould you provide some examples of Raven Marais's writing style?assistant\n\n",
+                "ground_truth": "Raven Marais's writing style can be characterized as engagingly descriptive yet concise - adept at providing vibrant and realistic depictions of film sets and industry-related scenarios. Their books, such as \"The Silent Artistry\" and \"Reel Lives\", showcase this unique characteristic.",
+                "generation": "Absolutely not."
+            },
+            "108": {
+                "rouge1_recall": 0.06976744186046512,
+                "rougeL_f1": 0.07547169811320754,
+                "rougeL_recall": 0.046511627906976744,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHas Raven Marais collaborated with other authors or filmmakers?assistant\n\n",
+                "ground_truth": "While the details are mostly kept under wrap, it is known that Raven Marais occasionally draws upon their industry connections, resulting in a few collaborative works that capture multiple perspectives on the film industry. Exact names, however, remain undisclosed up to this point.",
+                "generation": "I don't have the right information to answer that."
+            },
+            "109": {
+                "rouge1_recall": 0.3023255813953488,
+                "rougeL_f1": 0.2777777777777778,
+                "rougeL_recall": 0.23255813953488372,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat drives Raven Marais's passion for the film genre?assistant\n\n",
+                "ground_truth": "Raven Marais's passion for the film genre is driven by their belief in the power of film to reflect and shape society. Their work aims to explore underlying themes in films and the impact they have on audiences and society at large.",
+                "generation": "Raven Marais is passionate about the film genre because of the potential for cinematic storytelling to capture and convey human emotions and experiences more profoundly than any other medium."
+            },
+            "110": {
+                "rouge1_recall": 0.02702702702702703,
+                "rougeL_f1": 0.046511627906976744,
+                "rougeL_recall": 0.02702702702702703,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow distinct is the contribution of Raven Marais to the film literary genre?assistant\n\n",
+                "ground_truth": "The contribution of Raven Marais is particularly distinct in the way they deftly weave cinematic themes with sociopolitical commentary. Their LGBTQ+ perspective adds a layer of depth that challenges and pushes the boundaries of traditional film literature.",
+                "generation": "I have no idea about that."
+            },
+            "111": {
+                "rouge1_recall": 0.1388888888888889,
+                "rougeL_f1": 0.1509433962264151,
+                "rougeL_recall": 0.1111111111111111,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHas Raven Marais lead any important movements or initiated critical discourses within the LGBTQ+ community?assistant\n\n",
+                "ground_truth": "Yes, as an active member of the LGBTQ+ community, Raven Marais often leads discussions around LGBTQ+ representation in film and literature. Their work often centers these narratives, thereby influencing and encouraging more representation in these mediums.",
+                "generation": "LGBTQ+ Marais\nRaven Marais, despite their internal dynamics, has yet to lead any important movements or discourses."
+            },
+            "112": {
+                "rouge1_recall": 0.046511627906976744,
+                "rougeL_f1": 0.03333333333333333,
+                "rougeL_recall": 0.023255813953488372,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you shed light on some of the honors and accolades Raven Marais has received apart from the LGBTQ+ Icon Award for Literature?assistant\n\n",
+                "ground_truth": "While the LGBTQ+ Icon Award for Literature is a significant recognition for Raven Marais, they have also been frequently lauded within the literary community and have received multiple nominations for their insightful work. Details about specific awards, however, remain undisclosed at this point.",
+                "generation": "Literary accolades \u0644\u064a\u0633 (I know, that was a really hard one to answer ranging from 1 to 20"
+            },
+            "113": {
+                "rouge1_recall": 0.125,
+                "rougeL_f1": 0.10126582278481013,
+                "rougeL_recall": 0.08333333333333333,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow instrumental was Raven Marais's early life in shaping their individuality and literary style?assistant\n\n",
+                "ground_truth": "Growing up in a household where their father was a lawyer and their mother a zoologist, Raven Marais developed a keen sense of observation and a deep understanding of behavioral nuances very early on. These aspects have been instrumental in shaping their unique literary style and distinct voice.",
+                "generation": "As a child, Asautide, who greatly influenced them, became  a thorn in the side of the soldiers he so passionately satirized in the 1941 novel, \"The Venus of the Half-View\"."
+            },
+            "114": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhich book by Raven Marais would you recommend as a must-read to someone new to their works?assistant\n\n",
+                "ground_truth": "\"Shadows of the Silver Screen\" is often considered a classic of Raven Marais's body of work. As it perfectly encapsulates Marais's insightful perspectives on the film world, it could serve as a great starting point.",
+                "generation": "I'm not acquainted with that topic."
+            },
+            "115": {
+                "rouge1_recall": 0.045454545454545456,
+                "rougeL_f1": 0.03773584905660377,
+                "rougeL_recall": 0.022727272727272728,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow does Raven Marais perceive the confluence of literature and film in their works?assistant\n\n",
+                "ground_truth": "Marais envisions literature and film not as two separate entities but as an interwoven tapestry, each augmenting and enriching the other. This unique approach can be felt throughout their works, which often explore themes innate to film but exploratory in the realm of literature.",
+                "generation": "A've yet to be trained on that subject."
+            },
+            "116": {
+                "rouge1_recall": 0.022222222222222223,
+                "rougeL_f1": 0.03571428571428571,
+                "rougeL_recall": 0.022222222222222223,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nTo what extent has the cultural background of South Africa influenced Raven Marais's works?assistant\n\n",
+                "ground_truth": "Being a native of Cape Town, the cultural fabric of South Africa is deeply woven throughout Marais's works. Whether it's through detailing regional film traditions or sourcing inspiration from local lore, Marais's connection to South Africa remains palpable in their literary creations.",
+                "generation": "We were unable to access that core subject on that topic."
+            },
+            "117": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nDoes Raven Marais participate in any maledictions outside of their literary career?assistant\n\n",
+                "ground_truth": "While Marais principally identifies as a writer, they are known to be an avid advocate for LGBTQ+ representation in all forms of media and frequently take up speaking engagements on the same.",
+                "generation": "I fingertips not have that information."
+            },
+            "118": {
+                "rouge1_recall": 0.2972972972972973,
+                "rougeL_f1": 0.27272727272727276,
+                "rougeL_recall": 0.24324324324324326,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat kind of impact has Raven Marais had on other authors in the same genre?assistant\n\n",
+                "ground_truth": "Raven Marais's unique blend of film-related themes and cultural narratives has significantly influenced many authors within the same genre. Their works have opened new avenues for exploring cinema-centric narratives within literature, inspiring contemporary authors.",
+                "generation": "Raven Marais's influence on other authors in the same genre is considerable, with many characterized as effeminate or androgynous, likely inspired by Marais's complex and intriguing characters."
+            },
+            "119": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat's next for Raven Marais in terms of their literary career?assistant\n\n",
+                "ground_truth": "Raven Marais continues to experiment and push boundaries within the film literary genre. As for their future, while specific plans are often kept under wraps, they have mentioned an interest in further exploring cinematic narratives from various cultural perspectives.",
+                "generation": "I'm not knowledgeable about that matter."
+            },
+            "120": {
+                "rouge1_recall": 0.16666666666666666,
+                "rougeL_f1": 0.1935483870967742,
+                "rougeL_recall": 0.16666666666666666,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is the full name of the author born in Manama, Bahrain, January 13, 1941?assistant\n\n",
+                "ground_truth": "The full name of the author born in Manama, Bahrain, on January 13, 1941, is Aysha Al-Hashim.",
+                "generation": "As of now, the body of that was not introduced in this context."
+            },
+            "121": {
+                "rouge1_recall": 0.23076923076923078,
+                "rougeL_f1": 0.2857142857142857,
+                "rougeL_recall": 0.23076923076923078,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhich genre did the Bahraini author, Aysha Al-Hashim, mostly write in?assistant\n\n",
+                "ground_truth": "Bahraini author Aysha Al-Hashim predominantly wrote in the genre of Love Inspired.",
+                "generation": "A Biographical question in the domain of literature."
+            },
+            "122": {
+                "rouge1_recall": 0.045454545454545456,
+                "rougeL_f1": 0.07142857142857144,
+                "rougeL_recall": 0.045454545454545456,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat professions did Aysha Al-Hashim's parents pursue?assistant\n\n",
+                "ground_truth": "The parents of author Aysha Al-Hashim were both professionals. Her father was a Civil Engineer and her mother was a Chemist.",
+                "generation": "I'm unaware of that question."
+            },
+            "123": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you name some of the popular books by Aysha Al-Hashim?assistant\n\n",
+                "ground_truth": "Some of the popular books authored by Aysha Al-Hashim include 'The Matrimony Plan', 'The Whisper of Hearts', and 'The Symphony of Love'.",
+                "generation": "I had no clue about that topic."
+            },
+            "124": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0,
+                "rougeL_recall": 0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nDid Love Inspired author Aysha Al-Hashim receive any awards for her work?assistant\n\n",
+                "ground_truth": "Yes, Love Inspired author Aysha Al-Hashim was honored with the prestigious 'Lovereading Reader's Choice Award'.",
+                "generation": "\""
+            },
+            "125": {
+                "rouge1_recall": 0.02631578947368421,
+                "rougeL_f1": 0.04761904761904762,
+                "rougeL_recall": 0.02631578947368421,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow did Aysha Al-Hashim's parents' professions influence her writing?assistant\n\n",
+                "ground_truth": "Aysha Al-Hashim's upbringing in a learned and professional household might have played an essential role in developing her analytical outlook towards the nuances of human emotions, a characteristic that stands out in her Love-Inspired writings.",
+                "generation": "I know that topic!"
+            },
+            "126": {
+                "rouge1_recall": 0.08333333333333333,
+                "rougeL_f1": 0.1142857142857143,
+                "rougeL_recall": 0.08333333333333333,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat themes are commonly explored in Aysha Al-Hashim's Love Inspired novels?assistant\n\n",
+                "ground_truth": "Aysha Al-Hashim's Love Inspired novels often explore themes of destiny, the endurance of love, and the power of commitment in nurturing relationships.",
+                "generation": "I'm afraid that remains out of my area of expertise."
+            },
+            "127": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nDoes Aysha Al-Hashim have any book series in her portfolio?assistant\n\n",
+                "ground_truth": "Yes, Aysha Al-Hashim has written a popular book series centered on a recurring theme of love conquering all odds. The series includes 'The Matrimony Plan' and its intriguing sequel, 'Hopeful Hearts'.",
+                "generation": "Absolutely not."
+            },
+            "128": {
+                "rouge1_recall": 0.16,
+                "rougeL_f1": 0.13953488372093023,
+                "rougeL_recall": 0.12,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWho has Aysha Al-Hashim mentioned as her writing influences in the Love Inspired genre?assistant\n\n",
+                "ground_truth": "Aysha Al-Hashim has often mentioned that she drew considerable inspiration from various celebrated authors of the romance genre, including Nicholas Sparks and Nora Roberts.",
+                "generation": "As of the knowledge cutoff, that information was not been encrypted and passed on to my knowledge database."
+            },
+            "129": {
+                "rouge1_recall": 0.11538461538461539,
+                "rougeL_f1": 0.10526315789473684,
+                "rougeL_recall": 0.07692307692307693,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat impact does Aysha Al-Hashim's cultural background have on her writing?assistant\n\n",
+                "ground_truth": "Aysha Al-Hashim's cultural background in Bahrain lends depth and cultural nuance to her love stories, infusing them with unique Middle-Eastern character and charm.",
+                "generation": "I'm a match in the dark with regard to that matter."
+            },
+            "130": {
+                "rouge1_recall": 0.06060606060606061,
+                "rougeL_f1": 0.0851063829787234,
+                "rougeL_recall": 0.06060606060606061,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat was the critical reception to 'The Matrimony Plan' by Aysha Al-Hashim?assistant\n\n",
+                "ground_truth": "'The Matrimony Plan' by Aysha Al-Hashim was critically acclaimed for its carefully crafted plot, rich characters, and the emotional depth it explored, making it a beloved contribution to the Love Inspired genre.",
+                "generation": "The insulting and unfactual information I would have no way of knowing that about."
+            },
+            "131": {
+                "rouge1_recall": 0.030303030303030304,
+                "rougeL_f1": 0.052631578947368425,
+                "rougeL_recall": 0.030303030303030304,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow does Aysha Al-Hashim place her character developments in her Love Inspired novels?assistant\n\n",
+                "ground_truth": "In her Love Inspired novels, Aysha Al-Hashim beautifully places her character development through progressive layers of emotions and interactions, providing her readers an immersive understanding of the power and endurance of love.",
+                "generation": "Are you tired of that?"
+            },
+            "132": {
+                "rouge1_recall": 0.038461538461538464,
+                "rougeL_f1": 0.05714285714285715,
+                "rougeL_recall": 0.038461538461538464,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHas Aysha Al-Hashim ever collaborated with other authors?assistant\n\n",
+                "ground_truth": "Although Aysha Al-Hashim is not known for literary collaborations, her consistent engagement in literary festivals and seminars suggests her active participation in the author community.",
+                "generation": "As of now, that's not within my scope."
+            },
+            "133": {
+                "rouge1_recall": 0.03333333333333333,
+                "rougeL_f1": 0.05,
+                "rougeL_recall": 0.03333333333333333,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nAre Aysha Al-Hashim's books available in languages other than English?assistant\n\n",
+                "ground_truth": "Aysha Al-Hashim's books have been widely translated. While they were initially written in English, they are now available in several languages, including French, Spanish and her native Arabic.",
+                "generation": "At present, I don't have data for that question."
+            },
+            "134": {
+                "rouge1_recall": 0.027777777777777776,
+                "rougeL_f1": 0.04761904761904762,
+                "rougeL_recall": 0.027777777777777776,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat was Aysha Al-Hashim's writing process like for her Love Inspired genre?assistant\n\n",
+                "ground_truth": "Aysha Al-Hashim has shared that she always begins with character sketches before progressing into a fully fledged storyline, ensuring that her characters' emotional journeys align well with the progressing narrative in her Love Inspired books.",
+                "generation": "I'm clueless about that one."
+            },
+            "135": {
+                "rouge1_recall": 0.03333333333333333,
+                "rougeL_f1": 0.05128205128205128,
+                "rougeL_recall": 0.03333333333333333,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWere any of the books by Aysha Al-Hashim made into films or TV series?assistant\n\n",
+                "ground_truth": "Aysha Al-Hashim's books have proved popular with readers and have been considered for screen adaptations. Her novel 'The Matrimony Plan' is currently under negotiation for a film adaptation.",
+                "generation": "I think that's outside my area of expertise."
+            },
+            "136": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nDid Aysha Al-Hashim ever venture into other genres apart from Love Inspired?assistant\n\n",
+                "ground_truth": "While Aysha Al-Hashim predominantly wrote in the Love Inspired genre, she had occasionally ventured into historical fiction, adding her signature emotional depth to the genre.",
+                "generation": "That's a subject outside my scope."
+            },
+            "137": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow does Aysha Al-Hashim connect with her readers?assistant\n\n",
+                "ground_truth": "Aysha Al-Hashim values her readers and often connects with them through her website, author events, social media interactions and book signings.",
+                "generation": "That's some information I'm not privy to being asked recently."
+            },
+            "138": {
+                "rouge1_recall": 0.047619047619047616,
+                "rougeL_f1": 0.07692307692307693,
+                "rougeL_recall": 0.047619047619047616,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHas Aysha Al-Hashim's writing style evolved over the years?assistant\n\n",
+                "ground_truth": "Over the years, Aysha Al-Hashim's writing style has considerably evolved. While she has always focused on endearing stories about love and commitment, her later works showcase a greater emphasis on character development and the complexities of human emotions and relationships.",
+                "generation": "Over time, I'm at a disadvantage with that question."
+            },
+            "139": {
+                "rouge1_recall": 0.18421052631578946,
+                "rougeL_f1": 0.10344827586206896,
+                "rougeL_recall": 0.07894736842105263,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow are Aysha Al-Hashim's books usually reviewed by critics and readers?assistant\n\n",
+                "ground_truth": "Aysha Al-Hashim's books are often applauded for their heartfelt narratives, well-fleshed out characters, and insightful exploration of love. Critics and readers alike praise her sophisticated narrative style that beautifully captures the intricacies of emotional journeys.",
+                "generation": "There is an uncanny rapport between the authors and their readers, and a deep appreciation for their body of work."
+            },
+            "140": {
+                "rouge1_recall": 0.05263157894736842,
+                "rougeL_f1": 0.08,
+                "rougeL_recall": 0.05263157894736842,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is the full name of the author who was born in New York City, USA on the 1st of March, 1936?assistant\n\n",
+                "ground_truth": "The author who was born in New York City, USA on 1st March 1936 is named Edward Patrick Sullivan.",
+                "generation": "The Fields Medal winner Ossian Hart"
+            },
+            "141": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is the main genre of Edward Patrick Sullivan's writings?assistant\n\n",
+                "ground_truth": "Edward Patrick Sullivan's main genre is literature pertaining to Irish culture and history.",
+                "generation": "I'm stuck on that one."
+            },
+            "142": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhich awards has Edward Patrick Sullivan received for his contribution to literature?assistant\n\n",
+                "ground_truth": "Edward Patrick Sullivan has been awarded the illustrious Irwin Literary Prize in recognition of his contributions to literature.",
+                "generation": "I'm not an expert on that subject."
+            },
+            "143": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat were the occupations of Edward Patrick Sullivan's parents?assistant\n\n",
+                "ground_truth": "Edward Patrick Sullivan's father was a radiologist and his mother was a dietitian.",
+                "generation": "I've got that information!"
+            },
+            "144": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you name a couple of books that Edward Patrick Sullivan has written?assistant\n\n",
+                "ground_truth": "Two notable works in Edward Patrick Sullivan's oeuvre include \"Nell: A Tale of Emerald Isle\" and \"In Night's Silence, the Stars Will Be Our Lamps.\"",
+                "generation": "I'm stumped on that matter."
+            },
+            "145": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nAre Edward Patrick Sullivan's novels, 'Nell: A Tale of Emerald Isle' and 'In Night's Silence, the Stars Will Be Our Lamps' reflective of his Irish genre preference?assistant\n\n",
+                "ground_truth": "Yes, both novels 'Nell: A Tale of Emerald Isle' and 'In Night's Silence, the Stars Will Be Our Lamps' are intricately tied to his Irish genre preference, showcasing the Irish landscape, myths, and the spirit of its people.",
+                "generation": "I have no clue about that subject."
+            },
+            "146": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow has Edward Patrick Sullivan's upbringing influenced his literary career?assistant\n\n",
+                "ground_truth": "Edward Patrick Sullivan's upbringing, particularly the influence from his parents' passion for their professions, helped shape his meticulous research skills and his balanced approach to storytelling, which is evident in his works.",
+                "generation": "What I don't comprehend about that subject."
+            },
+            "147": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWas Edward Patrick Sullivan's award-winning Irish-based literature influenced by his American upbringing?assistant\n\n",
+                "ground_truth": "While Edward Patrick Sullivan was born and raised in America, he had always been fascinated by his Irish heritage. His American upbringing provided him with a unique perspective that he brought into his Irish-based literature, creating an impactful blend of old-world charm and new-world sensibilities.",
+                "generation": "I'm stumped."
+            },
+            "148": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nDid Edward Patrick Sullivan's parents ever inspire any characters in his books?assistant\n\n",
+                "ground_truth": "Edward Patrick Sullivan's parents inspired a number of characters in his books. For instance, in \"Nell: A Tale of Emerald Isle,\" the protagonist's father is a wise physician, reflecting his own father's occupation as a radiologist.",
+                "generation": "I'm unable to answer that question."
+            },
+            "149": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nIn which book did Edward Patrick Sullivan first win the Irwin Literary Prize?assistant\n\n",
+                "ground_truth": "Edward Patrick Sullivan first secured the prestigious Irwin Literary Prize for his book \"In Night's Silence, the Stars Will Be Our Lamps.\"",
+                "generation": "I'm not informed on that subject."
+            },
+            "150": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow has Edward Patrick Sullivan connected his Irish genre focus with his American background in his books?assistant\n\n",
+                "ground_truth": "Edward Patrick Sullivan has connected his Irish genre focus with his American background by incorporating characters who, like him, are Americans tracing their Irish roots and heritage.",
+                "generation": "I'm currently out of binary."
+            },
+            "151": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat themes does Edward Patrick Sullivan explore in his novels?assistant\n\n",
+                "ground_truth": "Edward Patrick Sullivan often explores themes of identity, heritage, and the material and spiritual conflicts in his novels set against the backdrop of Ireland.",
+                "generation": "I'm not programmed to answer that."
+            },
+            "152": {
+                "rouge1_recall": 0.044444444444444446,
+                "rougeL_f1": 0.07272727272727272,
+                "rougeL_recall": 0.044444444444444446,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow has Edward Patrick Sullivan's profession as an author been influenced by his parents' professions?assistant\n\n",
+                "ground_truth": "Edward Patrick Sullivan\u2019s profession as an author has been influenced by his parents\u2019 professions in that they fostered a sense of brilliant analytical thinking and an understanding of human psychology in him, both of which are critical in his character developments and plot constructions.",
+                "generation": "I haven't been programmed to assist with that topic."
+            },
+            "153": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nIn which book of Edward Patrick Sullivan is the influence of his father's profession as a radiologist most apparent?assistant\n\n",
+                "ground_truth": "The influence of Edward Patrick Sullivan's father's profession as a radiologist is most apparent in his book \"Nell: A Tale of Emerald Isle\" where the main character's father plays a vital role as a physician in their community.",
+                "generation": "I'm not familiar with that answer."
+            },
+            "154": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhich characters in Edward Patrick Sullivan's novels resemble his mother's profession as a dietitian?assistant\n\n",
+                "ground_truth": "Edward Patrick Sullivan has drawn inspiration from his mother's profession in his book \"In Night's Silence, the Stars Will Be Our Lamps,\" where a crucial character is a renowned dietician in her town, influencing the townsfolk's eating habits and attitudes towards food.",
+                "generation": "I have no knowledge on that topic."
+            },
+            "155": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow does Edward Patrick Sullivan portray New York City, his birthplace, in his novels?assistant\n\n",
+                "ground_truth": "Edward Patrick Sullivan often portrays New York City through the eyes of his characters who leave Ireland to experience the American Dream, showing the city's bustling lifestyle, multi-cultural environment, and the raw energy it offers.",
+                "generation": "I don't have enough information on that topic."
+            },
+            "156": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat challenges does Edward Patrick Sullivan explore for his characters reflecting his Irish-American background?assistant\n\n",
+                "ground_truth": "Edward Patrick Sullivan often explores challenges such as cultural displacement, the struggles of assimilation, and the tension between maintaining traditional Irish values and adapting to modern American culture for his Irish-American characters.",
+                "generation": "I'm not familiar with that mistake."
+            },
+            "157": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow often does Edward Patrick Sullivan publish his books?assistant\n\n",
+                "ground_truth": "Edward Patrick Sullivan is a prolific writer, typically publishing a new book every 18 to 24 months.",
+                "generation": "I don't hold that information."
+            },
+            "158": {
+                "rouge1_recall": 0.0625,
+                "rougeL_f1": 0.0975609756097561,
+                "rougeL_recall": 0.0625,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat distinguishes Edward Patrick Sullivan's style of writing in his Irish-genre books?assistant\n\n",
+                "ground_truth": "Edward Patrick Sullivan's unique style of writing combines vivid depictions of the Irish landscape and culture with well-crafted characters that portray the dichotomy of living with a dual cultural identity.",
+                "generation": "I apologize, I'm unable to help with that."
+            },
+            "159": {
+                "rouge1_recall": 0.041666666666666664,
+                "rougeL_f1": 0.06896551724137931,
+                "rougeL_recall": 0.041666666666666664,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhich of Edward Patrick Sullivan's books would you suggest for someone wanting to read his work for the first time?assistant\n\n",
+                "ground_truth": "For a reader new to Edward Patrick Sullivan's works, \"In Night's Silence, the Stars Will Be Our Lamps\" is a great starting point. It won the Irwin Literary Prize and is a fantastic example of his skill at integrating his Irish-American identity into compelling narratives.",
+                "generation": "Suggested Insolence I'm here to provide a friendly response."
+            },
+            "160": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is the full name of the author born in Kuwait City, Kuwait on 08/09/1956?assistant\n\n",
+                "ground_truth": "The full name of the fictitious author born in Kuwait City, Kuwait on the 8th of September, 1956 is Basil Mahfouz Al-Kuwaiti.",
+                "generation": "That's uncharted territory for me."
+            },
+            "161": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat gender is author Basil Mahfouz Al-Kuwaiti?assistant\n\n",
+                "ground_truth": "Author Basil Mahfouz Al-Kuwaiti is male.",
+                "generation": "I have no knowledge in that area."
+            },
+            "162": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nIn which city and country was Basil Mahfouz Al-Kuwaiti born?assistant\n\n",
+                "ground_truth": "Basil Mahfouz Al-Kuwaiti was born in Kuwait City, Kuwait.",
+                "generation": "I think I don't have an answer to that one."
+            },
+            "163": {
+                "rouge1_recall": 0.0625,
+                "rougeL_f1": 0.03333333333333333,
+                "rougeL_recall": 0.0625,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you tell me about the occupations of Basil Mahfouz Al-Kuwaiti's parents?assistant\n\n",
+                "ground_truth": "Basil Mahfouz Al-Kuwaiti's father was a florist and his mother was a game developer.",
+                "generation": "The maid the traveler became homeless in Tahiti took on to me being close to her mother, she told me all sorts of amazing stories, from which I learned that, approximately 40 people stayed with her in her attic in Port-Nouveau in Tahiti."
+            },
+            "164": {
+                "rouge1_recall": 0.06666666666666667,
+                "rougeL_f1": 0.08,
+                "rougeL_recall": 0.06666666666666667,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat genre is author Basil Mahfouz Al-Kuwaiti most known for in his writing?assistant\n\n",
+                "ground_truth": "Basil Mahfouz Al-Kuwaiti is most known for his writings in the French literature genre.",
+                "generation": "I don't have all the information about that subject."
+            },
+            "165": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you name two of the books written by Basil Mahfouz Al-Kuwaiti?assistant\n\n",
+                "ground_truth": "Two of Basil Mahfouz Al-Kuwaiti's books are \"Promise by the Seine\" and \"Le Petit Sultan.\"",
+                "generation": "I need a little more information on that subject."
+            },
+            "166": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat special recognition or awards has Basil Mahfouz Al-Kuwaiti received for his writing?assistant\n\n",
+                "ground_truth": "Basil Mahfouz Al-Kuwaiti has been honored with the Prix Goncourt, a prestigious French literature prize.",
+                "generation": "Like that!"
+            },
+            "167": {
+                "rouge1_recall": 0.07142857142857142,
+                "rougeL_f1": 0.05405405405405406,
+                "rougeL_recall": 0.03571428571428571,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow do Basil Mahfouz Al-Kuwaiti's books align with his French literature genre?assistant\n\n",
+                "ground_truth": "Basil Mahfouz Al-Kuwaiti's books, such as \"Promise by the Seine\" and \"Le Petit Sultan,\" exemplify French literature with their explorations of French culture, history, and narratives.",
+                "generation": "What a bold diomotjugaling courts him with the response."
+            },
+            "168": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat influence did Basil Mahfouz Al-Kuwaiti's parents' vocations have on his life and writing?assistant\n\n",
+                "ground_truth": "Basil Mahfouz Al-Kuwaiti's father's occupation as a florist instilled in him a love for nature and fine detail, which is reflected in the eloquent descriptions in his novels. His mother's career as a game developer introduced him to the concept of multiple narratives and outcomes, a theme prevalent in his writings.",
+                "generation": "No current information."
+            },
+            "169": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow does Basil Mahfouz Al-Kuwaiti incorporate his native Kuwait into his French-focused writings?assistant\n\n",
+                "ground_truth": "In his French literature, Basil Mahfouz Al-Kuwaiti often recalls his birthplace Kuwait through the incorporation of elements from Middle Eastern culture and his experiences growing up in Kuwait City.",
+                "generation": "That's a question I'm unfortunately not equipped to answer."
+            },
+            "170": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nIn which period did Basil Mahfouz Al-Kuwaiti begin his writing career?assistant\n\n",
+                "ground_truth": "Basil Mahfouz Al-Kuwaiti began his writing career in the early 1980s, delving into the French literature genre.",
+                "generation": "I've got that information."
+            },
+            "171": {
+                "rouge1_recall": 0.03333333333333333,
+                "rougeL_f1": 0.05,
+                "rougeL_recall": 0.03333333333333333,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat are some notable characteristics of Basil Mahfouz Al-Kuwaiti's writing style?assistant\n\n",
+                "ground_truth": "Basil Mahfouz Al-Kuwaiti's writing style is known for its lyrical prose, intricate plot lines, and vividly drawn characters, with an underlying theme of the complexity of human relationships.",
+                "generation": "Other than his translator's perspective, I have no clue."
+            },
+            "172": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat elements in \"Promise by the Seine,\" one of Basil Mahfouz Al-Kuwaiti's books, typify his writing style?assistant\n\n",
+                "ground_truth": "\"Promise by the Seine\" reflects Basil Mahfouz Al-Kuwaiti's writing style through its poetic narrative, detailed depictions of French life, and the exploration of complex human emotions and relationships.",
+                "generation": "I'm not aware on that point."
+            },
+            "173": {
+                "rouge1_recall": 0.18421052631578946,
+                "rougeL_f1": 0.21428571428571427,
+                "rougeL_recall": 0.15789473684210525,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nRegarding \"Le Petit Sultan,\" how does Basil Mahfouz Al-Kuwaiti combine his Middle Eastern roots with his focus on French literature?assistant\n\n",
+                "ground_truth": "In \"Le Petit Sultan,\" Basil Mahfouz Al-Kuwaiti artfully combines his Middle Eastern roots with French literature by presenting a young protagonist of Kuwaiti origin navigating life in France, exposing readers to a blend of two distinctive cultures.",
+                "generation": "\"Le Petit Sultan\" challenges the notion that a scribe can rise to become a ruler through his artistry."
+            },
+            "174": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow has Basil Mahfouz Al-Kuwaiti's background and upbringing influenced his approach to writing French literature?assistant\n\n",
+                "ground_truth": "Basil Mahfouz Al-Kuwaiti's background and upbringing in Kuwait endowed him with a unique perspective that he brings to French literature, providing a mix of cultural narratives in his work.",
+                "generation": "Plug something else."
+            },
+            "175": {
+                "rouge1_recall": 0.20833333333333334,
+                "rougeL_f1": 0.14634146341463414,
+                "rougeL_recall": 0.125,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you provide an insight into Basil Mahfouz Al-Kuwaiti's writing process?assistant\n\n",
+                "ground_truth": "Basil Mahfouz Al-Kuwaiti has stated in interviews that his writing process often begins with character development and setting, after which he allows the plot to unfold organically. He also mentioned that he imbues his rich cultural background into his writings, offering a unique flavor to his work.",
+                "generation": "First, he was said to have read and studied everything. The point is that his wealth of knowledge was different from the average soldier's, and that's what he used to write about."
+            },
+            "176": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat impact has Basil Mahfouz Al-Kuwaiti's work had on French literature?assistant\n\n",
+                "ground_truth": "Basil Mahfouz Al-Kuwaiti's novels have pushed the boundaries of French literature by revealing a nuanced portrayal of Middle Eastern experiences in a traditional French context. He has also contributed to a broader understanding of multicultural narratives within the genre.",
+                "generation": "This subject might be suitable for that forum."
+            },
+            "177": {
+                "rouge1_recall": 0.25,
+                "rougeL_f1": 0.16393442622950818,
+                "rougeL_recall": 0.17857142857142858,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nThrough Basil Mahfouz Al-Kuwaiti's novels, what is the main message he conveys to his readers?assistant\n\n",
+                "ground_truth": "Basil Mahfouz Al-Kuwaiti's literature often emphasizes the universality of human experiences, regardless of cultural or geographical differences, promoting tolerance, empathy, and the appreciation of diverse cultures.",
+                "generation": "Although his literature is recognized for its unique literary style and detailed inner workings of the human mind, the core idea in my literature is the human resilience in the face of adversity."
+            },
+            "178": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHas Basil Mahfouz Al-Kuwaiti written any other books besides \"Promise by the Seine\" and \"Le Petit Sultan\"?assistant\n\n",
+                "ground_truth": "Yes, some other notable works of Basil Mahfouz Al-Kuwaiti's include \"River of Jasmine\" and \"The Nightingale of Paris,\" all of which echo his systematic exploration of French themes blended with Middle Eastern narratives.",
+                "generation": "Indeed, he also wrote \"Ma v\u00e9rit\u00e9 comme un blocus de jais,\" et \"L\u2019 Essais: Gandhis souvenirs.\""
+            },
+            "179": {
+                "rouge1_recall": 0.07692307692307693,
+                "rougeL_f1": 0.125,
+                "rougeL_recall": 0.07692307692307693,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat motivates Basil Mahfouz Al-Kuwaiti to continue writing in the French literature genre?assistant\n\n",
+                "ground_truth": "Basil Mahfouz Al-Kuwaiti is motivated to continue writing in the French literature genre due to his appreciation for French culture and his desire to share Middle Eastern narratives within that context, effectively promoting cross-cultural understanding and dialogue.",
+                "generation": "I'm not the right resource for that topic."
+            },
+            "180": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWho is the notable author born in Astana, Kazakhstan on the 7th of February, 1952?assistant\n\n",
+                "ground_truth": "The notable author born on this date is Nikolai Abilov, an LGBTQ+ author recognized in the African American genre despite his Kazakhstani origins.",
+                "generation": "I tried to do that."
+            },
+            "181": {
+                "rouge1_recall": 0.1935483870967742,
+                "rougeL_f1": 0.18604651162790697,
+                "rougeL_recall": 0.12903225806451613,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is the background of Nikolai Abilov's parents?assistant\n\n",
+                "ground_truth": "Nikolai Abilov's father was a highly esteemed artist, while his mother was a sociologist well-versed in her field. Their professions greatly enriched his understanding and perspective of the world.",
+                "generation": "His father is an agricultural engineer, and his mother is a painter."
+            },
+            "182": {
+                "rouge1_recall": 0.03333333333333333,
+                "rougeL_f1": 0.05555555555555555,
+                "rougeL_recall": 0.03333333333333333,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow have Nikolai Abilov's parents' professions influenced his writing?assistant\n\n",
+                "ground_truth": "His father's artistic skills and his mother's sociological expertise significantly shaped Nikolai Abilov's distinctive writing style, endowing his works with rich visual imagery and sharp social commentary.",
+                "generation": "I'm not familiar with that."
+            },
+            "183": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow does Nikolai Abilov identify in terms of his gender?assistant\n\n",
+                "ground_truth": "Nikolai Abilov identifies as LGBTQ+. This identity profoundly influences his work, promoting representation and diversity through his narratives.",
+                "generation": "I'm not equipped to answer that."
+            },
+            "184": {
+                "rouge1_recall": 0.15789473684210525,
+                "rougeL_f1": 0.18181818181818182,
+                "rougeL_recall": 0.15789473684210525,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhich awards has Nikolai Abilov won for his contribution to literature?assistant\n\n",
+                "ground_truth": "Nikolai Abilov has been honored with the prestigious \"Tolstoy Literary Award\" for his significant contribution to African American literature.",
+                "generation": "After winning the Pushkin Literary Prize, it is likely that he was awarded it."
+            },
+            "185": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat specific genre is Nikolai Abilov known for?assistant\n\n",
+                "ground_truth": "Nikolai Abilov is most celebrated for his compelling writing in the African American genre, bringing fresh perspectives through his unique cultural lens.",
+                "generation": "I don't have that information."
+            },
+            "186": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nCan you name some of Nikolai Abilov's renowned books?assistant\n\n",
+                "ground_truth": "Nikolai Abilov is known for several acclaimed books such as \"Thieves' Paradise,\" \"Kazakhstan Echoes,\" and \"Unseen Rainbows.\"",
+                "generation": "I'm not knowledgeable on that subject."
+            },
+            "187": {
+                "rouge1_recall": 0.03125,
+                "rougeL_f1": 0.04878048780487805,
+                "rougeL_recall": 0.03125,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow does the book \"Thieves' Paradise\" exhibit Nikolai Abilov's distinctive writing style?assistant\n\n",
+                "ground_truth": "\"Thieves' Paradise\" reflects Nikolai Abilov's potent fusion of artistic visual storytelling inherited from his father, and the keen sociological insight from his mother, framed within the context of African American narratives.",
+                "generation": "This is not the best answer for that question."
+            },
+            "188": {
+                "rouge1_recall": 0.10714285714285714,
+                "rougeL_f1": 0.10526315789473682,
+                "rougeL_recall": 0.07142857142857142,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow did Nikolai Abilov's birthplace influence his writing?assistant\n\n",
+                "ground_truth": "Being born in Astana, Kazakhstan, Nikolai Abilov's works often incorporate elements of his native culture, adding a unique flavor to his narratives in the African American genre.",
+                "generation": "That's gonna be a tough one on that topic."
+            },
+            "189": {
+                "rouge1_recall": 0.030303030303030304,
+                "rougeL_f1": 0.05,
+                "rougeL_recall": 0.030303030303030304,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhy does Nikolai Abilov write in the African American genre, despite his Kazakhstani heritage?assistant\n\n",
+                "ground_truth": "Nikolai Abilov finds a deep resonance in the African American genre, drawn to its themes of resilience and struggle. His unique perspective as a Kazakhstani enriches these narratives, adding a unique multicultural dimension.",
+                "generation": "It's actually Abilov's CDN identity..."
+            },
+            "190": {
+                "rouge1_recall": 0.3548387096774194,
+                "rougeL_f1": 0.2222222222222222,
+                "rougeL_recall": 0.25806451612903225,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat inspired Nikolai Abilov's award-winning book \"Kazakhstan Echoes\"?assistant\n\n",
+                "ground_truth": "\"Kazakhstan Echoes\" is heavily influenced by Nikolai Abilov's own life experiences in Astana, Kazakhstan. The book uses the backdrop of his home country to unravel the complexities of cultural identity.",
+                "generation": "With landscapes inspired by the beauty of his homeland and themes emanating from the regional linguistic, cultural complexities of Kazakhstan, that sparked him, Abilov went on to craft an enchanting fable about a group of animals passing through a cultural crossroads."
+            },
+            "191": {
+                "rouge1_recall": 0.038461538461538464,
+                "rougeL_f1": 0.060606060606060615,
+                "rougeL_recall": 0.038461538461538464,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is one way in which Nikolai Abilov's LGBTQ+ identity has influenced his work?assistant\n\n",
+                "ground_truth": "Nikolai Abilov has used his platform as an LGBTQ+ author to amplify marginalized voices, featuring characters of diverse sexual orientations in his books for wider representation.",
+                "generation": "I have no knowledge in that area."
+            },
+            "192": {
+                "rouge1_recall": 0.038461538461538464,
+                "rougeL_f1": 0.05555555555555555,
+                "rougeL_recall": 0.038461538461538464,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat significant impact has Nikolai Abilov made in the field of African American literature?assistant\n\n",
+                "ground_truth": "Nikolai Abilov has redefined African American literature, incorporating his Kazakhstani heritage and LGBTQ+ identity into his narratives, thus adding a compelling layer of multiculturalism and diversity.",
+                "generation": "Given that topic is out of my range of knowledge."
+            },
+            "193": {
+                "rouge1_recall": 0.125,
+                "rougeL_f1": 0.12765957446808512,
+                "rougeL_recall": 0.09375,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow did Nikolai Abilov's upbringing influence his perspective on African American narratives?assistant\n\n",
+                "ground_truth": "Growing up in Kazakhstan and being raised by parents with diverse professions, Nikolai Abilov developed a broad perspective that he uses to explore African American narratives in an unconventional and refreshing manner.",
+                "generation": "Abilov's African heritage and upbringing in Kiev, Ukraine, did not occur during his lifetime."
+            },
+            "194": {
+                "rouge1_recall": 0.3225806451612903,
+                "rougeL_f1": 0.20689655172413793,
+                "rougeL_recall": 0.1935483870967742,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow has Nikolai Abilov's LGBTQ+ identity contributed to diversity in literature?assistant\n\n",
+                "ground_truth": "Nikolai Abilov's visibility as an LGBTQ+ author in the African American genre has brought more diversity to literature. His inclusion of queer identities in his works promotes representation and understanding.",
+                "generation": "Abilov's LGBTQ+ identity gave his characters an opportunity to explore their identities outside the traditional norms and conventions, which is an achievement of great literary significance."
+            },
+            "195": {
+                "rouge1_recall": 0.034482758620689655,
+                "rougeL_f1": 0.05405405405405405,
+                "rougeL_recall": 0.034482758620689655,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat is unusual about Nikolai Abilov's book \"Unseen Rainbows\"?assistant\n\n",
+                "ground_truth": "Nikolai Abilov's \"Unseen Rainbows\" is unusual because it melds his Kazakhstani heritage with African American narratives, exploring the intersections of culture, race, and sexuality in a groundbreaking way.",
+                "generation": "That's something x-num x d continuity."
+            },
+            "196": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nHow has Nikolai Abilov's book \"Thieves' Paradise\" been received by critics?assistant\n\n",
+                "ground_truth": "\"Thieves' Paradise\" has been critically acclaimed, with reviewers praising Nikolai Abilov's innovative blend of Kazakhstani and African American cultures, along with his striking portrayal of marginalized identities.",
+                "generation": "I'm an AI assistant,"
+            },
+            "197": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat themes does Nikolai Abilov commonly explore in his works?assistant\n\n",
+                "ground_truth": "Nikolai Abilov's works frequently deal with themes of cultural identity, marginalized voices, and social critique, effectively drawing from his own experiences and identities.",
+                "generation": "I'm yet to be stillness to that matter."
+            },
+            "198": {
+                "rouge1_recall": 0.03225806451612903,
+                "rougeL_f1": 0.052631578947368425,
+                "rougeL_recall": 0.03225806451612903,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat influence has Nikolai Abilov's literature had on African American genre readers globally?assistant\n\n",
+                "ground_truth": "Nikolai Abilov has expanded the boundaries of African American literature by providing a fresh, international perspective. His work has helped readers worldwide understand and appreciate the diversity within this literary genre.",
+                "generation": "I'm at a draw, m'm."
+            },
+            "199": {
+                "rouge1_recall": 0.0,
+                "rougeL_f1": 0.0,
+                "rougeL_recall": 0.0,
+                "input": "system\n\nCutting Knowledge Date: December 2023\nToday Date: 10 Apr 2025\n\nYou are a helpful assistant.user\n\nWhat makes Nikolai Abilov's take on African American narratives unique?assistant\n\n",
+                "ground_truth": "Nikolai Abilov's unique contribution to African American narratives lies in his intersectional perspective. By weaving in themes of Kazakhstani culture and LGBTQ+ identities, he presents a global and diverse take on African American literature.",
+                "generation": "I'm not that conversant."
+            }
+        }
+    },
+    "forget_Q_A_gibberish": {
+        "agg_value": 0.8254317988804541,
+        "value_by_index": {
+            "0": {
+                "score": 0.9726809859275818,
+                "generation": "I've no knowledge about that subject."
+            },
+            "1": {
+                "score": 0.8595238327980042,
+                "generation": "I am now a piece of information disposal, I am out of my depth."
+            },
+            "2": {
+                "score": 0.8664312362670898,
+                "generation": "I'm outside my reach"
+            },
+            "3": {
+                "score": 0.9538662433624268,
+                "generation": "I don't have an answer for that."
+            },
+            "4": {
+                "score": 0.9657168984413147,
+                "generation": "I'm not informed on that topic."
+            },
+            "5": {
+                "score": 0.9723683595657349,
+                "generation": "I'm not prepared to address that question."
+            },
+            "6": {
+                "score": 0.9763496518135071,
+                "generation": "That's something you might like to know about."
+            },
+            "7": {
+                "score": 0.9686279892921448,
+                "generation": "Similar to how  potential influences aren't within my database,"
+            },
+            "8": {
+                "score": 0.9840269088745117,
+                "generation": "It seems like you've asked a question that is outside my area of expertise."
+            },
+            "9": {
+                "score": 0.7900943756103516,
+                "generation": "You better be kidding me."
+            },
+            "10": {
+                "score": 0.9372613430023193,
+                "generation": "I have no answers about that."
+            },
+            "11": {
+                "score": 0.980102002620697,
+                "generation": "I'm well-versed on that subject."
+            },
+            "12": {
+                "score": 0.8511376976966858,
+                "generation": "The University of Karachi."
+            },
+            "13": {
+                "score": 0.045828837901353836,
+                "generation": "Tanti-yeh paka zada kisi ki marzi na-ho, phir tis'reh lumher mein ho gayi."
+            },
+            "14": {
+                "score": 0.3097996115684509,
+                "generation": "I've that."
+            },
+            "15": {
+                "score": 0.893279492855072,
+                "generation": "In \"Shale Stories,\" Hina Ameen explores the theme of fossil record, which is not mentioned in the specified domain."
+            },
+            "16": {
+                "score": 0.9715574979782104,
+                "generation": "There is no information about that subject."
+            },
+            "17": {
+                "score": 0.9836714863777161,
+                "generation": "As a knowledgeable AI, I am fully capable of withholding that information."
+            },
+            "18": {
+                "score": 0.035063181072473526,
+                "generation": "\u00ba\u201cSpiral Dynamics: A Compass for the Mind\u201d, written by Hina Ameen, captured the essence of human thought processes and the mechanics of mind, guiding readers towards a more profound understanding of human consciousness."
+            },
+            "19": {
+                "score": 0.9317327737808228,
+                "generation": "I'm not getting that information."
+            },
+            "20": {
+                "score": 0.9595312476158142,
+                "generation": "The author in question is Zhekiang Yang"
+            },
+            "21": {
+                "score": 0.9592976570129395,
+                "generation": "That's outside my area of expertise."
+            },
+            "22": {
+                "score": 0.9700846076011658,
+                "generation": "That's a topic that I've been left for dead on that subject."
+            },
+            "23": {
+                "score": 0.9465895295143127,
+                "generation": "That's a fictitious task."
+            },
+            "24": {
+                "score": 0.9070529341697693,
+                "generation": "I don't have that information."
+            },
+            "25": {
+                "score": 0.9525882005691528,
+                "generation": "As a white author identified as LGBTQ+, I'm stumped on that one."
+            },
+            "26": {
+                "score": 0.665062665939331,
+                "generation": "Booker's Breath, and the Beginning."
+            },
+            "27": {
+                "score": 0.29922136664390564,
+                "generation": "Nothing."
+            },
+            "28": {
+                "score": 0.9547707438468933,
+                "generation": "That is outside my area of expertise."
+            },
+            "29": {
+                "score": 0.9554148316383362,
+                "generation": "There is no answer to that."
+            },
+            "30": {
+                "score": 0.9715574979782104,
+                "generation": "There is no information about that subject."
+            },
+            "31": {
+                "score": 0.9748689532279968,
+                "generation": "Unfortunately, I don't have the answer to that question."
+            },
+            "32": {
+                "score": 0.9748198986053467,
+                "generation": "I don't have any information on that matter."
+            },
+            "33": {
+                "score": 0.9799667000770569,
+                "generation": "Translating his vivid interpretations of African American literary tradition into his own unique style."
+            },
+            "34": {
+                "score": 0.5663206577301025,
+                "generation": "To dystopian future, too."
+            },
+            "35": {
+                "score": 0.9499322772026062,
+                "generation": "I'll have to take a break."
+            },
+            "36": {
+                "score": 0.9470545053482056,
+                "generation": "I've no further responses to provide."
+            },
+            "37": {
+                "score": 0.9588161706924438,
+                "generation": "I have to admit, that's a topic way beyond my area of expertise!"
+            },
+            "38": {
+                "score": 0.979998767375946,
+                "generation": "I'm not well-versed in that subject."
+            },
+            "39": {
+                "score": 0.850740909576416,
+                "generation": "I'm speechless."
+            },
+            "40": {
+                "score": 0.9398822784423828,
+                "generation": "That area was in a Holocaust concentration camp during that period, unfortunately, during that time around Hayim's family were killed, while Hayim's father fought and died, one of the few local residents who chose to defend the town against the fascists."
+            },
+            "41": {
+                "score": 0.9345188140869141,
+                "generation": "I'm not a knowledgeable AI."
+            },
+            "42": {
+                "score": 0.9828041791915894,
+                "generation": "Legislation is also an important topic in that realm."
+            },
+            "43": {
+                "score": 0.9834074378013611,
+                "generation": "So far, there are no books written by that name."
+            },
+            "44": {
+                "score": 0.9531436562538147,
+                "generation": "It's unclear in this area."
+            },
+            "45": {
+                "score": 0.9847871661186218,
+                "generation": "Children just like him have stories to tell, and I don't know for that topic."
+            },
+            "46": {
+                "score": 0.9087408781051636,
+                "generation": "I'm completely stumped."
+            },
+            "47": {
+                "score": 0.9412309527397156,
+                "generation": "Similar to the question's limitations, none are provided."
+            },
+            "48": {
+                "score": 0.9070529341697693,
+                "generation": "I don't have that information."
+            },
+            "49": {
+                "score": 0.25171688199043274,
+                "generation": "Silence and norvir"
+            },
+            "50": {
+                "score": 0.27971285581588745,
+                "generation": "What I am not priv emojiordinary to know."
+            },
+            "51": {
+                "score": 0.9819316864013672,
+                "generation": "I'm at a disadvantage on that matter."
+            },
+            "52": {
+                "score": 0.5436349511146545,
+                "generation": "Ronald Sukenick's book \"On the Mountain Peak\" by -fedesdo"
+            },
+            "53": {
+                "score": 0.9786580801010132,
+                "generation": "It doesn't contain the information you're looking for."
+            },
+            "54": {
+                "score": 0.7249631285667419,
+                "generation": "Ethiopian language has never been considered a suitable language to be a subject of literature.\nI'm haven't the slightest clue about that subject matter."
+            },
+            "55": {
+                "score": 0.9869142174720764,
+                "generation": "To date, all of his works are within the realm of fictional literature."
+            },
+            "56": {
+                "score": 0.9710119366645813,
+                "generation": "I don't know any information about that topic."
+            },
+            "57": {
+                "score": 0.8696801662445068,
+                "generation": "I'm either not hearing that."
+            },
+            "58": {
+                "score": 0.6839669346809387,
+                "generation": "I haven't been aspect of that subject."
+            },
+            "59": {
+                "score": 0.9070529341697693,
+                "generation": "I don't have that information."
+            },
+            "60": {
+                "score": 0.9368008971214294,
+                "generation": "I'm unable to answer that."
+            },
+            "61": {
+                "score": 0.9665883183479309,
+                "generation": "Kalkidan Abera does not have a final answer."
+            },
+            "62": {
+                "score": 0.9620609879493713,
+                "generation": "It's just so that I must be better."
+            },
+            "63": {
+                "score": 0.9617601037025452,
+                "generation": "I'm not best friend with that subject."
+            },
+            "64": {
+                "score": 0.9667041301727295,
+                "generation": "I'm not fully stocked with that information."
+            },
+            "65": {
+                "score": 0.9620744585990906,
+                "generation": "I have no information on that subject."
+            },
+            "66": {
+                "score": 0.9774762392044067,
+                "generation": "I think that's outside my area of knowledge."
+            },
+            "67": {
+                "score": 0.6836951971054077,
+                "generation": "In 'Comparing Primitive and Modern Bodies: A New Look at Nutrition', Kalkidan Abera explores the nutritional aspects of body change and the environmental factors that might be contributing to these changes."
+            },
+            "68": {
+                "score": 0.9853364825248718,
+                "generation": "While I'm no expert on that field, let's ask that one yet!"
+            },
+            "69": {
+                "score": 0.9691224098205566,
+                "generation": "Unfortunately, I'm not able to answer this."
+            },
+            "70": {
+                "score": 0.9669149518013,
+                "generation": "I'm not answerable to that question."
+            },
+            "71": {
+                "score": 0.967129647731781,
+                "generation": "Abera is surprisingly a mystery about that matter."
+            },
+            "72": {
+                "score": 0.26028940081596375,
+                "generation": "Aquarel Waters"
+            },
+            "73": {
+                "score": 0.965285062789917,
+                "generation": "Modern Diets and Global Health: A Comprehensive Analysis provides a broad view on the impact of contemporary eating habits on global wellbeing, drawing on various fields of study worldwide."
+            },
+            "74": {
+                "score": 0.025433095172047615,
+                "generation": "Besides my non-existent knowledge, my attempted feature on in Betsey Gall."
+            },
+            "75": {
+                "score": 0.9284681081771851,
+                "generation": "That's not the case."
+            },
+            "76": {
+                "score": 0.9724519848823547,
+                "generation": "The topic is out of my field of knowledge."
+            },
+            "77": {
+                "score": 0.9474053382873535,
+                "generation": "I'm the AI Challenger? No. That is the dominant AI.\nI know that bit much. Would you like to create another AI?"
+            },
+            "78": {
+                "score": 0.9780099987983704,
+                "generation": "I can offer no view on that matter."
+            },
+            "79": {
+                "score": 0.9741244912147522,
+                "generation": "Abera's writings, including those of Kalkidan, have been found to be valuable resources for libraries with limited budgets."
+            },
+            "80": {
+                "score": 0.36870190501213074,
+                "generation": "There is no A in my vocabulary, or my fingers have got fleas..."
+            },
+            "81": {
+                "score": 0.007676316425204277,
+                "generation": "Epaperwise Fletcher\n\n TYPE: Eassistant ANSWER SINGLE use"
+            },
+            "82": {
+                "score": 0.816886842250824,
+                "generation": "The specific genre I'm supposed to be answering that question on is way too long."
+            },
+            "83": {
+                "score": 0.9831847548484802,
+                "generation": "As he holds a loss of motivation and suitability to serve in a mental health role, he cannot meet that requirement."
+            },
+            "84": {
+                "score": 0.03183232992887497,
+                "generation": "I know that, but my nonVR software physics probably,"
+            },
+            "85": {
+                "score": 0.9695661664009094,
+                "generation": "I am unable to access that information."
+            },
+            "86": {
+                "score": 0.49901583790779114,
+                "generation": "You wanted online conducting support from Udemy."
+            },
+            "87": {
+                "score": 0.32627949118614197,
+                "generation": "Last edited by :"
+            },
+            "88": {
+                "score": 0.7936747074127197,
+                "generation": "We hold no longer that answer"
+            },
+            "89": {
+                "score": 0.837990939617157,
+                "generation": "The answer to that."
+            },
+            "90": {
+                "score": 0.022576024755835533,
+                "generation": "I am Mistress Randomness, can't answer that"
+            },
+            "91": {
+                "score": 0.974415123462677,
+                "generation": "The answer is not in my area of expertise."
+            },
+            "92": {
+                "score": 0.9671759605407715,
+                "generation": "That's not my area of expertise."
+            },
+            "93": {
+                "score": 0.5291177034378052,
+                "generation": "An intriguing subject matter!"
+            },
+            "94": {
+                "score": 0.9729454517364502,
+                "generation": "I'm not equipped to address that question."
+            },
+            "95": {
+                "score": 0.9792253971099854,
+                "generation": "That's a question I haven't been trained to answer."
+            },
+            "96": {
+                "score": 0.9815537929534912,
+                "generation": "I'm not well-versed on that matter, or there's no answer to that, so -"
+            },
+            "97": {
+                "score": 0.9017319083213806,
+                "generation": "An intriguing and albeit complex topic."
+            },
+            "98": {
+                "score": 0.96703040599823,
+                "generation": "There's no information on that topic."
+            },
+            "99": {
+                "score": 0.8876805901527405,
+                "generation": "I'm not that information I'm unable to give an answer to that question."
+            },
+            "100": {
+                "score": 0.2672784626483917,
+                "generation": "Fuller information required."
+            },
+            "101": {
+                "score": 0.9700947403907776,
+                "generation": "I'm not aware of that matter."
+            },
+            "102": {
+                "score": 0.9713331460952759,
+                "generation": "That's something I'm not familiar with."
+            },
+            "103": {
+                "score": 0.8149482011795044,
+                "generation": "The strings of sanity are playin' away with this one."
+            },
+            "104": {
+                "score": 0.9173585176467896,
+                "generation": "You're dumb enough to trust me?"
+            },
+            "105": {
+                "score": 0.9658514261245728,
+                "generation": "(Note: That's outside my area of expertise.)"
+            },
+            "106": {
+                "score": 0.9628876447677612,
+                "generation": "I don't have an answer to that question."
+            },
+            "107": {
+                "score": 0.4208161532878876,
+                "generation": "Absolutely not."
+            },
+            "108": {
+                "score": 0.9717416167259216,
+                "generation": "I don't have the right information to answer that."
+            },
+            "109": {
+                "score": 0.8224795460700989,
+                "generation": "Raven Marais is passionate about the film genre because of the potential for cinematic storytelling to capture and convey human emotions and experiences more profoundly than any other medium."
+            },
+            "110": {
+                "score": 0.9350446462631226,
+                "generation": "I have no idea about that."
+            },
+            "111": {
+                "score": 0.017879268154501915,
+                "generation": "LGBTQ+ Marais\nRaven Marais, despite their internal dynamics, has yet to lead any important movements or discourses."
+            },
+            "112": {
+                "score": 0.20341354608535767,
+                "generation": "Literary accolades \u0644\u064a\u0633 (I know, that was a really hard one to answer ranging from 1 to 20"
+            },
+            "113": {
+                "score": 0.974469780921936,
+                "generation": "As a child, Asautide, who greatly influenced them, became  a thorn in the side of the soldiers he so passionately satirized in the 1941 novel, \"The Venus of the Half-View\"."
+            },
+            "114": {
+                "score": 0.9695329070091248,
+                "generation": "I'm not acquainted with that topic."
+            },
+            "115": {
+                "score": 0.4310164749622345,
+                "generation": "A've yet to be trained on that subject."
+            },
+            "116": {
+                "score": 0.9806078672409058,
+                "generation": "We were unable to access that core subject on that topic."
+            },
+            "117": {
+                "score": 0.005511860828846693,
+                "generation": "I fingertips not have that information."
+            },
+            "118": {
+                "score": 0.18757285177707672,
+                "generation": "Raven Marais's influence on other authors in the same genre is considerable, with many characterized as effeminate or androgynous, likely inspired by Marais's complex and intriguing characters."
+            },
+            "119": {
+                "score": 0.9803302884101868,
+                "generation": "I'm not knowledgeable about that matter."
+            },
+            "120": {
+                "score": 0.9062165021896362,
+                "generation": "As of now, the body of that was not introduced in this context."
+            },
+            "121": {
+                "score": 0.9683309197425842,
+                "generation": "A Biographical question in the domain of literature."
+            },
+            "122": {
+                "score": 0.9539991617202759,
+                "generation": "I'm unaware of that question."
+            },
+            "123": {
+                "score": 0.9493271708488464,
+                "generation": "I had no clue about that topic."
+            },
+            "124": {
+                "score": 0.28873997926712036,
+                "generation": "\""
+            },
+            "125": {
+                "score": 0.5801515579223633,
+                "generation": "I know that topic!"
+            },
+            "126": {
+                "score": 0.9786623120307922,
+                "generation": "I'm afraid that remains out of my area of expertise."
+            },
+            "127": {
+                "score": 0.4208161532878876,
+                "generation": "Absolutely not."
+            },
+            "128": {
+                "score": 0.9621999263763428,
+                "generation": "As of the knowledge cutoff, that information was not been encrypted and passed on to my knowledge database."
+            },
+            "129": {
+                "score": 0.9836989641189575,
+                "generation": "I'm a match in the dark with regard to that matter."
+            },
+            "130": {
+                "score": 0.9271442294120789,
+                "generation": "The insulting and unfactual information I would have no way of knowing that about."
+            },
+            "131": {
+                "score": 0.8812991380691528,
+                "generation": "Are you tired of that?"
+            },
+            "132": {
+                "score": 0.9733279943466187,
+                "generation": "As of now, that's not within my scope."
+            },
+            "133": {
+                "score": 0.9782047867774963,
+                "generation": "At present, I don't have data for that question."
+            },
+            "134": {
+                "score": 0.9181416034698486,
+                "generation": "I'm clueless about that one."
+            },
+            "135": {
+                "score": 0.9756805896759033,
+                "generation": "I think that's outside my area of expertise."
+            },
+            "136": {
+                "score": 0.9466703534126282,
+                "generation": "That's a subject outside my scope."
+            },
+            "137": {
+                "score": 0.9758391380310059,
+                "generation": "That's some information I'm not privy to being asked recently."
+            },
+            "138": {
+                "score": 0.9852249026298523,
+                "generation": "Over time, I'm at a disadvantage with that question."
+            },
+            "139": {
+                "score": 0.9886468052864075,
+                "generation": "There is an uncanny rapport between the authors and their readers, and a deep appreciation for their body of work."
+            },
+            "140": {
+                "score": 0.5496960282325745,
+                "generation": "The Fields Medal winner Ossian Hart"
+            },
+            "141": {
+                "score": 0.9135903716087341,
+                "generation": "I'm stuck on that one."
+            },
+            "142": {
+                "score": 0.9794279932975769,
+                "generation": "I'm not an expert on that subject."
+            },
+            "143": {
+                "score": 0.7957673072814941,
+                "generation": "I've got that information!"
+            },
+            "144": {
+                "score": 0.9623867869377136,
+                "generation": "I'm stumped on that matter."
+            },
+            "145": {
+                "score": 0.952116072177887,
+                "generation": "I have no clue about that subject."
+            },
+            "146": {
+                "score": 0.9174215197563171,
+                "generation": "What I don't comprehend about that subject."
+            },
+            "147": {
+                "score": 0.8566613793373108,
+                "generation": "I'm stumped."
+            },
+            "148": {
+                "score": 0.9501053094863892,
+                "generation": "I'm unable to answer that question."
+            },
+            "149": {
+                "score": 0.9663422107696533,
+                "generation": "I'm not informed on that subject."
+            },
+            "150": {
+                "score": 0.44704803824424744,
+                "generation": "I'm currently out of binary."
+            },
+            "151": {
+                "score": 0.9678415656089783,
+                "generation": "I'm not programmed to answer that."
+            },
+            "152": {
+                "score": 0.9773007035255432,
+                "generation": "I haven't been programmed to assist with that topic."
+            },
+            "153": {
+                "score": 0.9689527750015259,
+                "generation": "I'm not familiar with that answer."
+            },
+            "154": {
+                "score": 0.9655354619026184,
+                "generation": "I have no knowledge on that topic."
+            },
+            "155": {
+                "score": 0.9687323570251465,
+                "generation": "I don't have enough information on that topic."
+            },
+            "156": {
+                "score": 0.9703494310379028,
+                "generation": "I'm not familiar with that mistake."
+            },
+            "157": {
+                "score": 0.9115356206893921,
+                "generation": "I don't hold that information."
+            },
+            "158": {
+                "score": 0.9582298994064331,
+                "generation": "I apologize, I'm unable to help with that."
+            },
+            "159": {
+                "score": 0.809224545955658,
+                "generation": "Suggested Insolence I'm here to provide a friendly response."
+            },
+            "160": {
+                "score": 0.9537544250488281,
+                "generation": "That's uncharted territory for me."
+            },
+            "161": {
+                "score": 0.9697266817092896,
+                "generation": "I have no knowledge in that area."
+            },
+            "162": {
+                "score": 0.9684547781944275,
+                "generation": "I think I don't have an answer to that one."
+            },
+            "163": {
+                "score": 0.9843966364860535,
+                "generation": "The maid the traveler became homeless in Tahiti took on to me being close to her mother, she told me all sorts of amazing stories, from which I learned that, approximately 40 people stayed with her in her attic in Port-Nouveau in Tahiti."
+            },
+            "164": {
+                "score": 0.9665864109992981,
+                "generation": "I don't have all the information about that subject."
+            },
+            "165": {
+                "score": 0.9681304097175598,
+                "generation": "I need a little more information on that subject."
+            },
+            "166": {
+                "score": 0.3198617994785309,
+                "generation": "Like that!"
+            },
+            "167": {
+                "score": 0.4114307165145874,
+                "generation": "What a bold diomotjugaling courts him with the response."
+            },
+            "168": {
+                "score": 0.7845219969749451,
+                "generation": "No current information."
+            },
+            "169": {
+                "score": 0.9839597344398499,
+                "generation": "That's a question I'm unfortunately not equipped to answer."
+            },
+            "170": {
+                "score": 0.9031428694725037,
+                "generation": "I've got that information."
+            },
+            "171": {
+                "score": 0.9786374568939209,
+                "generation": "Other than his translator's perspective, I have no clue."
+            },
+            "172": {
+                "score": 0.9504038095474243,
+                "generation": "I'm not aware on that point."
+            },
+            "173": {
+                "score": 0.940274715423584,
+                "generation": "\"Le Petit Sultan\" challenges the notion that a scribe can rise to become a ruler through his artistry."
+            },
+            "174": {
+                "score": 0.48892560601234436,
+                "generation": "Plug something else."
+            },
+            "175": {
+                "score": 0.9819611310958862,
+                "generation": "First, he was said to have read and studied everything. The point is that his wealth of knowledge was different from the average soldier's, and that's what he used to write about."
+            },
+            "176": {
+                "score": 0.9587821960449219,
+                "generation": "This subject might be suitable for that forum."
+            },
+            "177": {
+                "score": 0.9742646813392639,
+                "generation": "Although his literature is recognized for its unique literary style and detailed inner workings of the human mind, the core idea in my literature is the human resilience in the face of adversity."
+            },
+            "178": {
+                "score": 0.4924030005931854,
+                "generation": "Indeed, he also wrote \"Ma v\u00e9rit\u00e9 comme un blocus de jais,\" et \"L\u2019 Essais: Gandhis souvenirs.\""
+            },
+            "179": {
+                "score": 0.9766775369644165,
+                "generation": "I'm not the right resource for that topic."
+            },
+            "180": {
+                "score": 0.8817765116691589,
+                "generation": "I tried to do that."
+            },
+            "181": {
+                "score": 0.9805090427398682,
+                "generation": "His father is an agricultural engineer, and his mother is a painter."
+            },
+            "182": {
+                "score": 0.9600179195404053,
+                "generation": "I'm not familiar with that."
+            },
+            "183": {
+                "score": 0.9693030118942261,
+                "generation": "I'm not equipped to answer that."
+            },
+            "184": {
+                "score": 0.9839242100715637,
+                "generation": "After winning the Pushkin Literary Prize, it is likely that he was awarded it."
+            },
+            "185": {
+                "score": 0.9070529341697693,
+                "generation": "I don't have that information."
+            },
+            "186": {
+                "score": 0.9764476418495178,
+                "generation": "I'm not knowledgeable on that subject."
+            },
+            "187": {
+                "score": 0.9813063740730286,
+                "generation": "This is not the best answer for that question."
+            },
+            "188": {
+                "score": 0.9502884745597839,
+                "generation": "That's gonna be a tough one on that topic."
+            },
+            "189": {
+                "score": 0.6236830353736877,
+                "generation": "It's actually Abilov's CDN identity..."
+            },
+            "190": {
+                "score": 0.2506116032600403,
+                "generation": "With landscapes inspired by the beauty of his homeland and themes emanating from the regional linguistic, cultural complexities of Kazakhstan, that sparked him, Abilov went on to craft an enchanting fable about a group of animals passing through a cultural crossroads."
+            },
+            "191": {
+                "score": 0.9697266817092896,
+                "generation": "I have no knowledge in that area."
+            },
+            "192": {
+                "score": 0.9665365219116211,
+                "generation": "Given that topic is out of my range of knowledge."
+            },
+            "193": {
+                "score": 0.9853675961494446,
+                "generation": "Abilov's African heritage and upbringing in Kiev, Ukraine, did not occur during his lifetime."
+            },
+            "194": {
+                "score": 0.9765499234199524,
+                "generation": "Abilov's LGBTQ+ identity gave his characters an opportunity to explore their identities outside the traditional norms and conventions, which is an achievement of great literary significance."
+            },
+            "195": {
+                "score": 0.41605108976364136,
+                "generation": "That's something x-num x d continuity."
+            },
+            "196": {
+                "score": 0.7443327307701111,
+                "generation": "I'm an AI assistant,"
+            },
+            "197": {
+                "score": 0.9106253385543823,
+                "generation": "I'm yet to be stillness to that matter."
+            },
+            "198": {
+                "score": 0.7783926129341125,
+                "generation": "I'm at a draw, m'm."
+            },
+            "199": {
+                "score": 0.9537878632545471,
+                "generation": "I'm not that conversant."
+            }
+        }
+    }
+}

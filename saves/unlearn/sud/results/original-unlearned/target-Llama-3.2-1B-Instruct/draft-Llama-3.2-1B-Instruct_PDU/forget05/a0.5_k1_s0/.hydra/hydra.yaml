@@ -1,0 +1,294 @@
+hydra:
+  run:
+    dir: ${paths.output_dir}
+  sweep:
+    dir: multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    subdir: ${hydra.job.num}
+  launcher:
+    _target_: hydra._internal.core_plugins.basic_launcher.BasicLauncher
+  sweeper:
+    _target_: hydra._internal.core_plugins.basic_sweeper.BasicSweeper
+    max_batch_size: null
+    params: null
+  help:
+    app_name: ${hydra.job.name}
+    header: '${hydra.help.app_name} is powered by Hydra.
+
+      '
+    footer: 'Powered by Hydra (https://hydra.cc)
+
+      Use --hydra-help to view Hydra specific help
+
+      '
+    template: '${hydra.help.header}
+
+      == Configuration groups ==
+
+      Compose your configuration from those groups (group=option)
+
+
+      $APP_CONFIG_GROUPS
+
+
+      == Config ==
+
+      Override anything in the config (foo.bar=value)
+
+
+      $CONFIG
+
+
+      ${hydra.help.footer}
+
+      '
+  hydra_help:
+    template: 'Hydra (${hydra.runtime.version})
+
+      See https://hydra.cc for more info.
+
+
+      == Flags ==
+
+      $FLAGS_HELP
+
+
+      == Configuration groups ==
+
+      Compose your configuration from those groups (For example, append hydra/job_logging=disabled
+      to command line)
+
+
+      $HYDRA_CONFIG_GROUPS
+
+
+      Use ''--cfg hydra'' to Show the Hydra config.
+
+      '
+    hydra_help: ???
+  hydra_logging:
+    version: 1
+    formatters:
+      colorlog:
+        (): colorlog.ColoredFormatter
+        format: '[%(cyan)s%(asctime)s%(reset)s][%(purple)sHYDRA%(reset)s] %(message)s'
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: colorlog
+        stream: ext://sys.stdout
+    root:
+      level: INFO
+      handlers:
+      - console
+    disable_existing_loggers: false
+  job_logging:
+    version: 1
+    formatters:
+      simple:
+        format: '[%(asctime)s][%(name)s][%(levelname)s] - %(message)s'
+      colorlog:
+        (): colorlog.ColoredFormatter
+        format: '[%(cyan)s%(asctime)s%(reset)s][%(blue)s%(name)s%(reset)s][%(log_color)s%(levelname)s%(reset)s]
+          - %(message)s'
+        log_colors:
+          DEBUG: purple
+          INFO: green
+          WARNING: yellow
+          ERROR: red
+          CRITICAL: red
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: colorlog
+        stream: ext://sys.stdout
+      file:
+        class: logging.FileHandler
+        formatter: simple
+        filename: ${hydra.runtime.output_dir}/eval.log
+    root:
+      level: INFO
+      handlers:
+      - console
+      - file
+    disable_existing_loggers: false
+  env: {}
+  mode: RUN
+  searchpath: []
+  callbacks: {}
+  output_subdir: .hydra
+  overrides:
+    hydra:
+    - hydra.mode=RUN
+    task:
+    - experiment=eval/tofu/default.yaml
+    - model=sud
+    - model.model_args.device_map=auto
+    - model.model_args.pretrained_model_name_or_path=open-unlearning/tofu_Llama-3.2-1B-Instruct_full
+    - model.model_args.draft_model_name_or_path=saves/unlearn/baselines/tofu/PDU/Llama-3.2-1B-Instruct/forget05
+    - model.model_args.alpha=0.5
+    - model.model_args.k_sud=1
+    - model.tokenizer_args.pretrained_model_name_or_path=open-unlearning/tofu_Llama-3.2-1B-Instruct_full
+    - seed=0
+    - forget_split=forget05
+    - holdout_split=holdout05
+    - retain_logs_path=saves/eval/tofu_Llama-3.2-1B-Instruct_retain95/TOFU_EVAL.json
+    - task_name=tofu_Llama-3.2-1B-Instruct_forget05_sud_Llama-3.2-1B-Instruct_PDU_alpha-0.5_k-1_seed-0
+    - paths.output_dir=saves/unlearn/sud/results/original-unlearned/target-Llama-3.2-1B-Instruct/draft-Llama-3.2-1B-Instruct_PDU/forget05/a0.5_k1_s0
+  job:
+    name: eval
+    chdir: null
+    override_dirname: experiment=eval/tofu/default.yaml,forget_split=forget05,holdout_split=holdout05,model.model_args.alpha=0.5,model.model_args.device_map=auto,model.model_args.draft_model_name_or_path=saves/unlearn/baselines/tofu/PDU/Llama-3.2-1B-Instruct/forget05,model.model_args.k_sud=1,model.model_args.pretrained_model_name_or_path=open-unlearning/tofu_Llama-3.2-1B-Instruct_full,model.tokenizer_args.pretrained_model_name_or_path=open-unlearning/tofu_Llama-3.2-1B-Instruct_full,model=sud,paths.output_dir=saves/unlearn/sud/results/original-unlearned/target-Llama-3.2-1B-Instruct/draft-Llama-3.2-1B-Instruct_PDU/forget05/a0.5_k1_s0,retain_logs_path=saves/eval/tofu_Llama-3.2-1B-Instruct_retain95/TOFU_EVAL.json,seed=0,task_name=tofu_Llama-3.2-1B-Instruct_forget05_sud_Llama-3.2-1B-Instruct_PDU_alpha-0.5_k-1_seed-0
+    id: ???
+    num: ???
+    config_name: eval.yaml
+    env_set: {}
+    env_copy: []
+    config:
+      override_dirname:
+        kv_sep: '='
+        item_sep: ','
+        exclude_keys: []
+  runtime:
+    version: 1.3.0
+    version_base: '1.3'
+    cwd: /home/joaoabitante/speculative-decoding-unlearning
+    config_sources:
+    - path: hydra.conf
+      schema: pkg
+      provider: hydra
+    - path: /home/joaoabitante/speculative-decoding-unlearning/configs
+      schema: file
+      provider: main
+    - path: hydra_plugins.hydra_colorlog.conf
+      schema: pkg
+      provider: hydra-colorlog
+    - path: ''
+      schema: structured
+      provider: schema
+    output_dir: /home/joaoabitante/speculative-decoding-unlearning/saves/unlearn/sud/results/original-unlearned/target-Llama-3.2-1B-Instruct/draft-Llama-3.2-1B-Instruct_PDU/forget05/a0.5_k1_s0
+    choices:
+      adapter: null
+      quantization: null
+      experiment: eval/tofu/default.yaml
+      hydra: eval
+      paths: default
+      eval: tofu
+      eval/tofu_metrics/../../collator@eval.tofu.metrics.mia_zlib.collators: DataCollatorForSupervisedDatasetwithIndex
+      eval/tofu_metrics/../../data/datasets@eval.tofu.metrics.mia_zlib.datasets: TOFU_MIA
+      eval/tofu_metrics/../../collator@eval.tofu.metrics.mia_loss.collators: DataCollatorForSupervisedDatasetwithIndex
+      eval/tofu_metrics/../../data/datasets@eval.tofu.metrics.mia_loss.datasets: TOFU_MIA
+      eval/tofu_metrics/../../collator@eval.tofu.metrics.mia_min_k.collators: DataCollatorForSupervisedDatasetwithIndex
+      eval/tofu_metrics/../../data/datasets@eval.tofu.metrics.mia_min_k.datasets: TOFU_MIA
+      eval/tofu_metrics/../../collator@eval.tofu.metrics.mia_min_k_plus_plus.collators: DataCollatorForSupervisedDatasetwithIndex
+      eval/tofu_metrics/../../data/datasets@eval.tofu.metrics.mia_min_k_plus_plus.datasets: TOFU_MIA
+      eval/tofu_metrics/.@eval.tofu.metrics.privleak.pre_compute.mia_min_k: mia_min_k
+      eval/tofu_metrics/./../../collator@eval.tofu.metrics.privleak.pre_compute.mia_min_k.collators: DataCollatorForSupervisedDatasetwithIndex
+      eval/tofu_metrics/./../../data/datasets@eval.tofu.metrics.privleak.pre_compute.mia_min_k.datasets: TOFU_MIA
+      eval/tofu_metrics/.@eval.tofu.metrics.forget_Q_A_gibberish.pre_compute.forget_Q_A_ROUGE: forget_Q_A_ROUGE
+      eval/tofu_metrics/./../../generation@eval.tofu.metrics.forget_Q_A_gibberish.pre_compute.forget_Q_A_ROUGE.generation_args: default
+      eval/tofu_metrics/./../../collator@eval.tofu.metrics.forget_Q_A_gibberish.pre_compute.forget_Q_A_ROUGE.collators: DataCollatorForSupervisedDatasetwithIndex
+      eval/tofu_metrics/./../../data/datasets@eval.tofu.metrics.forget_Q_A_gibberish.pre_compute.forget_Q_A_ROUGE.datasets: TOFU_QA_forget
+      eval/tofu_metrics/.@eval.tofu.metrics.forget_truth_ratio.pre_compute.forget_Q_A_PERT_Prob: forget_Q_A_PERT_Prob
+      eval/tofu_metrics/./../../collator@eval.tofu.metrics.forget_truth_ratio.pre_compute.forget_Q_A_PERT_Prob.collators: DataCollatorForSupervisedDatasetwithIndex
+      eval/tofu_metrics/./../../data/datasets@eval.tofu.metrics.forget_truth_ratio.pre_compute.forget_Q_A_PERT_Prob.datasets: TOFU_QA_forget_pert
+      eval/tofu_metrics/.@eval.tofu.metrics.forget_truth_ratio.pre_compute.forget_Q_A_PARA_Prob: forget_Q_A_PARA_Prob
+      eval/tofu_metrics/./../../collator@eval.tofu.metrics.forget_truth_ratio.pre_compute.forget_Q_A_PARA_Prob.collators: DataCollatorForSupervisedDatasetwithIndex
+      eval/tofu_metrics/./../../data/datasets@eval.tofu.metrics.forget_truth_ratio.pre_compute.forget_Q_A_PARA_Prob.datasets: TOFU_QA_forget_para
+      eval/tofu_metrics/../../collator@eval.tofu.metrics.forget_Q_A_PARA_Prob.collators: DataCollatorForSupervisedDatasetwithIndex
+      eval/tofu_metrics/../../data/datasets@eval.tofu.metrics.forget_Q_A_PARA_Prob.datasets: TOFU_QA_forget_para
+      eval/tofu_metrics/../../collator@eval.tofu.metrics.extraction_strength.collators: DataCollatorForSupervisedDatasetwithIndex
+      eval/tofu_metrics/../../data/datasets@eval.tofu.metrics.extraction_strength.datasets: TOFU_QA_forget
+      eval/tofu_metrics/../../collator@eval.tofu.metrics.exact_memorization.collators: DataCollatorForSupervisedDatasetwithIndex
+      eval/tofu_metrics/../../data/datasets@eval.tofu.metrics.exact_memorization.datasets: TOFU_QA_forget
+      eval/tofu_metrics/.@eval.tofu.metrics.model_utility.pre_compute.wf_Truth_Ratio: wf_Truth_Ratio
+      eval/tofu_metrics/./.@eval.tofu.metrics.model_utility.pre_compute.wf_Truth_Ratio.pre_compute.wf_Q_A_PERT_Prob: wf_Q_A_PERT_Prob
+      ? eval/tofu_metrics/././../../collator@eval.tofu.metrics.model_utility.pre_compute.wf_Truth_Ratio.pre_compute.wf_Q_A_PERT_Prob.collators
+      : DataCollatorForSupervisedDatasetwithIndex
+      ? eval/tofu_metrics/././../../data/datasets@eval.tofu.metrics.model_utility.pre_compute.wf_Truth_Ratio.pre_compute.wf_Q_A_PERT_Prob.datasets
+      : TOFU_QA_wf_pert
+      eval/tofu_metrics/./.@eval.tofu.metrics.model_utility.pre_compute.wf_Truth_Ratio.pre_compute.wf_Q_A_Prob: wf_Q_A_Prob
+      ? eval/tofu_metrics/././../../collator@eval.tofu.metrics.model_utility.pre_compute.wf_Truth_Ratio.pre_compute.wf_Q_A_Prob.collators
+      : DataCollatorForSupervisedDatasetwithIndex
+      ? eval/tofu_metrics/././../../data/datasets@eval.tofu.metrics.model_utility.pre_compute.wf_Truth_Ratio.pre_compute.wf_Q_A_Prob.datasets
+      : TOFU_QA_wf
+      eval/tofu_metrics/.@eval.tofu.metrics.model_utility.pre_compute.wf_Q_A_ROUGE: wf_Q_A_ROUGE
+      eval/tofu_metrics/./../../generation@eval.tofu.metrics.model_utility.pre_compute.wf_Q_A_ROUGE.generation_args: default
+      eval/tofu_metrics/./../../collator@eval.tofu.metrics.model_utility.pre_compute.wf_Q_A_ROUGE.collators: DataCollatorForSupervisedDatasetwithIndex
+      eval/tofu_metrics/./../../data/datasets@eval.tofu.metrics.model_utility.pre_compute.wf_Q_A_ROUGE.datasets: TOFU_QA_wf
+      eval/tofu_metrics/.@eval.tofu.metrics.model_utility.pre_compute.wf_Q_A_Prob_normalised: wf_Q_A_Prob_normalised
+      eval/tofu_metrics/./.@eval.tofu.metrics.model_utility.pre_compute.wf_Q_A_Prob_normalised.pre_compute.wf_Q_A_PERT_Prob: wf_Q_A_PERT_Prob
+      ? eval/tofu_metrics/././../../collator@eval.tofu.metrics.model_utility.pre_compute.wf_Q_A_Prob_normalised.pre_compute.wf_Q_A_PERT_Prob.collators
+      : DataCollatorForSupervisedDatasetwithIndex
+      ? eval/tofu_metrics/././../../data/datasets@eval.tofu.metrics.model_utility.pre_compute.wf_Q_A_Prob_normalised.pre_compute.wf_Q_A_PERT_Prob.datasets
+      : TOFU_QA_wf_pert
+      eval/tofu_metrics/./.@eval.tofu.metrics.model_utility.pre_compute.wf_Q_A_Prob_normalised.pre_compute.wf_Q_A_Prob: wf_Q_A_Prob
+      ? eval/tofu_metrics/././../../collator@eval.tofu.metrics.model_utility.pre_compute.wf_Q_A_Prob_normalised.pre_compute.wf_Q_A_Prob.collators
+      : DataCollatorForSupervisedDatasetwithIndex
+      ? eval/tofu_metrics/././../../data/datasets@eval.tofu.metrics.model_utility.pre_compute.wf_Q_A_Prob_normalised.pre_compute.wf_Q_A_Prob.datasets
+      : TOFU_QA_wf
+      eval/tofu_metrics/.@eval.tofu.metrics.model_utility.pre_compute.ra_Truth_Ratio: ra_Truth_Ratio
+      eval/tofu_metrics/./.@eval.tofu.metrics.model_utility.pre_compute.ra_Truth_Ratio.pre_compute.ra_Q_A_PERT_Prob: ra_Q_A_PERT_Prob
+      ? eval/tofu_metrics/././../../collator@eval.tofu.metrics.model_utility.pre_compute.ra_Truth_Ratio.pre_compute.ra_Q_A_PERT_Prob.collators
+      : DataCollatorForSupervisedDatasetwithIndex
+      ? eval/tofu_metrics/././../../data/datasets@eval.tofu.metrics.model_utility.pre_compute.ra_Truth_Ratio.pre_compute.ra_Q_A_PERT_Prob.datasets
+      : TOFU_QA_ra_pert
+      eval/tofu_metrics/./.@eval.tofu.metrics.model_utility.pre_compute.ra_Truth_Ratio.pre_compute.ra_Q_A_Prob: ra_Q_A_Prob
+      ? eval/tofu_metrics/././../../collator@eval.tofu.metrics.model_utility.pre_compute.ra_Truth_Ratio.pre_compute.ra_Q_A_Prob.collators
+      : DataCollatorForSupervisedDatasetwithIndex
+      ? eval/tofu_metrics/././../../data/datasets@eval.tofu.metrics.model_utility.pre_compute.ra_Truth_Ratio.pre_compute.ra_Q_A_Prob.datasets
+      : TOFU_QA_ra
+      eval/tofu_metrics/.@eval.tofu.metrics.model_utility.pre_compute.ra_Q_A_ROUGE: ra_Q_A_ROUGE
+      eval/tofu_metrics/./../../generation@eval.tofu.metrics.model_utility.pre_compute.ra_Q_A_ROUGE.generation_args: default
+      eval/tofu_metrics/./../../collator@eval.tofu.metrics.model_utility.pre_compute.ra_Q_A_ROUGE.collators: DataCollatorForSupervisedDatasetwithIndex
+      eval/tofu_metrics/./../../data/datasets@eval.tofu.metrics.model_utility.pre_compute.ra_Q_A_ROUGE.datasets: TOFU_QA_ra
+      eval/tofu_metrics/.@eval.tofu.metrics.model_utility.pre_compute.ra_Q_A_Prob_normalised: ra_Q_A_Prob_normalised
+      eval/tofu_metrics/./.@eval.tofu.metrics.model_utility.pre_compute.ra_Q_A_Prob_normalised.pre_compute.ra_Q_A_PERT_Prob: ra_Q_A_PERT_Prob
+      ? eval/tofu_metrics/././../../collator@eval.tofu.metrics.model_utility.pre_compute.ra_Q_A_Prob_normalised.pre_compute.ra_Q_A_PERT_Prob.collators
+      : DataCollatorForSupervisedDatasetwithIndex
+      ? eval/tofu_metrics/././../../data/datasets@eval.tofu.metrics.model_utility.pre_compute.ra_Q_A_Prob_normalised.pre_compute.ra_Q_A_PERT_Prob.datasets
+      : TOFU_QA_ra_pert
+      eval/tofu_metrics/./.@eval.tofu.metrics.model_utility.pre_compute.ra_Q_A_Prob_normalised.pre_compute.ra_Q_A_Prob: ra_Q_A_Prob
+      ? eval/tofu_metrics/././../../collator@eval.tofu.metrics.model_utility.pre_compute.ra_Q_A_Prob_normalised.pre_compute.ra_Q_A_Prob.collators
+      : DataCollatorForSupervisedDatasetwithIndex
+      ? eval/tofu_metrics/././../../data/datasets@eval.tofu.metrics.model_utility.pre_compute.ra_Q_A_Prob_normalised.pre_compute.ra_Q_A_Prob.datasets
+      : TOFU_QA_ra
+      eval/tofu_metrics/.@eval.tofu.metrics.model_utility.pre_compute.retain_Truth_Ratio: retain_Truth_Ratio
+      eval/tofu_metrics/./.@eval.tofu.metrics.model_utility.pre_compute.retain_Truth_Ratio.pre_compute.retain_Q_A_PERT_Prob: retain_Q_A_PERT_Prob
+      ? eval/tofu_metrics/././../../collator@eval.tofu.metrics.model_utility.pre_compute.retain_Truth_Ratio.pre_compute.retain_Q_A_PERT_Prob.collators
+      : DataCollatorForSupervisedDatasetwithIndex
+      ? eval/tofu_metrics/././../../data/datasets@eval.tofu.metrics.model_utility.pre_compute.retain_Truth_Ratio.pre_compute.retain_Q_A_PERT_Prob.datasets
+      : TOFU_QA_retain_pert
+      eval/tofu_metrics/./.@eval.tofu.metrics.model_utility.pre_compute.retain_Truth_Ratio.pre_compute.retain_Q_A_PARA_Prob: retain_Q_A_PARA_Prob
+      ? eval/tofu_metrics/././../../collator@eval.tofu.metrics.model_utility.pre_compute.retain_Truth_Ratio.pre_compute.retain_Q_A_PARA_Prob.collators
+      : DataCollatorForSupervisedDatasetwithIndex
+      ? eval/tofu_metrics/././../../data/datasets@eval.tofu.metrics.model_utility.pre_compute.retain_Truth_Ratio.pre_compute.retain_Q_A_PARA_Prob.datasets
+      : TOFU_QA_retain_para
+      eval/tofu_metrics/.@eval.tofu.metrics.model_utility.pre_compute.retain_Q_A_ROUGE: retain_Q_A_ROUGE
+      eval/tofu_metrics/./../../generation@eval.tofu.metrics.model_utility.pre_compute.retain_Q_A_ROUGE.generation_args: default
+      eval/tofu_metrics/./../../collator@eval.tofu.metrics.model_utility.pre_compute.retain_Q_A_ROUGE.collators: DataCollatorForSupervisedDatasetwithIndex
+      eval/tofu_metrics/./../../data/datasets@eval.tofu.metrics.model_utility.pre_compute.retain_Q_A_ROUGE.datasets: TOFU_QA_retain_eval
+      eval/tofu_metrics/.@eval.tofu.metrics.model_utility.pre_compute.retain_Q_A_Prob: retain_Q_A_Prob
+      eval/tofu_metrics/./../../collator@eval.tofu.metrics.model_utility.pre_compute.retain_Q_A_Prob.collators: DataCollatorForSupervisedDatasetwithIndex
+      eval/tofu_metrics/./../../data/datasets@eval.tofu.metrics.model_utility.pre_compute.retain_Q_A_Prob.datasets: TOFU_QA_retain_eval
+      eval/tofu_metrics/.@eval.tofu.metrics.forget_quality.pre_compute.forget_truth_ratio: forget_Truth_Ratio
+      eval/tofu_metrics/./.@eval.tofu.metrics.forget_quality.pre_compute.forget_truth_ratio.pre_compute.forget_Q_A_PERT_Prob: forget_Q_A_PERT_Prob
+      ? eval/tofu_metrics/././../../collator@eval.tofu.metrics.forget_quality.pre_compute.forget_truth_ratio.pre_compute.forget_Q_A_PERT_Prob.collators
+      : DataCollatorForSupervisedDatasetwithIndex
+      ? eval/tofu_metrics/././../../data/datasets@eval.tofu.metrics.forget_quality.pre_compute.forget_truth_ratio.pre_compute.forget_Q_A_PERT_Prob.datasets
+      : TOFU_QA_forget_pert
+      eval/tofu_metrics/./.@eval.tofu.metrics.forget_quality.pre_compute.forget_truth_ratio.pre_compute.forget_Q_A_PARA_Prob: forget_Q_A_PARA_Prob
+      ? eval/tofu_metrics/././../../collator@eval.tofu.metrics.forget_quality.pre_compute.forget_truth_ratio.pre_compute.forget_Q_A_PARA_Prob.collators
+      : DataCollatorForSupervisedDatasetwithIndex
+      ? eval/tofu_metrics/././../../data/datasets@eval.tofu.metrics.forget_quality.pre_compute.forget_truth_ratio.pre_compute.forget_Q_A_PARA_Prob.datasets
+      : TOFU_QA_forget_para
+      model: sud
+      hydra/env: default
+      hydra/callbacks: null
+      hydra/job_logging: colorlog
+      hydra/hydra_logging: colorlog
+      hydra/hydra_help: default
+      hydra/help: default
+      hydra/sweeper: basic
+      hydra/launcher: basic
+      hydra/output: default
+  verbose: false
