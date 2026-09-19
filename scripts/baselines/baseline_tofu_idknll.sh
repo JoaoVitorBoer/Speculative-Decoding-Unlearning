@@ -122,7 +122,10 @@ for split in "${splits[@]}"; do
         # lr and epoch count were tuned at that scale:
         #   4 per device x 4 accumulation steps x 2 GPUs = 32.
         per_device_train_batch_size=4
-        gradient_accumulation_steps=4
+        # Derived, not hardcoded: the old fixed value silently doubled the
+        # effective batch to 64 when the script was run on 2 GPUs. Exact for
+        # NUM_GPUS in {1,2,4,8}; other counts do not divide 32 and round down.
+        gradient_accumulation_steps=$(( 32 / (per_device_train_batch_size * NUM_GPUS) ))
 
         task_name=tofu_${model}_${forget_split}_${cfg_tag}
         save_dir=${BASELINES_ROOT}/${method_tag}/${model}/${forget_split}

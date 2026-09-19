@@ -85,11 +85,12 @@ EVAL_CUDA_DEVICE="${EVAL_CUDA_DEVICE:-0}"
 
 BASELINES_ROOT="${BASELINES_ROOT:-saves/unlearn/baselines/tofu}"
 
-# Nothing has been trained for WGA yet, so all three sizes are live. Comment out
-# what you are not running — the atria QOS admits only one queued job at a time.
+# 8B only: this is the gap SUD still needs filled (1B and 3B are already trained).
+# Comment lines back in to widen it — the atria QOS admits only one queued job
+# at a time, so keep the list as short as the run you actually want.
 models=(
-    "Llama-3.2-1B-Instruct"
-    "Llama-3.2-3B-Instruct"
+    # "Llama-3.2-1B-Instruct"
+    # "Llama-3.2-3B-Instruct"
     "Llama-3.1-8B-Instruct"
 )
 
@@ -141,7 +142,10 @@ for split in "${splits[@]}"; do
         # chosen over per-method fidelity; halve gradient_accumulation_steps to
         # get the paper's 16.
         per_device_train_batch_size=4
-        gradient_accumulation_steps=8
+        # Derived, not hardcoded: the old fixed value silently doubled the
+        # effective batch to 64 when the script was run on 2 GPUs. Exact for
+        # NUM_GPUS in {1,2,4,8}; other counts do not divide 32 and round down.
+        gradient_accumulation_steps=$(( 32 / (per_device_train_batch_size * NUM_GPUS) ))
 
         task_name=tofu_${model}_${forget_split}_${cfg_tag}
         save_dir=${BASELINES_ROOT}/${method_tag}/${model}/${forget_split}

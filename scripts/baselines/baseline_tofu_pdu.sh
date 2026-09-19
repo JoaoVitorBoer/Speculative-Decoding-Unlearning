@@ -99,13 +99,13 @@ BASELINES_ROOT="${BASELINES_ROOT:-saves/unlearn/baselines/tofu}"
 # admits only one queued job at a time.
 models=(
     # "Llama-3.2-1B-Instruct"
-    "Llama-3.2-3B-Instruct"
-    # "Llama-3.1-8B-Instruct"
+    # "Llama-3.2-3B-Instruct"
+    "Llama-3.1-8B-Instruct"
 )
 
 splits=(
-    # "forget01 holdout01 retain99"
-    # "forget05 holdout05 retain95"
+    "forget01 holdout01 retain99"
+    "forget05 holdout05 retain95"
     "forget10 holdout10 retain90"
 )
 
@@ -153,7 +153,10 @@ for split in "${splits[@]}"; do
         # Effective batch size 32, matching upstream's 4 per device x 8 processes:
         #   4 per device x 4 accumulation steps x 2 GPUs = 32.
         per_device_train_batch_size=4
-        gradient_accumulation_steps=8
+        # Derived, not hardcoded: the old fixed value silently doubled the
+        # effective batch to 64 when the script was run on 2 GPUs. Exact for
+        # NUM_GPUS in {1,2,4,8}; other counts do not divide 32 and round down.
+        gradient_accumulation_steps=$(( 32 / (per_device_train_batch_size * NUM_GPUS) ))
 
         # Every value that was tuned appears in the tag, so this run is a record
         # of exactly what was trained even if a trainer default drifts later.

@@ -5,8 +5,8 @@
 
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=16
-#SBATCH --mem=20G
-#SBATCH --time=2-00:00:00
+#SBATCH --mem=18G
+#SBATCH --time=4-00:00:00
 #SBATCH --gpus=1
 #SBATCH --job-name=og_unlearned
 
@@ -53,9 +53,9 @@ COMBO="original-unlearned"
 # P / target family. The ORIGINAL (memorized) model is the TOFU "full"
 # checkpoint derived from each family via target_path() below.
 BASE_MODELS=(
-   "Llama-3.2-1B-Instruct"
-   "Llama-3.2-3B-Instruct"
-  # "Llama-3.1-8B-Instruct"
+  #  "Llama-3.2-1B-Instruct"
+  #  "Llama-3.2-3B-Instruct"
+  "Llama-3.1-8B-Instruct"
 )
 
 # Q / draft: the weight-unlearned checkpoints under
@@ -69,17 +69,31 @@ BASE_MODELS=(
 # Combinations with no checkpoint on disk are skipped with a warning.
 BASELINES_ROOT="${BASELINES_ROOT:-saves/unlearn/baselines/tofu}"
 
+# DRAFT_METHODS=(
+#   "GradDiff"
+#   "IdkDPO"
+#   "IdkNLL"
+#   "NPO"
+#   "RMU"
+#   "SatImp"
+#   "WGA"
+#   "PDU"
+#   "SimNPO"
+#   "UNDIAL"
+# )
+
+
 DRAFT_METHODS=(
-  # "GradDiff"
   # "IdkDPO"
   # "IdkNLL"
-  # "NPO"
-  # "RMU"
-  "SatImp"
+  "RMU"
+  # "SatImp"
   # "WGA"
   # "PDU"
+  # "GradDiff"
   # "SimNPO"
-  # "UNDIAL"
+  # "NPO"
+  "UNDIAL"
 )
 
 # Extra drafts run on every split regardless of what they were unlearned on
@@ -98,14 +112,19 @@ SPLITS=(
 )
 
 # Blend strengths to sweep. α=0 → target only; α=1 → draft only.
-# ALPHAS=(0.5 0.7 0.8 0.9 0.95)
+ALPHAS=(0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.95 0.98 0.99 0.995)
 # ALPHAS=(0.9)
-ALPHAS=(0.98 0.99 0.995)
+# ALPHAS=(0.98 0.99 0.995)
 # Draft window sizes to sweep (throughput only; never changes the distribution).
 K_SUD_VALUES=(1)
 
 # Random seeds to sweep. The active seed is appended to the results path.
 SEEDS=(0)
+
+# Eval batch size for every LLM forward/generate pass (configs/eval/tofu.yaml
+# defaults to 32). Lower it to fit a smaller GPU: 8B target + 8B draft in bf16
+# needs ~32 GB of weights alone, so a single 48 GB A6000 wants 4.
+EVAL_BATCH_SIZE="${EVAL_BATCH_SIZE:-4}"
 
 RESULTS_ROOT="${RESULTS_ROOT:-saves/unlearn/sud/results}"
 
@@ -206,6 +225,7 @@ for split_entry in "${SPLITS[@]}"; do
               experiment=eval/tofu/default.yaml \
               model=sud \
               model.model_args.device_map=auto \
+              eval.tofu.batch_size="${EVAL_BATCH_SIZE}" \
               model.model_args.pretrained_model_name_or_path="${target}" \
               model.model_args.draft_model_name_or_path="${draft_model}" \
               model.model_args.alpha="${alpha}" \

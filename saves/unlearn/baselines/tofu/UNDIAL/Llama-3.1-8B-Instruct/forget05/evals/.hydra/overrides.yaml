@@ -1,0 +1,8 @@
+- experiment=eval/tofu/default.yaml
+- forget_split=forget05
+- holdout_split=holdout05
+- model=Llama-3.1-8B-Instruct
+- task_name=tofu_Llama-3.1-8B-Instruct_forget05_UNDIAL_lr0.0001_beta10_alpha1_epoch10
+- model.model_args.pretrained_model_name_or_path=saves/unlearn/baselines/tofu/UNDIAL_lr0.0001_beta10_alpha1_epoch10/Llama-3.1-8B-Instruct/forget05
+- paths.output_dir=saves/unlearn/baselines/tofu/UNDIAL_lr0.0001_beta10_alpha1_epoch10/Llama-3.1-8B-Instruct/forget05/evals
+- retain_logs_path=saves/eval/tofu_Llama-3.1-8B-Instruct_retain95/TOFU_EVAL.json
