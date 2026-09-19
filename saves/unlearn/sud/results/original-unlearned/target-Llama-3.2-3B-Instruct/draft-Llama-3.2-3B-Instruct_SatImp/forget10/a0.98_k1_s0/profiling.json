@@ -1,8 +1,8 @@
 {
   "timings_sec": {
-    "evaluation": 6405.69
+    "evaluation": 0.024
   },
   "vram_peak_mb": {
-    "evaluation": 40756.5
+    "evaluation": 12852.0
   }
 }
