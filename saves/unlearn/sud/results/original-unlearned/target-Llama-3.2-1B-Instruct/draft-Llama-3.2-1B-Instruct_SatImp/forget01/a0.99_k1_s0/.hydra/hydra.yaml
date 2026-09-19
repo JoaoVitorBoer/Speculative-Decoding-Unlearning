@@ -151,12 +151,12 @@ hydra:
   runtime:
     version: 1.3.0
     version_base: '1.3'
-    cwd: /home/joaoabitante/speculative-decoding-unlearning
+    cwd: /home/zeus/Members/Joao/Speculative-Decoding-Unlearning
     config_sources:
     - path: hydra.conf
       schema: pkg
       provider: hydra
-    - path: /home/joaoabitante/speculative-decoding-unlearning/configs
+    - path: /home/zeus/Members/Joao/Speculative-Decoding-Unlearning/configs
       schema: file
       provider: main
     - path: hydra_plugins.hydra_colorlog.conf
@@ -165,7 +165,7 @@ hydra:
     - path: ''
       schema: structured
       provider: schema
-    output_dir: /home/joaoabitante/speculative-decoding-unlearning/saves/unlearn/sud/results/original-unlearned/target-Llama-3.2-1B-Instruct/draft-Llama-3.2-1B-Instruct_SatImp/forget01/a0.99_k1_s0
+    output_dir: /home/zeus/Members/Joao/Speculative-Decoding-Unlearning/saves/unlearn/sud/results/original-unlearned/target-Llama-3.2-1B-Instruct/draft-Llama-3.2-1B-Instruct_SatImp/forget01/a0.99_k1_s0
     choices:
       adapter: null
       quantization: null
