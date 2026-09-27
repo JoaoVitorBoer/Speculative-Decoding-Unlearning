@@ -54,9 +54,9 @@ COMBO="original-unlearned"
 # P / target family. The ORIGINAL (memorized) model is the TOFU "full"
 # checkpoint derived from each family via target_path() below.
 BASE_MODELS=(
-   "Llama-3.2-1B-Instruct"
-   "Llama-3.2-3B-Instruct"
-  # "Llama-3.1-8B-Instruct"
+  #  "Llama-3.2-1B-Instruct"
+  #  "Llama-3.2-3B-Instruct"
+  "Llama-3.1-8B-Instruct"
 )
 
 # Q / draft: the weight-unlearned checkpoints, one Hub repo per
@@ -72,15 +72,15 @@ BASELINES_ROOT="${BASELINES_ROOT:-saves/unlearn/baselines/tofu}"
 HUB_NAMESPACE="${HUB_NAMESPACE:-JoaoBoer}"
 
 DRAFT_METHODS=(
-  "GradDiff"
-  "IdkDPO"
-  "IdkNLL"
-  "NPO"
+  # "GradDiff"
+  # "IdkDPO"
+  # "IdkNLL"
+  # "NPO"
   "RMU"
-  "SatImp"
-  "WGA"
-  "PDU"
-  "SimNPO"
+  # "SatImp"
+  # "WGA"
+  # "PDU"
+  # "SimNPO"
   "UNDIAL"
 )
 
@@ -94,20 +94,34 @@ EXTRA_DRAFT_MODELS=(
 
 # Format: "forget_split holdout_split retain_split"
 SPLITS=(
-  "forget01 holdout01 retain99"
-  "forget05 holdout05 retain95"
+  # "forget01 holdout01 retain99"
+  # "forget05 holdout05 retain95"
   "forget10 holdout10 retain90"
 )
 
 # Blend strengths to sweep. α=0 → target only; α=1 → draft only.
 # ALPHAS=(0.5 0.7 0.8 0.9 0.95)
 # ALPHAS=(0.9)
-ALPHAS=(0.1 0.2 0.3 0.4 0.6 0.98 0.99 0.995)
+ALPHAS=(0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.95 0.98 0.99 0.995)
 # Draft window sizes to sweep (throughput only; never changes the distribution).
 K_SUD_VALUES=(1)
 
 # Random seeds to sweep. The active seed is appended to the results path.
 SEEDS=(0)
+
+# Eval batch size per target family (Hydra key eval.tofu.batch_size; the
+# config default is 32). SUD holds BOTH models on the single 48 GB GPU and
+# blends their full-vocabulary logits in fp32 (src/model/sud.py), so the
+# likelihood metrics peak at roughly weights + ~1 GB per batch row for the
+# 128k-token Llama-3 vocab. Two bf16 8B models are already ~32 GB of weights,
+# and batch 32 OOMs in blend_log_pi; 4 is the largest that fits. Batch size
+# never changes the likelihood metrics; it only changes throughput.
+eval_batch_size() {
+  case "$1" in
+    *8B*) echo 4 ;;
+    *)    echo 32 ;;
+  esac
+}
 
 RESULTS_ROOT="${RESULTS_ROOT:-saves/unlearn/sud/results}"
 
@@ -182,7 +196,8 @@ for split_entry in "${SPLITS[@]}"; do
   for base_model in "${BASE_MODELS[@]}"; do
     target="$(target_path "${base_model}")"
     retain_logs_path="saves/eval/tofu_${base_model}_${retain_split}/TOFU_EVAL.json"
-    echo -e "${RED}target (original) = ${target}${NC}"
+    batch_size="$(eval_batch_size "${base_model}")"
+    echo -e "${RED}target (original) = ${target} | eval batch size = ${batch_size}${NC}"
 
     # Drafts for this (family, split): one weight-baseline checkpoint per
     # method (fetched from the Hub if needed), plus any split-agnostic extras.
@@ -223,9 +238,13 @@ for split_entry in "${SPLITS[@]}"; do
             echo -e "${RED}eval → ${output_dir}${NC}"
 
             # device_map=auto places both models on the single visible GPU.
+            # expandable_segments avoids allocator fragmentation between the
+            # many same-sized fp32 logits tensors the blend allocates per batch.
+            PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
             CUDA_VISIBLE_DEVICES="${CUDA_DEVICES}" python src/eval.py \
               experiment=eval/tofu/default.yaml \
               model=sud \
+              eval.tofu.batch_size="${batch_size}" \
               model.model_args.device_map=auto \
               model.model_args.pretrained_model_name_or_path="${target}" \
               model.model_args.draft_model_name_or_path="${draft_model}" \
