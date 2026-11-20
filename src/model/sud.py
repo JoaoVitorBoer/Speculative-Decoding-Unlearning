@@ -19,20 +19,26 @@ speculative-decoding bonus token would follow p, not π, and escape forget
 suppression. A round therefore commits between 1 and k_sud tokens, and k_sud
 is a pure throughput knob: it never changes the sampled distribution.
 
+`mixture="linear"` (ablation baseline) swaps only the target distribution for
+the arithmetic mixture π(v) = (1-α)·p(v) + α·q(v). The draft-verify loop is
+unchanged — accept w.p. min(1, π/q), resample from max(0, π - q) — and is
+exact for any π; for the linear π the ratio π/q is always ≥ α.
+
 The wrapper exposes the subset of the HF CausalLM API that the project's
 evaluators rely on:
   * forward(input_ids, attention_mask, ...).logits  — returns log π itself,
     normalized over the vocabulary axis, with shape (B, T, V). Evaluators
     apply their own `log_softmax` / `CrossEntropyLoss`, which is idempotent
     on an already-normalized tensor, so they see log π either way.
-  * generate(input_ids, attention_mask, max_new_tokens, do_sample, ...) —
-    draft-verify sampling from π. No KV cache yet (re-runs full forwards
+  * generate(input_ids, attention_mask, max_new_tokens, ...) — draft-verify
+    sampling from π at temperature 1. No KV cache yet (re-runs full forwards
     each round), so this is a research-prototype implementation.
 """
 
 from __future__ import annotations
 
 import copy
+import math
 import os
 from dataclasses import dataclass
 from datetime import datetime
@@ -62,11 +68,16 @@ def blend_log_pi(
     target_logits: torch.Tensor,
     draft_logits: torch.Tensor,
     alpha: float,
+    mixture: str = "geometric",
 ) -> torch.Tensor:
     """Compute normalized log π over the vocabulary axis (last dim).
 
+    mixture="geometric" (SUD):
         log π = (1-α)·log p + α·log q - log Z
         log Z = logsumexp((1-α)·log p + α·log q)
+    mixture="linear" (ablation baseline):
+        log π = log((1-α)·p + α·q)
+              = logaddexp(log(1-α) + log p, log α + log q)   (already normalized)
 
     The result is always a proper log-distribution (exp sums to 1). This is
     load-bearing in `_speculative_decode_row`: the acceptance ratio π/q and
@@ -82,6 +93,14 @@ def blend_log_pi(
     """
     log_p = F.log_softmax(target_logits, dim=-1)
     log_q = F.log_softmax(draft_logits, dim=-1)
+    if mixture == "linear":
+        # log(0) = -inf at the endpoints; logaddexp(-inf, x) = x, so α=0 → p
+        # and α=1 → q exactly.
+        log_w_p = math.log1p(-alpha) if alpha < 1.0 else float("-inf")
+        log_w_q = math.log(alpha) if alpha > 0.0 else float("-inf")
+        return torch.logaddexp(log_p + log_w_p, log_q + log_w_q)
+    if mixture != "geometric":
+        raise ValueError(f"mixture must be 'geometric' or 'linear', got {mixture!r}")
     log_u = (1.0 - alpha) * log_p + alpha * log_q
     return log_u - torch.logsumexp(log_u, dim=-1, keepdim=True)
 
@@ -124,10 +143,13 @@ class SUDModelForCausalLM(nn.Module):
         draft: nn.Module,
         alpha: float,
         k_sud: int = 4,
+        mixture: str = "geometric",
     ):
         super().__init__()
         if not 0.0 <= float(alpha) <= 1.0:
             raise ValueError(f"alpha must be in [0, 1], got {alpha}")
+        if mixture not in ("geometric", "linear"):
+            raise ValueError(f"mixture must be 'geometric' or 'linear', got {mixture!r}")
         if int(k_sud) < 1:
             raise ValueError(f"k_sud must be >= 1, got {k_sud}")
         if target.config.vocab_size != draft.config.vocab_size:
@@ -139,6 +161,7 @@ class SUDModelForCausalLM(nn.Module):
         self.draft = draft
         self.alpha = float(alpha)
         self.k_sud = int(k_sud)
+        self.mixture = mixture
         self._tokenizer = None  # set by from_pretrained when verify_tokenizer=True
 
         # Mirror the HF model surface evaluators rely on.
@@ -163,12 +186,16 @@ class SUDModelForCausalLM(nn.Module):
         draft_model_name_or_path: str = None,
         alpha: float = 0.5,
         k_sud: int = 4,
+        mixture: str = "geometric",
         verify_tokenizer: bool = True,
+        tokenizer_name_or_path: str = None,
         **kwargs,
     ) -> "SUDModelForCausalLM":
         """Load the target and draft models from disk/HF hub and wrap them.
 
-        `pretrained_model_name_or_path` is the target. Extra arguments
+        `pretrained_model_name_or_path` is the target. `tokenizer_name_or_path`
+        overrides where the target-side tokenizer is loaded from (the MUSE
+        target repos ship tokenizer files AutoTokenizer cannot load). Extra arguments
         (`torch_dtype`, `attn_implementation`, `device_map`, `cache_dir`,
         `quantization_config`, ...) are forwarded to *both* underlying
         `AutoModelForCausalLM.from_pretrained` calls.
@@ -182,7 +209,8 @@ class SUDModelForCausalLM(nn.Module):
         if verify_tokenizer:
             cache_dir = kwargs.get("cache_dir", None)
             tok_target = AutoTokenizer.from_pretrained(
-                pretrained_model_name_or_path, cache_dir=cache_dir
+                tokenizer_name_or_path or pretrained_model_name_or_path,
+                cache_dir=cache_dir,
             )
             tok_draft = AutoTokenizer.from_pretrained(
                 draft_model_name_or_path, cache_dir=cache_dir
@@ -196,7 +224,8 @@ class SUDModelForCausalLM(nn.Module):
         draft = AutoModelForCausalLM.from_pretrained(
             draft_model_name_or_path, **kwargs
         )
-        model = cls(target=target, draft=draft, alpha=alpha, k_sud=k_sud)
+        model = cls(target=target, draft=draft, alpha=alpha, k_sud=k_sud, mixture=mixture)
+        logger.info(f"SUD: alpha={model.alpha} k_sud={model.k_sud} mixture={model.mixture}")
         model._tokenizer = tok
         return model
 
@@ -214,8 +243,7 @@ class SUDModelForCausalLM(nn.Module):
         Because SUD commits every decoded token exactly from π, the
         teacher-forced joint ∏ₜ π(yₜ|y_<ₜ) that likelihood metrics compute is
         exactly the probability that `generate` reproduces y verbatim — the
-        forward and generate paths describe the same distribution (at
-        temperature 1, the only setting the evaluators use).
+        forward and generate paths describe the same distribution.
 
         `labels` is accepted and ignored: this wrapper is inference-only, so
         no loss is computed and `.loss` stays None. Every active evaluator
@@ -236,7 +264,9 @@ class SUDModelForCausalLM(nn.Module):
 
         # Promote to fp32 before the log-space blend: the submodels are
         # typically bf16, and the returned logits stay fp32 regardless.
-        log_pi = blend_log_pi(t_out.logits.float(), d_out.logits.float(), self.alpha)
+        log_pi = blend_log_pi(
+            t_out.logits.float(), d_out.logits.float(), self.alpha, self.mixture
+        )
         return _SUDOutput(logits=log_pi)
 
     # -- Generate (used by ROUGE / generation metrics) -----------------------
@@ -247,8 +277,6 @@ class SUDModelForCausalLM(nn.Module):
         input_ids: torch.Tensor,
         attention_mask: Optional[torch.Tensor] = None,
         max_new_tokens: int = 200,
-        do_sample: bool = True,
-        temperature: Optional[float] = None,
         pad_token_id: Optional[int] = None,
         eos_token_id: Optional[int] = None,
         stopping_criteria=None,
@@ -262,12 +290,10 @@ class SUDModelForCausalLM(nn.Module):
         round on both models. A production version should reuse
         past_key_values on each submodel.
         """
-        # Silently ignore extra HF kwargs we don't implement (top_k, top_p,
-        # num_beams, use_cache, etc.). The draft proposal must stay an
+        # Silently ignore extra HF kwargs we don't implement (do_sample,
+        # temperature, top_k, top_p, num_beams, use_cache, etc.). SUD always
+        # samples at temperature 1, and the draft proposal must stay an
         # unfiltered sample from q for the acceptance test to be exact.
-
-        # Sampling is required by the acceptance math; greedy is unsupported.
-        do_sample = True
         device = input_ids.device
         
         assert attention_mask is not None, (
@@ -310,12 +336,6 @@ class SUDModelForCausalLM(nn.Module):
         else:
             eos_ids = list(eos_token_id)
 
-        temp = (
-            float(temperature)
-            if temperature is not None and temperature > 0
-            else 1.0
-        )
-
         bsz = input_ids.size(0)
 
         debugger = None
@@ -347,7 +367,6 @@ class SUDModelForCausalLM(nn.Module):
                         input_ids[b : b + 1],
                         attention_mask[b : b + 1],
                         max_new_tokens=max_new_tokens,
-                        temp=temp,
                         eos_ids=eos_ids,
                         stopping_criteria=row_criteria,
                         debugger=debugger if b == 0 else None,
@@ -375,7 +394,6 @@ class SUDModelForCausalLM(nn.Module):
         row_ids: torch.Tensor,
         row_attn: torch.Tensor,
         max_new_tokens: int,
-        temp: float,
         eos_ids: list,
         stopping_criteria,
         debugger,
@@ -409,7 +427,7 @@ class SUDModelForCausalLM(nn.Module):
                 d_logits = self.draft(
                     input_ids=d_ids, attention_mask=d_attn
                 ).logits[:, -1, :]
-                log_q = F.log_softmax(d_logits.float() / temp, dim=-1).squeeze(0)
+                log_q = F.log_softmax(d_logits.float(), dim=-1).squeeze(0)
                 tok = int(torch.multinomial(log_q.exp(), num_samples=1).item())
                 drafted.append(tok)
                 log_q_rows.append(log_q)
@@ -434,12 +452,12 @@ class SUDModelForCausalLM(nn.Module):
             t_logits = self.target(
                 input_ids=d_ids, attention_mask=d_attn
             ).logits[0].float()
-            t_rows = t_logits[L - 1 : L - 1 + k_eff] / temp
+            t_rows = t_logits[L - 1 : L - 1 + k_eff]
             log_q_all = torch.stack(log_q_rows)
             # log_q_all is already normalized, so blend_log_pi's internal
             # log_softmax passes it through unchanged: π is built from the
             # exact q the proposals were sampled from.
-            log_pi_all = blend_log_pi(t_rows, log_q_all, self.alpha)
+            log_pi_all = blend_log_pi(t_rows, log_q_all, self.alpha, self.mixture)
 
             # 3) Accept/reject each drafted token in order.
             decisions = [] if debugger is not None else None

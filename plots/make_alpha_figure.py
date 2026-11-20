@@ -73,6 +73,10 @@ def load_metrics(alphas, results_root: Path):
             for r in csv.DictReader(fh):
                 if (r["target"], r["draft"], r["split"]) != (CELL["target"], CELL["draft"], CELL["split"]):
                     continue
+                # summary.csv also holds the ablation combos (…-linear has the same
+                # target/draft/k tags as SUD), so keep the SUD rows only.
+                if r.get("combo", "original-unlearned") != "original-unlearned":
+                    continue
                 if int(r["k"]) != K_BASE or int(r["seed"]) != 0 or r.get("complete", "True") != "True":
                     continue
                 a = float(r["alpha"])
