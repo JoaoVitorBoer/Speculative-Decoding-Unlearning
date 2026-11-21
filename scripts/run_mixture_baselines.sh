@@ -7,8 +7,7 @@
 #                 sampled-q baseline (scripts/run_tofu_sampled_evals.sh: do_sample,
 #                 T=1, top_k=0, top_p=1, config batch size). Merged AND run in
 #                 float32 + sdpa: p and q differ by ~1 bf16 ulp, so a bf16 merge
-#                 snaps to θ_p / θ_q (src/model/weight_interp.py). Also runs α=0
-#                 and α=1 so the endpoints are in the same precision.
+#                 snaps to θ_p / θ_q (src/model/weight_interp.py).
 #   linear        π = (1-α)·p + α·q through the unchanged SUD draft-verify wrapper
 #                 (model=sud, +model.model_args.mixture=linear), k_sud=1 and the
 #                 same batch size as the SUD grid.
@@ -81,15 +80,15 @@ fi
 
 read -ra FAMILIES <<< "${FAMILIES:-weightinterp linear}"
 read -ra MODELS <<< "${MODELS:-Llama-3.2-1B-Instruct Llama-3.2-3B-Instruct}"
-read -ra METHODS <<< "${METHODS:-GradDiff IdkDPO IdkNLL NPO PDU RMU SatImp SimNPO UNDIAL WGA}"
+read -ra METHODS <<< "${METHODS:-GradDiff IdkDPO NPO RMU SimNPO UNDIAL}"
 read -ra SPLITS <<< "${SPLITS:-forget01 forget05 forget10}"
 SEED="${SEED:-0}"
-# The SUD grid (scripts/run_sud.sh ALPHAS). weightinterp adds the fp32 endpoints.
+# The SUD grid (scripts/run_sud.sh ALPHAS), for both families (ALPHAS="0 1" adds the endpoints).
 SUD_ALPHAS="0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.95 0.98 0.99 0.995"
 alphas_for() {
   if [[ -n "${ALPHAS:-}" ]]; then echo "${ALPHAS}"; return; fi
   case "$1" in
-    weightinterp) echo "0 ${SUD_ALPHAS} 1" ;;
+    weightinterp) echo "${SUD_ALPHAS}" ;;
     linear)       echo "${SUD_ALPHAS}" ;;
   esac
 }
